@@ -31,8 +31,8 @@ install(
 
 include_directories(include)
 
-add_executable(ports  src/ports_eg.cpp )
-ament_target_dependencies(ports behaviortree_cpp)
+add_executable(examples  src/examples.cpp )
+ament_target_dependencies(examples behaviortree_cpp)
 
 add_executable(executor  src/executor.cpp src/BTExecutor.cpp )
 ament_target_dependencies(executor rclcpp behaviortree_cpp oss_interfaces geometry_msgs rclcpp_action std_srvs)

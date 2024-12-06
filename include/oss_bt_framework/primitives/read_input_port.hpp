@@ -1,7 +1,7 @@
 #pragma once
 
 #include "oss_bt_framework/PrimitiveBehavior.hpp"
-#include "oss_aws_interfaces/srv/read_black.hpp"
+#include "oss_interfaces/srv/read_black.hpp"
 
 namespace oss_bt_framework
 {

@@ -62,7 +62,7 @@ class Batman(Node):
         counter_reset = SetBool.Request()
         counter_reset.data = True
         self.counter_reset_client.call_async(counter_reset)
-        path = Path(os.environ["OSS_WORKSPACE_PATH"])/"src"/"oss_bt_framework"/"xml"/"test.xml"
+        path = Path(os.environ["OSS_WORKSPACE_PATH"])/"src"/"oss_bt_framework"/"xml"/"sim.xml"
         behavior = PickObject(self.sequence_list)
         self.run_module(behavior,path)
         self.get_logger().info("real_bt_generation_started")
