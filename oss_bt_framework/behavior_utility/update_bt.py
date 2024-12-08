@@ -1,13 +1,13 @@
 import xml.etree.ElementTree as ET
-import json
 
-# Load the mapping from mapping.json
-with open("mapping.json", "r") as json_file:
-    mapping = json.load(json_file)
+mapping = {
+    "MoveToPose": "ExecuteTrajectory",
+    "Trigger": "Trigger",
+    "RotateEffector": "ExecuteTrajectory"
+}
 
-# Parse the XML file
-tree = ET.parse("behavior_tree.xml")
-root = tree.getroot()
+# tree = ET.parse("behavior_tree.xml")
+# root = tree.getroot()
 
 # Function to update XML based on mapping
 def update_xml(element, sequence=1):
@@ -30,7 +30,7 @@ def update_xml(element, sequence=1):
     return sequence
 
 # Update the XML tree
-update_xml(root)
+# update_xml(root)
 
 # Write the modified XML back to a file
-tree.write("updated_behavior_tree.xml", encoding="utf-8", xml_declaration=True)
+# tree.write("updated_behavior_tree.xml", encoding="utf-8", xml_declaration=True)

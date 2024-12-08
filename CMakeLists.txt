@@ -37,23 +37,10 @@ ament_target_dependencies(examples behaviortree_cpp)
 add_executable(executor  src/executor.cpp src/BTExecutor.cpp )
 ament_target_dependencies(executor rclcpp behaviortree_cpp oss_interfaces geometry_msgs rclcpp_action std_srvs)
 
-add_executable(ExecuteSim src/xarm_moveit2_sim_traj.cpp)
-ament_target_dependencies(ExecuteSim
-  ament_cmake
-	rclcpp
-  oss_interfaces
-	rclcpp_action
-	moveit_core
-	moveit_ros_planning_interface
-	interactive_markers
-	moveit_ros_planning
-  std_srvs
-	control_msgs)
 
 install(TARGETS
-  ports
+  examples
   executor
-  ExecuteSim
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY scripts/

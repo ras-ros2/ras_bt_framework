@@ -4,7 +4,7 @@ from .primitives import RotateEffector, SaySomething,ThinkSomethingToSay,MoveToP
 from ..behavior_template.module import BehaviorModuleSequence
 from geometry_msgs.msg import Pose
 
-from ..behavior_utility.lab_manager import read_yaml_to_pose_dict
+from ..behavior_utility.yaml_parser import read_yaml_to_pose_dict
 
 from ament_index_python import get_package_share_directory
 
