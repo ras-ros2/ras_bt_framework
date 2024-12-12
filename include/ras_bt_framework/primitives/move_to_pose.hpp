@@ -1,8 +1,8 @@
 #pragma once
 
-#include "oss_bt_framework/PrimitiveBehavior.hpp"
+#include "ras_bt_framework/PrimitiveBehavior.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "oss_interfaces/srv/pose_req.hpp" 
+#include "ras_interfaces/srv/pose_req.hpp" 
 #include "geometry_msgs/msg/pose.hpp"
 #include "rclcpp/logging.hpp"  // For ROS_INFO
 
@@ -33,7 +33,7 @@ inline geometry_msgs::msg::Pose convertFromString(StringView str)
 }
 
 
-namespace oss_bt_framework
+namespace ras_bt_framework
 {
 
 class MoveToPose : public PrimitiveBehavior {
@@ -43,7 +43,7 @@ public:
     {
         // Initialize other members here, like the ROS node
         node_ = rclcpp::Node::make_shared("move_to_pose_node");
-        move_to_pose = node_->create_client<oss_interfaces::srv::PoseReq>("/create_traj");
+        move_to_pose = node_->create_client<ras_interfaces::srv::PoseReq>("/create_traj");
     }
 
     ~MoveToPose() {}
@@ -58,7 +58,7 @@ public:
 
     auto msg = getInput<geometry_msgs::msg::Pose>("pose");
 
-    auto request = std::make_shared<oss_interfaces::srv::PoseReq::Request>();
+    auto request = std::make_shared<ras_interfaces::srv::PoseReq::Request>();
 
     // Direct assignment without using 'expected'
     request->object_pose = msg.value();
@@ -79,13 +79,13 @@ public:
 
 
 
-    void move_to_pose_response(rclcpp::Client<oss_interfaces::srv::PoseReq>::SharedFuture future) {
+    void move_to_pose_response(rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture future) {
         // Handle the response if needed
     }
 
 private:
     rclcpp::Node::SharedPtr node_;  // Node shared pointer to create clients
-    rclcpp::Client<oss_interfaces::srv::PoseReq>::SharedPtr move_to_pose;
+    rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedPtr move_to_pose;
 };
 
 }

@@ -3,7 +3,7 @@ from ..behavior_template.module import BehaviorModuleSequence,BehaviorModuleColl
 from ..behavior_template.instruction import EmptyInstruction,PrimitiveInstruction,FunctionalInstruction,ScriptInstruction
 from typing import Iterable,List,Dict,Set
 from dataclasses import dataclass,field
-from oss_common.xml_utils.behavior_tree_gen import BTXml,ElementTree
+from ras_common.xml_utils.behavior_tree_gen import BTXml,ElementTree
 from ..managers.primitive_action_manager import PrimitiveActionManager
 
 

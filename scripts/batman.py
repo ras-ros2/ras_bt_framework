@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 import os
 import rclpy
-from oss_bt_framework.managers.behavior_tree_generator import BehaviorTreeGenerator,PrimitiveActionManager
-from oss_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequence,PickObject, RotateEffectorSequence
-from oss_bt_framework.behaviors.primitives import RotateEffector, SaySomething,ThinkSomethingToSay,MoveToPose,Trigger
-from oss_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
-from oss_bt_framework.behavior_utility.update_bt import update_xml
+from ras_bt_framework.managers.behavior_tree_generator import BehaviorTreeGenerator,PrimitiveActionManager
+from ras_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequence,PickObject, RotateEffectorSequence
+from ras_bt_framework.behaviors.primitives import RotateEffector, SaySomething,ThinkSomethingToSay,MoveToPose,Trigger
+from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
+from ras_bt_framework.behavior_utility.update_bt import update_xml
 
-from oss_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequence,PickObject
+from ras_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequence,PickObject
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from rclpy.action import ActionClient
-from oss_interfaces.action import BTInterface
-from oss_interfaces.srv import LoadExp
+from ras_interfaces.action import BTInterface
+from ras_interfaces.srv import LoadExp
 from std_srvs.srv import SetBool
 from pathlib import Path
 
@@ -37,7 +37,7 @@ class Batman(Node):
     def load_exp(self, req, resp):
         self.sequence_list = []
         exp_id = req.exepriment_id
-        path = os.path.join(os.environ["OSS_WORKSPACE_PATH"],"src","oss_configs","experiments",f"{exp_id}.yaml")
+        path = os.path.join(os.environ["RAS_APP_PATH"],"configs","experiments",f"{exp_id}.yaml")
         print(path)
         pose_list = read_yaml_to_pose_dict(path)
 
@@ -62,14 +62,14 @@ class Batman(Node):
         counter_reset = SetBool.Request()
         counter_reset.data = True
         self.counter_reset_client.call_async(counter_reset)
-        path = Path(os.environ["OSS_WORKSPACE_PATH"])/"src"/"oss_bt_framework"/"xml"/"sim.xml"
+        path = Path(os.environ["RAS_WORKSPACE_PATH"])/"src"/"ras_bt_framework"/"xml"/"sim.xml"
         behavior = PickObject(self.sequence_list)
         self.run_module(behavior,path)
         self.get_logger().info("real_bt_generation_started")
         tree = ET.parse(path)
         root = tree.getroot()
         update_xml(root)
-        tree.write("/oss_sim_lab/ros2_ws/src/oss_bt_framework/xml/real.xml", encoding="utf-8", xml_declaration=True)
+        tree.write("/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml", encoding="utf-8", xml_declaration=True)
         resp.success = True
         return resp
 

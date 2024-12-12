@@ -25,7 +25,7 @@ Developers can contribute by adding new primitives and modules through a defined
 1. **Include Directory**:
    - **Primitives**: Defines primitives as Behavior Tree nodes.
 
-2. **OSS_BT_Framework**: Core of the Behavior Tree generation utility.
+2. **RAS_BT_Framework**: Core of the Behavior Tree generation utility.
    - **Behavior**: Contributors add modules and primitives here.
    - **Managers**: Handles the generation of the final XML file for the Behavior Tree.
 

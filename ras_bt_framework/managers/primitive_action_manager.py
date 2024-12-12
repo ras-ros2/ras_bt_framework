@@ -3,7 +3,7 @@ from rclpy.action import ActionServer
 from rclpy.node import Node
 from dataclasses import dataclass
 from typing import Callable
-from oss_interfaces.action import BTInterface
+from ras_interfaces.action import BTInterface
 import json
 
 class PrimitiveActionHandler(object):

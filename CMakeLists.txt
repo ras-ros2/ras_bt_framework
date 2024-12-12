@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(oss_bt_framework)
+project(ras_bt_framework)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -15,7 +15,7 @@ find_package(trajectory_msgs REQUIRED)
 find_package(moveit_ros_planning REQUIRED)
 find_package(interactive_markers REQUIRED)
 find_package(control_msgs REQUIRED)
-find_package(oss_interfaces REQUIRED)
+find_package(ras_interfaces REQUIRED)
 find_package(std_srvs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -35,7 +35,7 @@ add_executable(examples  src/examples.cpp )
 ament_target_dependencies(examples behaviortree_cpp)
 
 add_executable(executor  src/executor.cpp src/BTExecutor.cpp )
-ament_target_dependencies(executor rclcpp behaviortree_cpp oss_interfaces geometry_msgs rclcpp_action std_srvs)
+ament_target_dependencies(executor rclcpp behaviortree_cpp ras_interfaces geometry_msgs rclcpp_action std_srvs)
 
 
 install(TARGETS

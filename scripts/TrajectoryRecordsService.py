@@ -5,7 +5,7 @@ import rclpy
 from rclpy.node import Node
 from pathlib import Path
 from typing import List
-from oss_interfaces.srv import TrajSend, SetPath, PlayPath, ActionTraj
+from ras_interfaces.srv import TrajSend, SetPath, PlayPath, ActionTraj
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from rclpy.serialization import serialize_message
 import json
@@ -60,7 +60,7 @@ class TrajectoryRecordsService(Node):
             }
         self.counter += 1  # Increment the counter
         unique_id = str(self.counter)
-        with open(f"/oss_sim_lab/ros2_ws/src/oss_bt_framework/xml/trajectory/{unique_id}.txt", 'w') as file:
+        with open(f"/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/trajectory/{unique_id}.txt", 'w') as file:
             file.write(f"{trajectory_data}")
 
     def load_trajectory(self, uuid: str) -> JointTrajectory:

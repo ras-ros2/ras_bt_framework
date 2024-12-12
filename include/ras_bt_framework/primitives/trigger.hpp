@@ -1,8 +1,8 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_srvs/srv/set_bool.hpp"
-#include "oss_bt_framework/PrimitiveBehavior.hpp"
+#include "ras_bt_framework/PrimitiveBehavior.hpp"
 
-namespace oss_bt_framework
+namespace ras_bt_framework
 {
 
 class Trigger : public PrimitiveBehavior

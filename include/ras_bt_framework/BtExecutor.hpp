@@ -3,15 +3,15 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
-#include "oss_interfaces/action/bt_interface.hpp"
+#include "ras_interfaces/action/bt_interface.hpp"
 #include "behaviortree_cpp/bt_factory.h"
 
-namespace oss_bt_framework
+namespace ras_bt_framework
 {
     class BTExecutor : public rclcpp::Node
     {
         public:
-        using BTInterface = oss_interfaces::action::BTInterface;
+        using BTInterface = ras_interfaces::action::BTInterface;
         using GoalHandle = rclcpp_action::ServerGoalHandle<BTInterface>;
         explicit BTExecutor(std::shared_ptr<BT::BehaviorTreeFactory> bt_factory,const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
         bool run_tree_from_xml(std::string file_path);
@@ -25,4 +25,4 @@ namespace oss_bt_framework
         rclcpp_action::Server<BTInterface>::SharedPtr action_server_;
 
     };    
-} // namespace oss_bt_framework
+} // namespace ras_bt_framework

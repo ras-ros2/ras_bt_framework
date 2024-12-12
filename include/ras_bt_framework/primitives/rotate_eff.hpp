@@ -1,12 +1,12 @@
 #pragma once
 
-#include "oss_bt_framework/PrimitiveBehavior.hpp"
+#include "ras_bt_framework/PrimitiveBehavior.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "oss_interfaces/srv/rotate_effector.hpp"
+#include "ras_interfaces/srv/rotate_effector.hpp"
 #include <iostream>
 #include "rclcpp/logging.hpp" // For ROS_INFO
 
-namespace oss_bt_framework
+namespace ras_bt_framework
 {
 
     class RotateEffector : public PrimitiveBehavior
@@ -16,7 +16,7 @@ namespace oss_bt_framework
             : PrimitiveBehavior(name, config)
         {
             node_ = rclcpp::Node::make_shared("rotate_effector_node");
-            rotate_eff_client_ = node_->create_client<oss_interfaces::srv::RotateEffector>("/rotate_effector");
+            rotate_eff_client_ = node_->create_client<ras_interfaces::srv::RotateEffector>("/rotate_effector");
         }
 
         ~RotateEffector() {}
@@ -37,7 +37,7 @@ namespace oss_bt_framework
                 throw BT::RuntimeError("Missing required input [rotation_angle]: ", angle.error());
             }
 
-            auto request = std::make_shared<oss_interfaces::srv::RotateEffector::Request>();
+            auto request = std::make_shared<ras_interfaces::srv::RotateEffector::Request>();
             request->rotation_angle = angle.value();
 
             std::cout << "Sending rotation angle: " << request->rotation_angle << std::endl;
@@ -67,14 +67,14 @@ namespace oss_bt_framework
             }
         }
 
-        void rotate_eff_response(rclcpp::Client<oss_interfaces::srv::RotateEffector>::SharedFuture future)
+        void rotate_eff_response(rclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedFuture future)
         {
             // Handle the response if needed (not required here for simplicity)
         }
 
     private:
         rclcpp::Node::SharedPtr node_;
-        rclcpp::Client<oss_interfaces::srv::RotateEffector>::SharedPtr rotate_eff_client_;
+        rclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedPtr rotate_eff_client_;
     };
 
-} // namespace oss_bt_framework
+} // namespace ras_bt_framework

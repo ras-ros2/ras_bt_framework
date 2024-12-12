@@ -1,13 +1,13 @@
 #pragma once
 
-#include "oss_bt_framework/PrimitiveBehavior.hpp"
+#include "ras_bt_framework/PrimitiveBehavior.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "oss_interfaces/srv/play_path.hpp" 
+#include "ras_interfaces/srv/play_path.hpp" 
 #include "rclcpp/logging.hpp"
-#include <oss_interfaces/srv/status_log.hpp>    
+#include <ras_interfaces/srv/status_log.hpp>    
 
 
-namespace oss_bt_framework
+namespace ras_bt_framework
 {
 
 class ExecuteTrajectory : public PrimitiveBehavior {
@@ -18,8 +18,8 @@ public:
     {
         // Initialize other members here, like the ROS node
         node_ = rclcpp::Node::make_shared("execute_trajectory_node");
-        play_traj = node_->create_client<oss_interfaces::srv::PlayPath>("/play_trajectory");
-        client_log = node_->create_client<oss_interfaces::srv::StatusLog>("/traj_status");
+        play_traj = node_->create_client<ras_interfaces::srv::PlayPath>("/play_trajectory");
+        client_log = node_->create_client<ras_interfaces::srv::StatusLog>("/traj_status");
 
     }
 
@@ -35,7 +35,7 @@ public:
 
     auto msg = getInput<std::string>("sequence");
 
-    auto request = std::make_shared<oss_interfaces::srv::PlayPath::Request>();
+    auto request = std::make_shared<ras_interfaces::srv::PlayPath::Request>();
 
     request->unique_id = msg.value();
 
@@ -49,7 +49,7 @@ public:
     rclcpp::FutureReturnCode::SUCCESS)
     {
 
-    auto request = std::make_shared<oss_interfaces::srv::StatusLog::Request>();
+    auto request = std::make_shared<ras_interfaces::srv::StatusLog::Request>();
     request->traj_status = "SUCCESS"; 
     request->gripper_status = false;
     request->current_traj = stoi(msg.value()); 
@@ -62,16 +62,16 @@ public:
     
    }
 
-    void play_traj_response(rclcpp::Client<oss_interfaces::srv::PlayPath>::SharedFuture future) {
+    void play_traj_response(rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedFuture future) {
     }
 
-    void log_response(rclcpp::Client<oss_interfaces::srv::StatusLog>::SharedFuture future) {
+    void log_response(rclcpp::Client<ras_interfaces::srv::StatusLog>::SharedFuture future) {
     }
 
 private:
     rclcpp::Node::SharedPtr node_;
-    rclcpp::Client<oss_interfaces::srv::PlayPath>::SharedPtr play_traj;
-    rclcpp::Client<oss_interfaces::srv::StatusLog>::SharedPtr client_log;
+    rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedPtr play_traj;
+    rclcpp::Client<ras_interfaces::srv::StatusLog>::SharedPtr client_log;
 };
 
 }
