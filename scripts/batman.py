@@ -28,8 +28,10 @@ from ras_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequ
 from ras_bt_framework.behaviors.primitives import RotateEffector, SaySomething,ThinkSomethingToSay,MoveToPose,Trigger
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
 from ras_bt_framework.behavior_utility.update_bt import update_xml
+from ras_bt_framework.managers.keywords_module_generator import  KeywordModuleGenerator
+from ras_bt_framework.behaviors.keywords import TargetPoseMap, rotate, gripper
 
-from ras_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequence,PickObject
+from ras_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequence,PickObject,BehaviorModuleSequence
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from rclpy.action import ActionClient
@@ -55,25 +57,25 @@ class Batman(Node):
         self.create_service(SetBool, "/test_experiment", self.bt_execution_callback,callback_group=self.my_callback_group)
         self.counter_reset_client = self.create_client(SetBool, '/reset_counter', callback_group=self.my_callback_group)
         self.create_service(LoadExp, "/get_exepriment", self.load_exp, callback_group=self.my_callback_group)
+        self.target_pose_map =  TargetPoseMap()
+        self.keyword_module_gen = KeywordModuleGenerator()
+        self.keyword_module_gen.register({
+            "move2pose":self.target_pose_map.move2pose_module,
+            "rotate":rotate,
+            "gripper":gripper
+        })
+        self.main_module = BehaviorModuleSequence()
     
     def load_exp(self, req, resp):
         self.sequence_list = []
         exp_id = req.exepriment_id
         path = os.path.join(os.environ["RAS_APP_PATH"],"configs","experiments",f"{exp_id}.yaml")
-        print(path)
-        pose_list = read_yaml_to_pose_dict(path)
-
-        for i in pose_list:
-            if type(i) == bool:
-                self.sequence_list.append(Trigger(input_ports={"trigger": f"{i}"}))
-            if type(i) == float:
-                self.sequence_list.append(RotateEffector(input_ports={"rotation_angle": f"{i}"}))
-            elif type(i) == tuple:
-                self.sequence_list.append(MoveToPose(input_ports={"pose":",".join(map(str, i))}))
-        resp.success = True
-
+        # print(path)
+        pose_dict,targets = read_yaml_to_pose_dict(path)
+        for _k,_v in pose_dict.items():
+            self.target_pose_map.register_pose(_k,_v)
+        self.main_module = self.keyword_module_gen.generate("MainModule",targets)
         self.get_logger().info("Experiment Loaded...")
-
         return resp
 
     def bt_execution_callback(self, req, resp):
@@ -85,8 +87,8 @@ class Batman(Node):
         counter_reset.data = True
         self.counter_reset_client.call_async(counter_reset)
         path = Path(os.environ["RAS_WORKSPACE_PATH"])/"src"/"ras_bt_framework"/"xml"/"sim.xml"
-        behavior = PickObject(self.sequence_list)
-        self.run_module(behavior,path)
+        # behavior = PickObject(self.sequence_list)
+        self.run_module(self.main_module,path)
         self.get_logger().info("real_bt_generation_started")
         tree = ET.parse(path)
         root = tree.getroot()

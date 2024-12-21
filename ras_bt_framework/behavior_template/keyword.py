@@ -23,24 +23,20 @@ from .module import BehaviorModule,BehaviorModuleSequence
 from .instruction import PrimitiveInstruction,FunctionalInstruction
 
 class KeywordInput(BehaviorModule):
-    def __init__(self, **kwargs):
+    def __init__(self, kw_params):
         super().__init__()
         if len(self.output_port_names) != 0:
             raise ValueError("KeywordInputs has no output ports")
-        self._check_ports(self.input_port_names,kwargs)
-        self.input_ports = kwargs
+        self._check_ports(self.input_port_names,kw_params)
+        self.input_ports = kw_params
 
-# class KeywordPrimitive(PrimitiveInstruction,KeywordInput):
-#     def __init__(self, **kwargs):
-#         KeywordInput.__init__(self,**kwargs)
-#         PrimitiveInstruction.__init__(self)
-
-# class KeywordFunction(FunctionalInstruction,KeywordInput):
-#     def __init__(self, **kwargs):
-#         KeywordInput.__init__(self,**kwargs)
-#         FunctionalInstruction.__init__(self)
-
-# class KeywordModuleSequence(BehaviorModuleSequence,KeywordInput):
-#     def __init__(self, **kwargs):
-#         KeywordInput.__init__(self,**kwargs)
-#         BehaviorModuleSequence.__init__(self)
+def as_keyword_input(behavior_type):
+    assert issubclass(behavior_type, BehaviorModule)
+    assert not issubclass(behavior_type, KeywordInput)
+    new_name = behavior_type.__name__
+    new_class = type(new_name, (behavior_type, KeywordInput), dict())
+    def new_init(self, kw_params):
+        super(new_class, self).__init__()
+        KeywordInput.__init__(self, kw_params)
+    new_class.__init__ = new_init
+    return new_class
