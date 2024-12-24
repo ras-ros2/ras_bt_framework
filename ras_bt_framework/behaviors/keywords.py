@@ -19,6 +19,7 @@ Harsh Davda
 Email: info@opensciencestack.org
 """
 
+from ..behavior_template.module import BehaviorModuleSequence
 from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger
 
 class TargetPoseMap(object):
@@ -43,3 +44,9 @@ def rotate(angle:float):
 def gripper(open:bool):
     return Trigger(input_ports={"trigger":str(open)})
 
+def pick_object(object_name:str,dst:str):
+    src = TargetPoseMap().pose_map[object_name]
+    return BehaviorModuleSequence(children=[MoveToPose(input_ports={"pose":src}),
+                                            Trigger(input_ports={"trigger":"True"}),
+                                            MoveToPose(input_ports={"pose":dst}),
+                                            Trigger(input_ports={"trigger":"False"})])
