@@ -59,11 +59,12 @@ class Batman(Node):
         self.create_service(LoadExp, "/get_exepriment", self.load_exp, callback_group=self.my_callback_group)
         self.target_pose_map =  TargetPoseMap()
         self.keyword_module_gen = KeywordModuleGenerator()
-        self.keyword_module_gen.register({
-            "move2pose":self.target_pose_map.move2pose_module,
-            "rotate":rotate,
-            "gripper":gripper
-        })
+        self.keyword_module_gen.register(
+            {
+                "move2pose":self.target_pose_map.move2pose_module,
+                "move2pose_sequence":self.target_pose_map.move2pose_sequence_module,
+            }
+        )
         self.main_module = BehaviorModuleSequence()
     
     def load_exp(self, req, resp):

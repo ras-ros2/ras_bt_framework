@@ -22,11 +22,12 @@ Email: info@opensciencestack.org
 from ..behavior_template.keyword import KeywordInput,keyword2module
 from typing import Dict,Iterable,List,Callable
 from ..behavior_template.module import BehaviorModuleSequence,BehaviorModule
+from ..behaviors.keywords import keyword_mapping
 import inspect
 
 class KeywordModuleGenerator(object):
-    def __init__(self):
-        self.registered_keywords : Dict[str,type[BehaviorModule]] = {}
+    def __init__(self,default_keywords:Dict[str,Callable]=keyword_mapping):
+        self.registered_keywords : Dict[str,type[BehaviorModule]] = default_keywords
 
     def register(self,keyword: Callable|Dict[str,Callable] , name:str=None):
         if isinstance(keyword,dict):
