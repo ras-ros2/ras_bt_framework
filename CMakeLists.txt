@@ -23,7 +23,6 @@ find_package(std_srvs REQUIRED)
 
 install(
   DIRECTORY
-  config
   src
   DESTINATION
   share/${PROJECT_NAME}

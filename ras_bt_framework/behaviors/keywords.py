@@ -19,26 +19,43 @@ Harsh Davda
 Email: info@opensciencestack.org
 """
 
-from..behavior_template.keyword import KeywordPrimitives
-from ..behaviors.primitives import MoveToPose,RotateEffector
-from tf_transformations import quaternion_from_euler
+from ..behavior_template.module import BehaviorModuleSequence
+from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger
+from typing import List
 
-class MoveToPose(KeywordPrimitives):
-    input_port_names = {"pose"}
-    def __init__(self,pose_dict):
-        qx, qy, qz, qw = quaternion_from_euler(pose_dict['roll'], pose_dict['pitch'], pose_dict['yaw'])
-        pose_value  = ",".join(map(str, (
-            pose_dict['x'],
-            pose_dict['y'],
-            pose_dict['z'],
-            qx, qy, qz, qw
-        )))
-        super().__init__(pose=pose_value)
+class TargetPoseMap(object):
+    def __init__(self):
+        self.pose_map = {}
+    
+    def register_pose(self,pose_name,pose):
+        self.pose_map[pose_name] = pose
+    
+    def move2pose_module(self,pose:str):
+        if (isinstance(pose,str)):
+            if pose in self.pose_map:
+                return MoveToPose(input_ports={"pose":self.pose_map[pose]})
+            else:
+                raise ValueError(f"Invalid pose name {pose}")
+        else:
+            raise ValueError(f"Invalid pose input type {type(pose)}")
+        
+    def move2pose_sequence_module(self,poses:List[str]):
+        return BehaviorModuleSequence(children=[self.move2pose_module(pose) for pose in poses])
 
-class RotateEffector(KeywordPrimitives):
-    input_port_names = {"rotation_angle"}
-    def __init__(self,rotation_angle):
-        super().__init__(rotation_angle=rotation_angle)
+def rotate(angle:float):
+    return RotateEffector(input_ports={"rotation_angle":str(angle)})
 
+def gripper(open:bool):
+    return Trigger(input_ports={"trigger":str(open)})
 
+# def pick_object(object_name:str,dst:str):
+#     src = TargetPoseMap().pose_map[object_name]
+#     return BehaviorModuleSequence(children=[MoveToPose(input_ports={"pose":src}),
+#                                             Trigger(input_ports={"trigger":"True"}),
+#                                             MoveToPose(input_ports={"pose":dst}),
+#                                             Trigger(input_ports={"trigger":"False"})])
 
+keyword_mapping = {
+            "rotate":rotate,
+            "gripper":gripper,
+            }

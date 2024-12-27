@@ -1,5 +1,0 @@
-{
-    "MoveToPose": "ExecuteTrajectory",
-    "Trigger": "Trigger",
-    "RotateEffector": "ExecuteTrajectory"
-}
