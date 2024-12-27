@@ -75,9 +75,11 @@ def keyword2module(keyword: Callable,identifier:str = None, params: object|Dict[
     elif isinstance(params,Iterable):
         if len(params_decl.keys())==1:
             _key = next(iter(params_decl.keys()))
-            if len(params) > 1:
-                raise ValueError(f"Keyword {identifier} expected 1 param, but got {len(params)}")
-            return keyword2module(keyword,identifier,{_key:params[0]})
+            if not isinstance(params,dict):
+                if len(params) > 1:
+                    raise ValueError(f"Keyword {identifier} expected 1 param, but got {len(params)}")
+                return keyword2module(keyword,identifier,{_key:params})
+
         if not isinstance(params,dict):
             _max_len = len(params)
             if _max_len > len(params_decl):
