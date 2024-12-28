@@ -39,7 +39,7 @@ class BehaviorTreeGenerator(object):
        self.root_behavior = behavior
     
     @staticmethod
-    def is_valid_primitive(primitive:type[PrimitiveInstruction]|PrimitiveInstruction|str):
+    def is_valid_primitive(primitive:type[PrimitiveInstruction]|PrimitiveInstruction|type[FunctionalInstruction]|FunctionalInstruction|str):
         if isinstance(primitive,str):
             for _p in __registered_primitives:
                 if _p.get_type_info() == primitive:
@@ -48,10 +48,12 @@ class BehaviorTreeGenerator(object):
         elif isinstance(primitive,type):
             if issubclass(primitive,PrimitiveInstruction):
                 return True
+            elif issubclass(primitive, FunctionalInstruction):
+                return True
             else:
                 return False
         else:
-            return isinstance(primitive,PrimitiveInstruction)
+            return isinstance(primitive,PrimitiveInstruction) # TODO: can we return False here?
         
     def verify_sanity(self):
         behavior_stack = []
@@ -97,6 +99,7 @@ class BehaviorTreeGenerator(object):
                     else:
                         raise ValueError(f"Primitive instruction {type(behavior)} is not in the list of primitives.")
                 elif isinstance(behavior,FunctionalInstruction):
+                    behavior = self.action_manager.get_primitive_from(behavior)
                     tree_gen.add_primitive_node(parent_elem,behavior.get_type_info(),behavior.name,behavior.get_port_map())
                 elif isinstance(behavior,ScriptInstruction):
                     tree_gen.add_script(parent_elem,code=behavior.code)
