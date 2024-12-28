@@ -21,6 +21,7 @@ Email: info@opensciencestack.org
 
 from dataclasses import dataclass,field
 from typing import OrderedDict,Callable,Set,ClassVar
+from copy import deepcopy
 import inspect
 from abc import ABC,abstractmethod
 from .module import BehaviorModule,BehaviorModuleSequence
@@ -62,33 +63,52 @@ class BehaviorInstructionBase(BehaviorModule,ABC):
         pass
 
 
-class FunctionalInstruction(BehaviorInstructionBase,Callable,ABC):
+class FunctionalInstructionBase(BehaviorInstructionBase,Callable,ABC):
+    sig_kw : ClassVar[OrderedDict[str,type]] = OrderedDict()
+    func: Callable
+    params: dict = field(default_factory=dict)
+
+    def __post_init__(self):
+        self.check_params()
     
-    @abstractmethod
+    def check_params(self):
+        sig_kw = set(self.sig_kw.keys())
+        params_set = set(self.params.keys())
+        unused_params = params_set-sig_kw
+        if len(unused_params)>0:
+            print("WARN: Discarding unused params: ",unused_params)
+            for _key in unused_params:
+                del self.params[_key]
+    
     def execute(self, **kwargs):
-        pass
+        self.params.update(kwargs)
+        self.call()
     
-    def __call__(self, *args, **kwargs):
-        return self.execute(kwargs)
-
-class DynamicInstruction(BehaviorInstructionBase):
-    def __init__(self,func:Callable):
-        assert isinstance(func,Callable)
-        sig = inspect.signature(func)
-        param_kw = OrderedDict()
-        for name, param in sig.parameters.items():
-            if param.default != inspect.Parameter.empty:
-                param_kw[name] = param.annotation
-            else:
-                param_kw[name] = None
-        super().__init__(InstructionParams(param_kw))
-        self.function = func
-
-    def execute(self,**kwargs):
-        self.arguments.update_params(kwargs)
-        if not self.arguments.verify_call():
-            raise ValueError("Invalid arguments for instruction")
-        return self.function(**self.arguments.params)
+    def verify_call(self):
+        self.check_params()
+        sig_kw = set(self.sig_kw.keys())
+        params_set = set(self.params.keys())
+        if not sig_kw.issuperset(params_set):
+            raise ValueError("Invalid argument for instruction")
+    
+    def call(self):
+        self.verify_call()
+        self.func(**self.params)
+    
+def FunctionalInstruction(func:Callable) -> type[FunctionalInstructionBase]:
+    assert isinstance(func,Callable)
+    sig = inspect.signature(func)
+    param_kw = OrderedDict()
+    for name, param in sig.parameters.items():
+        if param.default != inspect.Parameter.empty:
+            param_kw[name] = param.annotation
+        else:
+            param_kw[name] = None
+    def init(instance:FunctionalInstructionBase,**kwargs):
+        FunctionalInstructionBase.__init__(instance,func,kwargs)
+    instruction_type = type(func.__name__,(FunctionalInstructionBase,),{"__init__":deepcopy(init)})
+    instruction_type.sig_kw = param_kw
+    return instruction_type
 
 class EmptyInstruction(BehaviorInstructionBase):
     def __init__(self):
