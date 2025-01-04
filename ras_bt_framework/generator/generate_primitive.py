@@ -26,6 +26,7 @@ from utils import read_yaml
 from dataclasses import dataclass, field
 from typing import List
 from string import Template
+import sys
 
 PATH_HPP = "generated_headers"
 
@@ -99,7 +100,10 @@ class GeneratePrimitive:
         print(f"Template filled and saved to {PATH_HPP}/{prim.name}.hpp")
 
 def main():
-    path = os.path.join(os.path.dirname(__file__), 'test.yaml')
+    if len(sys.argv) < 2:
+        print("Usage: generate_primitive.py <path_to_yaml>")
+        sys.exit(1)
+    path = sys.argv[1]
     gen_prim = GeneratePrimitive()
     res = gen_prim.load_primitives(path)
     if res:
