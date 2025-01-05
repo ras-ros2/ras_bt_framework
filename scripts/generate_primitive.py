@@ -21,16 +21,13 @@ Sachin Kumar
 Email: info@opensciencestack.org
 """
 
-import yaml
+from ras_bt_framework.generator.primitive_generator import PrimitiveGenerator
+from ament_index_python.packages import get_package_share_directory
 
-def read_yaml(path):
-    with open(path, 'r') as file:
-        data = yaml.safe_load(file)
-    return data
+def main():
+    pkg_path = get_package_share_directory("ras_bt_framework")
+    gen_prim = PrimitiveGenerator(pkg_path)
+    gen_prim.generate_primitives_header_files(pkg_path)
 
-def create_generated_headers_dir():
-    import os
-    PATH_HPP = "generated_headers"
-
-    if not os.path.exists(PATH_HPP):
-        os.makedirs(PATH_HPP)
+if __name__ == '__main__':
+    main()

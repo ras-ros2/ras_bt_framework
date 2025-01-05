@@ -22,15 +22,12 @@ Email: info@opensciencestack.org
 """
 
 import os
-from utils import read_yaml
+from ras_bt_framework.generator.utils import read_yaml
 from dataclasses import dataclass, field
 from typing import List,Dict
 from string import Template
-import sys
 from ras_common.config.loaders.ConfigLoaderBase import ConfigLoaderBase
 from ras_resource_lib.generators.common_utils import _expand_template
-
-PATH_HPP = "generated_headers" # TODO (Sachin): remove this later
 
 @dataclass
 class PrimitiveTemplate(ConfigLoaderBase):
@@ -56,10 +53,11 @@ class PrimitiveTemplate(ConfigLoaderBase):
             "provided_ports" : self.prepare_bt_ports(),
         }
         return template_data
-    
-@dataclass
-class PrimitivesConfig(ConfigLoaderBase):
-    primitives: Dict[str, PrimitiveTemplate]
+
+# TODO (Sachin) : Will use this dataclass later
+# @dataclass
+# class PrimitivesConfig(ConfigLoaderBase):
+#     primitives: Dict[str, PrimitiveTemplate] = field(default_factory=dict)
 
 class PrimitiveGenerator:
     """
@@ -79,50 +77,31 @@ class PrimitiveGenerator:
         Generates a header file for a given primitive using a template.
     """
 
-    primitives : List[PrimitivesConfig]
+    def __init__(self, pkg_path: str):
+        self.primitives : List[PrimitiveTemplate] = []
+        if not self.load_primitives(pkg_path):
+            raise ValueError("Error loading primitives")
 
-    def __init__(self, path: str):
-        if not self.load_primitives(path):
-            raise ValueError("Primitives not loaded")
-
-    def generate_primitives_header_files(self) -> None:
+    def generate_primitives_header_files(self, pkg_path: str) -> None:
         if len(self.primitives) < 1:
             raise ValueError("Primitives not loaded")
+        generated_headers_folder = os.path.join(pkg_path, "generated_headers")
+        if not os.path.exists(generated_headers_folder):
+            os.makedirs(generated_headers_folder)
+        template_path = os.path.join(pkg_path, "templates", "primitive_template.hpp.em")
         for prim in self.primitives:
-            self._gen_header_file(prim)
+            _expand_template(template_path, prim.get_template_data(), f"{generated_headers_folder}/{prim.name}.hpp")
     
-    def load_primitives(self, path: str) -> bool:
-        try:
-            if "primitives" not in read_yaml(path):
-                raise KeyError("The key 'primitives' is missing from the YAML file.")
-            data : dict = read_yaml(path)["primitives"]
-            # self.primitives = extract_primitives(data)
-            for _key, value in data.items():
-                # self.primitives = extract_primitives(value)
-                print("debug")
-                print("value", value)
-                prim = PrimitiveTemplate.from_dict(value)
-                print("post debug")
-                # prim.set_name(_key)
-            return True
-        except Exception as e:
-            print(f"Error loading primitives: {e}")
+    def load_primitives(self, pkg_path: str) -> bool:
+        config_folder = os.path.join(pkg_path, "config")
+        if not os.path.exists(config_folder):
+            os.makedirs(config_folder)
+        path = os.path.join(config_folder, "primitive_declaration.yaml")
+        if "primitives" not in read_yaml(path):
             return False
-
-    def _gen_header_file(self, prim: PrimitiveTemplate):
-        _expand_template("templates/primitive_template.hpp.em", prim.get_template_data(), f"{PATH_HPP}/{prim.name}.hpp")
-
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: generate_primitive.py <path_to_yaml>")
-        sys.exit(1)
-    path = sys.argv[1]
-    try:
-        prim_gen = PrimitiveGenerator(path)
-        prim_gen.generate_primitives_header_files()
-    except ValueError as e:
-        print(f"Error: {e}")
-        sys.exit(1)
-
-if __name__ == '__main__':
-    main()
+        data : dict = read_yaml(path)["primitives"]
+        for _key, value in data.items():
+            prim = PrimitiveTemplate.from_dict(value)
+            prim.set_name(_key)
+            self.primitives.append(prim)
+        return True
