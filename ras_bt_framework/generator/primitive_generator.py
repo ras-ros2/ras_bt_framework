@@ -91,6 +91,7 @@ class PrimitiveGenerator:
         template_path = os.path.join(pkg_path, "templates", "primitive_template.hpp.em")
         for prim in self.primitives:
             _expand_template(template_path, prim.get_template_data(), f"{generated_headers_folder}/{prim.name}.hpp")
+        print(f"Generated header files in {generated_headers_folder}")
     
     def load_primitives(self, pkg_path: str) -> bool:
         config_folder = os.path.join(pkg_path, "config")
