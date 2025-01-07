@@ -46,18 +46,23 @@ class BehaviorModule(BehaviorBase,ABC):
     output_port_names: ClassVar[Set[str]] = field(default=set())
     input_ports: Dict[str,str] = field(default_factory=dict)
     output_ports: Dict[str,str] = field(default_factory=dict)
+    uid: str = field(default=None)
 
     @staticmethod
     def _check_ports(decl_set:set,def_dict:dict):
-            def_set = set(def_dict.keys())
-            if not def_set.issuperset(decl_set):
-                raise ValueError(f"Missing ports: {decl_set - def_set}")
-            undecl_keys = def_set - decl_set
-            if len(undecl_keys) > 0:
-                print(f"WARNING: Undeclared ports: {undecl_keys}")
-                for key in undecl_keys:
-                    del def_dict[key]
+        if "name" in decl_set:
+            raise ValueError("Port name 'name' is reserved for uid")
+        def_set = set(def_dict.keys())
+        if not def_set.issuperset(decl_set):
+            raise ValueError(f"Missing ports: {decl_set - def_set}")
+        undecl_keys = def_set - decl_set
+        if len(undecl_keys) > 0:
+            print(f"WARNING: Undeclared ports: {undecl_keys}")
+            for key in undecl_keys:
+                del def_dict[key]
     def __post_init__(self):
+        if self.uid is None:
+            self.uid = self.get_type_info()
         if len(self.input_port_names.intersection(self.output_port_names)) > 0:
             raise ValueError(f"Duplicate ports: {self.input_port_names.intersection(self.output_port_names)}")
         self._check_ports(self.__class__.input_port_names,self.input_ports)
@@ -104,6 +109,18 @@ class BehaviorModuleCollection(Composite,BehaviorModule):
             yield child
         for child in self.out_children:
             yield child
+    
+    def add_children(self, children:List[BehaviorModule]|BehaviorModule):
+        if isinstance(children,list):
+            for child in children:
+                self.add_children(child)
+        elif isinstance(children,BehaviorModule):
+            children.uid = children.get_type_info() + str(len(self.children))      
+            self.children.append(children)
+        else:
+            raise ValueError(f"Invalid children type: {type(children)}")
+            
+        
 
 @dataclass
 class BehaviorModuleSequence(Sequence,BehaviorModuleCollection):

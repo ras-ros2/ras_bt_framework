@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include "ras_bt_framework/PrimitiveBehavior.hpp"
+#include "../PrimitiveBehavior.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "ras_interfaces/srv/play_path.hpp" 
 #include "rclcpp/logging.hpp"
@@ -32,19 +32,16 @@
 namespace ras_bt_framework
 {
 
-class ExecuteTrajectory : public PrimitiveBehavior {
-public:
-    int instruction_no;
-    ExecuteTrajectory(const std::string& name, const BT::NodeConfig& config)
-    : PrimitiveBehavior(name, config)
+NEW_PRIMITIVE_DECL(ExecuteTrajectory)
+    public:
+    void initialize() override
     {
-        // Initialize other members here, like the ROS node
-        node_ = rclcpp::Node::make_shared("execute_trajectory_node");
         play_traj = node_->create_client<ras_interfaces::srv::PlayPath>("/play_trajectory");
         client_log = node_->create_client<ras_interfaces::srv::StatusLog>("/traj_status");
 
     }
 
+    int instruction_no;
     ~ExecuteTrajectory() {}
     
     static BT::PortsList providedPorts()
@@ -94,6 +91,7 @@ private:
     rclcpp::Node::SharedPtr node_;
     rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedPtr play_traj;
     rclcpp::Client<ras_interfaces::srv::StatusLog>::SharedPtr client_log;
+    
+END_PRIMITIVE_DECL
 };
 
-}

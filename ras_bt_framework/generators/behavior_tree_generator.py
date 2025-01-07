@@ -21,7 +21,7 @@ Email: info@opensciencestack.org
 
 from ..behavior_template.module import BehaviorModule
 from ..behavior_template.module import BehaviorModuleSequence,BehaviorModuleCollection
-from ..behavior_template.instruction import EmptyInstruction,PrimitiveInstruction,FunctionalInstruction,ScriptInstruction
+from ..behavior_template.instruction import EmptyInstruction,PrimitiveInstruction,FunctionalInstructionBase,ScriptInstruction
 from typing import Iterable,List,Dict,Set
 from dataclasses import dataclass,field
 from ras_common.xml_utils.behavior_tree_gen import BTXml,ElementTree
@@ -39,7 +39,7 @@ class BehaviorTreeGenerator(object):
        self.root_behavior = behavior
     
     @staticmethod
-    def is_valid_primitive(primitive:type[PrimitiveInstruction]|PrimitiveInstruction|type[FunctionalInstruction]|FunctionalInstruction|str):
+    def is_valid_primitive(primitive:type[PrimitiveInstruction]|PrimitiveInstruction|type[FunctionalInstructionBase]|FunctionalInstructionBase|str):
         if isinstance(primitive,str):
             for _p in __registered_primitives:
                 if _p.get_type_info() == primitive:
@@ -48,7 +48,7 @@ class BehaviorTreeGenerator(object):
         elif isinstance(primitive,type):
             if issubclass(primitive,PrimitiveInstruction):
                 return True
-            elif issubclass(primitive, FunctionalInstruction):
+            elif issubclass(primitive, FunctionalInstructionBase):
                 return True
             else:
                 return False
@@ -95,12 +95,14 @@ class BehaviorTreeGenerator(object):
             elif isinstance(behavior,BehaviorModule):
                 if isinstance(behavior,PrimitiveInstruction):
                     if self.is_valid_primitive(behavior):
-                        tree_gen.add_primitive_node(parent_elem,behavior.get_type_info(),behavior.name,behavior.get_port_map())
+                        tree_gen.add_primitive_node(parent_elem,behavior.get_type_info(),behavior.uid,behavior.get_port_map())
                     else:
                         raise ValueError(f"Primitive instruction {type(behavior)} is not in the list of primitives.")
-                elif isinstance(behavior,FunctionalInstruction):
+                elif isinstance(behavior,FunctionalInstructionBase):
+                    behavior_uid = behavior.uid
                     behavior = self.action_manager.get_primitive_from(behavior)
-                    tree_gen.add_primitive_node(parent_elem,behavior.get_type_info(),behavior.name,behavior.get_port_map())
+                    behavior.uid = behavior_uid
+                    tree_gen.add_primitive_node(parent_elem,behavior.get_type_info(),behavior.uid,behavior.get_port_map())
                 elif isinstance(behavior,ScriptInstruction):
                     tree_gen.add_script(parent_elem,code=behavior.code)
                 else:

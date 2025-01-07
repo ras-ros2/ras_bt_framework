@@ -27,11 +27,9 @@
 namespace ras_bt_framework
 {
 
-class Trigger : public PrimitiveBehavior
-{
-public:
-  Trigger(const std::string& name, const BT::NodeConfig& config)
-    : PrimitiveBehavior(name, config)
+NEW_PRIMITIVE_DECL(Trigger)
+    public:
+    void initialize() override
   {
 
     node_ = rclcpp::Node::make_shared("trigger_node");
@@ -81,8 +79,6 @@ private:
 rclcpp::Node::SharedPtr node_; 
 rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr trigger_client;
 
+END_PRIMITIVE_DECL
 
-
-  };   
-
-}
+  };  

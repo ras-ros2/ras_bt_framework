@@ -62,7 +62,7 @@ class BehaviorInstructionBase(BehaviorModule,ABC):
     def execute(self,**kwargs):
         pass
 
-
+@dataclass
 class FunctionalInstructionBase(BehaviorInstructionBase,Callable,ABC):
     sig_kw : ClassVar[OrderedDict[str,type]] = OrderedDict()
     func: Callable
@@ -94,6 +94,9 @@ class FunctionalInstructionBase(BehaviorInstructionBase,Callable,ABC):
     def call(self):
         self.verify_call()
         self.func(**self.params)
+
+    def __call__(self):
+        self.call()
     
 def FunctionalInstruction(func:Callable) -> type[FunctionalInstructionBase]:
     assert isinstance(func,Callable)

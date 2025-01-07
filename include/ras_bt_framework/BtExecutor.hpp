@@ -26,25 +26,48 @@
 #include "rclcpp_action/rclcpp_action.hpp"
 
 #include "ras_interfaces/action/bt_interface.hpp"
+#include "ras_interfaces/srv/primitive_exec.hpp"
+
 #include "behaviortree_cpp/bt_factory.h"
 
 namespace ras_bt_framework
 {
+    
     class BTExecutor : public rclcpp::Node
     {
         public:
         using BTInterface = ras_interfaces::action::BTInterface;
-        using GoalHandle = rclcpp_action::ServerGoalHandle<BTInterface>;
-        explicit BTExecutor(std::shared_ptr<BT::BehaviorTreeFactory> bt_factory,const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
-        bool run_tree_from_xml(std::string file_path);
+        using BTIGoalHandle = rclcpp_action::ServerGoalHandle<BTInterface>;
+        using BTIGoalHandlePtr = std::shared_ptr<BTIGoalHandle>;
+        using TickSrv_t = ras_interfaces::srv::PrimitiveExec;
+
+        struct BTSession
+        {
+            std::string bt_path;
+            BT::Tree tree;
+            BTIGoalHandlePtr goal_handle;
+            TickSrv_t::Response::_current_stack_type current_stack;
+            BT::NodeStatus status;
+
+            BTSession(const std::string& _bt_path,BTIGoalHandlePtr _goal_handle);
+        };
+
+        explicit BTExecutor(std::shared_ptr<BT::BehaviorTreeFactory> bt_factory,\
+            const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
+        bool load_xml(std::string file_path);
+
         private:
-        rclcpp_action::GoalResponse handle_goal(const rclcpp_action::GoalUUID & uuid, std::shared_ptr<const BTInterface::Goal> goal);
-        rclcpp_action::CancelResponse handle_cancel(const std::shared_ptr<GoalHandle> goal_handle);
-        void handle_accepted(const std::shared_ptr<GoalHandle> goal_handle);
-        void execute(const std::shared_ptr<GoalHandle> goal_handle);
+        rclcpp_action::GoalResponse handle_goal(const rclcpp_action::GoalUUID & uuid,\
+             std::shared_ptr<const BTInterface::Goal> goal);
+        rclcpp_action::CancelResponse handle_cancel(const BTIGoalHandlePtr goal_handle);
+        void handle_accepted(const BTIGoalHandlePtr goal_handle);
+        void bt_goal_handler(const BTIGoalHandlePtr goal_handle);
+        void bt_tick_handler(const TickSrv_t::Request::SharedPtr request, TickSrv_t::Response::SharedPtr response);
+        void abort_bt_goal();
 
         std::shared_ptr<BT::BehaviorTreeFactory> bt_factory_;
         rclcpp_action::Server<BTInterface>::SharedPtr action_server_;
-
+        rclcpp::Service<TickSrv_t>::SharedPtr tick_srv_;
+        std::shared_ptr<BTSession> bt_session_;
     };    
 } // namespace ras_bt_framework

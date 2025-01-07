@@ -21,10 +21,11 @@ Email: info@opensciencestack.org
 
 import rclpy
 from rclpy.action import ActionServer
+from rclpy.action.server import ServerGoalHandle
 from rclpy.node import Node
-from dataclasses import dataclass
-from typing import Callable
-from ras_interfaces.action import BTInterface
+from dataclasses import dataclass,field
+from typing import Callable,ClassVar,Set,Dict
+from ras_interfaces.action import  BTPrimitive
 import json
 from ..behavior_template.instruction import FunctionalInstructionBase,PrimitiveInstruction
 
@@ -50,7 +51,7 @@ class PrimitiveActionManager():
         self.handlers[identifier] = type(instruction)
         return identifier
 
-    def execute_callback(self, action_goal:ServerGoalHandle):
+    def execute_callback(self, action_goal: ServerGoalHandle):
         self._node.get_logger().info('Executing goal...')
         req : BTPrimitive.Goal= action_goal.request
         feedback_msg = BTPrimitive.Feedback()

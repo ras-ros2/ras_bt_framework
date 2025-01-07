@@ -25,7 +25,7 @@
 namespace ras_bt_framework
 {
     BTExecutor::BTExecutor(std::shared_ptr<BT::BehaviorTreeFactory> bt_factory, const rclcpp::NodeOptions & options) :
-     rclcpp::Node("bt_executor", options),bt_factory_(bt_factory)
+     rclcpp::Node("bt_executor", options),bt_factory_(bt_factory),bt_session_(nullptr)
     {
         this->action_server_ = rclcpp_action::create_server<BTExecutor::BTInterface>(
             this,
@@ -33,27 +33,54 @@ namespace ras_bt_framework
             std::bind(&BTExecutor::handle_goal, this, std::placeholders::_1, std::placeholders::_2),
             std::bind(&BTExecutor::handle_cancel, this, std::placeholders::_1),
             std::bind(&BTExecutor::handle_accepted, this, std::placeholders::_1));
+        
+        this->tick_srv_ = this->create_service<TickSrv_t>("/bt_tick", std::bind(&BTExecutor::bt_tick_handler,\
+             this, std::placeholders::_1, std::placeholders::_2));
     }
 
     rclcpp_action::GoalResponse BTExecutor::handle_goal(const rclcpp_action::GoalUUID & uuid, std::shared_ptr<const BTExecutor::BTInterface::Goal> goal) {
         RCLCPP_INFO(this->get_logger(), "Received goal request with id %d", goal->bt_path);
         (void)uuid;
         (void)goal;
+        if(bt_session_!=nullptr){
+            abort_bt_goal();
+        }
         return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
     }
 
-    rclcpp_action::CancelResponse BTExecutor::handle_cancel(const std::shared_ptr<GoalHandle> goal_handle) {
+    rclcpp_action::CancelResponse BTExecutor::handle_cancel(const BTIGoalHandlePtr goal_handle) {
         RCLCPP_INFO(this->get_logger(), "Received request to cancel goal");
         (void)goal_handle;
         return rclcpp_action::CancelResponse::ACCEPT;
     }
 
-    void BTExecutor::handle_accepted(const std::shared_ptr<GoalHandle> goal_handle) {
+    void BTExecutor::handle_accepted(const BTIGoalHandlePtr goal_handle) {
         RCLCPP_INFO(this->get_logger(), "Goal accepted");
-        std::thread{std::bind(&BTExecutor::execute, this, std::placeholders::_1), goal_handle}.detach();
+        std::thread{std::bind(&BTExecutor::bt_goal_handler , this, std::placeholders::_1), goal_handle}.detach();
+    }
+    inline static ras_interfaces::msg::BTNodeStatus cast_status(BT::NodeStatus status){
+        ras_interfaces::msg::BTNodeStatus ret_status;
+        switch(status){
+            case BT::NodeStatus::IDLE:
+                ret_status.data = ras_interfaces::msg::BTNodeStatus::IDLE;
+            case BT::NodeStatus::RUNNING:
+                ret_status.data = ras_interfaces::msg::BTNodeStatus::RUNNING;
+            case BT::NodeStatus::SUCCESS:
+                ret_status.data = ras_interfaces::msg::BTNodeStatus::SUCCESS;
+            case BT::NodeStatus::FAILURE:
+                ret_status.data = ras_interfaces::msg::BTNodeStatus::FAILURE;
+            case BT::NodeStatus::SKIPPED:
+                ret_status.data = ras_interfaces::msg::BTNodeStatus::SKIPPED;
+            default:
+                ret_status.data = ras_interfaces::msg::BTNodeStatus::IDLE;
+            return ret_status;
+        }
     }
 
-    void BTExecutor::execute(const std::shared_ptr<GoalHandle> goal_handle) {
+    BTExecutor::BTSession::BTSession(const std::string& _bt_path, BTIGoalHandlePtr _goal_handle) :
+        bt_path(_bt_path),goal_handle(_goal_handle) {};
+
+    void BTExecutor::bt_goal_handler(const BTIGoalHandlePtr goal_handle) {
         RCLCPP_INFO(this->get_logger(), "Executing goal");
         auto feedback = std::make_shared<BTExecutor::BTInterface::Feedback>();
         auto result = std::make_shared<BTExecutor::BTInterface::Result>();
@@ -61,34 +88,73 @@ namespace ras_bt_framework
         const std::string& bt_path = goal_handle->get_goal()->bt_path;
         bt_factory_->clearRegisteredBehaviorTrees();
         bt_factory_->registerBehaviorTreeFromFile(bt_path);
-        BT::Tree tree = bt_factory_->createTree("MainTree");
-        auto _delay = std::chrono::milliseconds(10);
+        if(bt_session_!=nullptr){
+            abort_bt_goal();
+        }
+        bt_session_ = std::make_shared<BTSession>(bt_path,goal_handle);
+        bt_session_->tree = bt_factory_->createTree("MainTree");
+        auto _delay = std::chrono::milliseconds(500);
         double rate = 1.0l/std::chrono::duration_cast<std::chrono::seconds>(_delay).count();
         rclcpp::Rate loop_rate(rate);
-        BT::NodeStatus status = BT::NodeStatus::IDLE;
-        while (rclcpp::ok() && (status == BT::NodeStatus::IDLE || status == BT::NodeStatus::RUNNING)) {
-            if(goal_handle->is_canceling()){
-                result->success = false;
+        bool loop_ok = true;
+        while (rclcpp::ok() && loop_ok) {
+            if((bt_session_==nullptr) || (goal_handle->is_canceling())){
+                result->status = false;
                 goal_handle->canceled(result);
                 RCLCPP_INFO(this->get_logger(), "Goal canceled");
+                bt_session_ = nullptr;
                 return;
             }
-            goal_handle->publish_feedback(feedback);
-            feedback->status = std::to_string(static_cast<uint32_t>(status));
-            status = tree.tickOnce();
-            if(status == BT::NodeStatus::FAILURE) {
-                
+            switch (bt_session_->status)
+            {
+            case BT::NodeStatus::FAILURE:
+                loop_ok = false;
+                break;
+            case BT::NodeStatus::SUCCESS:
+                loop_ok = false;
+                break;
+            default:
+                break;
             }
             loop_rate.sleep();
+            rclcpp::spin_some(this->get_node_base_interface());
         }
-        if((rclcpp::ok()) && (status == BT::NodeStatus::SUCCESS)) {
-            result->success = true;
+        if((rclcpp::ok()) && (bt_session_->status == BT::NodeStatus::SUCCESS)) {
+            result->status = true;
             goal_handle->succeed(result);
             RCLCPP_INFO(this->get_logger(), "Goal succeeded");
         } else {
-            result->success = false;
-            goal_handle->canceled(result);
-            RCLCPP_INFO(this->get_logger(), "Goal canceled");
+            abort_bt_goal();
         }
+        bt_session_ = nullptr;
+
     }
+
+    void BTExecutor::abort_bt_goal() {
+        if (bt_session_ == nullptr) return;
+        auto result = std::make_shared<BTExecutor::BTInterface::Result>();
+        result->status = false;
+        bt_session_->goal_handle->abort(result);
+        RCLCPP_INFO(this->get_logger(), "Goal aborted");
+        // bt_session_ = nullptr;
+    }
+
+    void BTExecutor::bt_tick_handler(const TickSrv_t::Request::SharedPtr request, TickSrv_t::Response::SharedPtr response) {
+        RCLCPP_INFO(this->get_logger(), "Received tick request");
+        if((bt_session_==nullptr)|| (bt_session_->goal_handle->is_canceling())){
+            response->status.data = ras_interfaces::msg::BTNodeStatus::SKIPPED;
+            response->current_stack = request->target_stack;
+            return;
+        }
+        auto feedback = std::make_shared<BTExecutor::BTInterface::Feedback>();
+        BT::NodeStatus status = BT::NodeStatus::IDLE;
+        switch(request->exec_mode){}; //TODO: Implement this for dynamic task execution
+        status = bt_session_->tree.tickOnce();
+        feedback->status = cast_status(status);
+        response->status = feedback->status;
+        response->current_stack = request->target_stack;
+        bt_session_->goal_handle->publish_feedback(feedback);
+        RCLCPP_INFO(this->get_logger(), "Tick request processed");
+    }
+
 }
