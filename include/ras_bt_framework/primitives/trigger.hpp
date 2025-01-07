@@ -64,7 +64,7 @@ NEW_PRIMITIVE_DECL(Trigger)
     {
     return BT::NodeStatus::SUCCESS;
     }
-    
+    return BT::NodeStatus::FAILURE;
    }
 
     void trigger_response(rclcpp::Client<std_srvs::srv::SetBool>::SharedFuture future) {

@@ -48,6 +48,7 @@ namespace ras_bt_framework
             BTIGoalHandlePtr goal_handle;
             TickSrv_t::Response::_current_stack_type current_stack;
             BT::NodeStatus status;
+            bool first;
 
             BTSession(const std::string& _bt_path,BTIGoalHandlePtr _goal_handle);
         };

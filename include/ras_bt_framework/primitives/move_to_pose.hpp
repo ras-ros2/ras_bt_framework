@@ -90,11 +90,11 @@ namespace ras_bt_framework
                                         std::placeholders::_1));  
 
             if (rclcpp::spin_until_future_complete(node_, result_future) ==
-            rclcpp::FutureReturnCode::SUCCESS)
+                rclcpp::FutureReturnCode::SUCCESS)
             {
             return BT::NodeStatus::SUCCESS;
             }
-            
+            return BT::NodeStatus::FAILURE;
         }
 
         void move_to_pose_response(rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture future) {

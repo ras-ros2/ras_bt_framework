@@ -55,6 +55,7 @@ namespace ras_bt_framework
             if (!angle)
             {
                 throw BT::RuntimeError("Missing required input [rotation_angle]: ", angle.error());
+                // return BT::NodeStatus::FAILURE;
             }
 
             auto request = std::make_shared<ras_interfaces::srv::RotateEffector::Request>();

@@ -63,22 +63,28 @@ namespace ras_bt_framework
         switch(status){
             case BT::NodeStatus::IDLE:
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::IDLE;
+                break;
             case BT::NodeStatus::RUNNING:
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::RUNNING;
+                break;
             case BT::NodeStatus::SUCCESS:
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::SUCCESS;
+                break;
             case BT::NodeStatus::FAILURE:
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::FAILURE;
+                break;
             case BT::NodeStatus::SKIPPED:
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::SKIPPED;
+                break;
             default:
+
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::IDLE;
             return ret_status;
         }
     }
 
     BTExecutor::BTSession::BTSession(const std::string& _bt_path, BTIGoalHandlePtr _goal_handle) :
-        bt_path(_bt_path),goal_handle(_goal_handle) {};
+        bt_path(_bt_path),goal_handle(_goal_handle),first(true) {};
 
     void BTExecutor::bt_goal_handler(const BTIGoalHandlePtr goal_handle) {
         RCLCPP_INFO(this->get_logger(), "Executing goal");
@@ -97,6 +103,7 @@ namespace ras_bt_framework
         double rate = 1.0l/std::chrono::duration_cast<std::chrono::seconds>(_delay).count();
         rclcpp::Rate loop_rate(rate);
         bool loop_ok = true;
+
         while (rclcpp::ok() && loop_ok) {
             if((bt_session_==nullptr) || (goal_handle->is_canceling())){
                 result->status = false;
@@ -117,7 +124,7 @@ namespace ras_bt_framework
                 break;
             }
             loop_rate.sleep();
-            rclcpp::spin_some(this->get_node_base_interface());
+            // rclcpp::spin_some(this->get_node_base_interface());
         }
         if((rclcpp::ok()) && (bt_session_->status == BT::NodeStatus::SUCCESS)) {
             result->status = true;
@@ -134,7 +141,9 @@ namespace ras_bt_framework
         if (bt_session_ == nullptr) return;
         auto result = std::make_shared<BTExecutor::BTInterface::Result>();
         result->status = false;
-        bt_session_->goal_handle->abort(result);
+        if (bt_session_->goal_handle->is_active()){
+            bt_session_->goal_handle->abort(result);
+        }
         RCLCPP_INFO(this->get_logger(), "Goal aborted");
         // bt_session_ = nullptr;
     }
@@ -147,12 +156,19 @@ namespace ras_bt_framework
             return;
         }
         auto feedback = std::make_shared<BTExecutor::BTInterface::Feedback>();
-        BT::NodeStatus status = BT::NodeStatus::IDLE;
+        BT::NodeStatus status = BT::NodeStatus::RUNNING;
         switch(request->exec_mode){}; //TODO: Implement this for dynamic task execution
+        RCLCPP_INFO(this->get_logger(), "Executing tick");
         status = bt_session_->tree.tickOnce();
+        // if(bt_session_->first){
+        //     bt_session_->first = false;
+        //     status = BT::NodeStatus::RUNNING;
+        //     RCLCPP_INFO(this->get_logger(), "Force Status: %d", status);
+        // }
         feedback->status = cast_status(status);
         response->status = feedback->status;
         response->current_stack = request->target_stack;
+        RCLCPP_INFO(this->get_logger(), "Status: %d", feedback->status.data);
         bt_session_->goal_handle->publish_feedback(feedback);
         RCLCPP_INFO(this->get_logger(), "Tick request processed");
     }

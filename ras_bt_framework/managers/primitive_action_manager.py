@@ -67,6 +67,7 @@ class PrimitiveActionManager():
         instruction = instruction_type(**params)
         instruction.call()
         action_goal.succeed()
+        self._node.get_logger().info('Goal Reached!')
         result.success = True
         return result
 

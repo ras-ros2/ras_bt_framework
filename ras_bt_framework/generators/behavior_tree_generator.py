@@ -102,6 +102,7 @@ class BehaviorTreeGenerator(object):
                     behavior_uid = behavior.uid
                     behavior = self.action_manager.get_primitive_from(behavior)
                     behavior.uid = behavior_uid
+                    print(behavior)
                     tree_gen.add_primitive_node(parent_elem,behavior.get_type_info(),behavior.uid,behavior.get_port_map())
                 elif isinstance(behavior,ScriptInstruction):
                     tree_gen.add_script(parent_elem,code=behavior.code)

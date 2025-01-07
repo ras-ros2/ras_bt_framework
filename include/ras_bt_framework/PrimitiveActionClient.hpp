@@ -27,13 +27,14 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
+
 namespace ras_bt_framework
 {
     NEW_PRIMITIVE_DECL(PrimitiveActionClient) 
         public:
         void initialize() override
         {
-            status_= BT::NodeStatus::IDLE;
+            status_= BT::NodeStatus::RUNNING;
             auto _delay = std::chrono::milliseconds(500);
             double rate = 1.0l/std::chrono::duration_cast<std::chrono::seconds>(_delay).count();
             loop_rate_ = std::make_shared<rclcpp::Rate>(rate);
@@ -68,7 +69,7 @@ namespace ras_bt_framework
         {
             if (!goal_handle) {
             RCLCPP_ERROR(node_->get_logger(), "Goal was rejected by server");
-            status_ = BT::NodeStatus::IDLE;
+            status_ = BT::NodeStatus::FAILURE;
             } else {
             RCLCPP_INFO(node_->get_logger(), "Goal accepted by server, waiting for result");
             status_ = BT::NodeStatus::RUNNING;
@@ -113,10 +114,13 @@ namespace ras_bt_framework
         virtual BT::NodeStatus tick() override {
             std::string identifier = getInput<std::string>("identifier").value();
             std::string json_param = getInput<std::string>("json_param").value();
+
+            RCLCPP_INFO(node_->get_logger(), "Executing PrimitiveActionClient with json_param: %s",json_param.c_str());
+            //    get_logger()->info();
             execute(identifier,json_param);
             
             while((rclcpp::ok())){
-                rclcpp::spin_some(node_);
+                // rclcpp::spin_some(node_);
                 switch (status_)
                 {
                 case (BT::NodeStatus::RUNNING):
@@ -131,12 +135,9 @@ namespace ras_bt_framework
                     {
                         return BT::NodeStatus::FAILURE;
                     }
-                case (BT::NodeStatus::IDLE):
-                    {
-                        break;
-                    }
+                
                 default:
-                    break;
+                    return status_;
                 }
                 loop_rate_->sleep();
             }

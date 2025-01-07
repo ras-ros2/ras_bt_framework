@@ -35,6 +35,7 @@ int main(int argc, char** argv) {
     ras_bt_framework::registerNodes(factory,node);
     std::shared_ptr<ras_bt_framework::BTExecutor> bt_executor = std::make_shared<ras_bt_framework::BTExecutor>(factory);
     executor.add_node(node);
+    executor.add_node(bt_executor);
     executor.spin();
     return 0;
 }
