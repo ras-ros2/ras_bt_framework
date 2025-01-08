@@ -122,6 +122,7 @@ class BaTMan(Node):
     
     def execute_bt(self,bt_path:str|Path):
         bt_path = str(bt_path)
+        self.get_logger().info("Executing BT at path: {0}".format(bt_path))
         self.send_goal(bt_path)
         time.sleep(2)
         return self.tick_loop()
