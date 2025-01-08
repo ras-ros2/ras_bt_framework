@@ -22,15 +22,19 @@ Email: info@opensciencestack.org
 """
 
 import rclpy
-from ras_bt_framework.managers.BaTMan import BaTMan
-
+from ras_bt_framework.managers.experiments_service import ExperimentService
+from rclpy.executors import MultiThreadedExecutor
 
 
 def main():
     rclpy.init(args=None)
-    batman = BaTMan()
+    expsrv = ExperimentService()
+    executor = MultiThreadedExecutor()
+    executor.add_node(expsrv)
+    executor.add_node(expsrv.batman)
+
     while rclpy.ok():
-        rclpy.spin_once(batman)
+        rclpy.spin_once(executor)
     rclpy.shutdown()
 
     
