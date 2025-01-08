@@ -39,7 +39,7 @@
 #define REGISTER_NODE_TYPE_PRIMITIVE(nodetype) { REGISTER_NODE_TYPE(ras_bt_framework,nodetype); }
 
 namespace ras_bt_framework {
-    void registerNodes(std::shared_ptr<BT::BehaviorTreeFactory>& factory, rclcpp::Node::SharedPtr& node) {
+    void registerNodes(std::shared_ptr<BT::BehaviorTreeFactory>& factory, rclcpp::Node::SharedPtr node) {
         REGISTER_NODE_TYPE_PRIMITIVE(SaySomething);
         REGISTER_NODE_TYPE_PRIMITIVE(ThinkSomethingToSay);
         REGISTER_NODE_TYPE_PRIMITIVE(MoveToPose);

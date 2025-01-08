@@ -38,8 +38,9 @@ def main():
     # my_generator.feed_root(myBehavior)
     # my_generator.verify_sanity()
     # my_generator.generate_xml_trees("test.xml")
-    btm = BaTMan(mode_sim=True)
-    btm.run_module(myBehavior,"test.xml")
+    btm = BaTMan()
+    # btm.run_module(myBehavior,"test.xml")
+    btm.execute_bt("/ras_real_lab/ros2_ws/src/ras_aws_transport/real_bot_zip/real.xml")
     rclpy.spin(btm)
 
 if __name__ == "__main__":

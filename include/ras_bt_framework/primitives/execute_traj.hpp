@@ -36,6 +36,7 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     public:
     void initialize() override
     {
+        node_ = rclcpp::Node::make_shared("execute_traj");
         play_traj = node_->create_client<ras_interfaces::srv::PlayPath>("/play_trajectory");
         client_log = node_->create_client<ras_interfaces::srv::StatusLog>("/traj_status");
 
@@ -78,7 +79,7 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
                     std::placeholders::_1));
     return BT::NodeStatus::SUCCESS;
     }
-    
+    return BT::NodeStatus::FAILURE;
    }
 
     void play_traj_response(rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedFuture future) {
