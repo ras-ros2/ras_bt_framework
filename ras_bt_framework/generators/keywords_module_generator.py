@@ -63,5 +63,5 @@ class KeywordModuleGenerator(object):
             kw_module = keyword2module(keyword,identifier,params)
             if not isinstance(kw_module,BehaviorModule):
                 raise ValueError(f"Invalid keyword module: {kw_module}")
-            behavior_module.children.append(kw_module)
+            behavior_module.add_children(kw_module)
         return behavior_module

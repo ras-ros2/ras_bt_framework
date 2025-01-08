@@ -34,9 +34,8 @@ def main():
     executor.add_node(expsrv.batman)
 
     while rclpy.ok():
-        rclpy.spin_once(executor)
+        executor.spin_once()
     rclpy.shutdown()
 
-    
 if __name__ == "__main__":
     main()
