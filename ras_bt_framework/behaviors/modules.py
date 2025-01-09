@@ -57,7 +57,6 @@ class RotateEffectorSequence(BehaviorModuleSequence):
             RotateEffector(input_ports={"rotation_angle":"1.8"}),
             ])
     
-
 class PressButton(BehaviorModuleSequence):
     def __init__(self,pose:Pose,travel_length):
         super().__init__()

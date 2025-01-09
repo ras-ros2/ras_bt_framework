@@ -27,11 +27,9 @@
 namespace ras_bt_framework
 {
 
-class ThinkSomethingToSay : public PrimitiveBehavior
-{
-public:
-  ThinkSomethingToSay(const std::string& name, const BT::NodeConfig& config)
-    : PrimitiveBehavior(name, config)
+NEW_PRIMITIVE_DECL(ThinkSomethingToSay)
+    public:
+    void initialize() override
   {}
 
   BT::NodeStatus tick() override
@@ -46,6 +44,6 @@ public:
   {
     return { BT::InputPort<std::string>("reference"),BT::OutputPort<std::string>("message") };
   }
+END_PRIMITIVE_DECL
 };
     
-}

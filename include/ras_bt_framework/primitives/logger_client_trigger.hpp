@@ -1,6 +1,6 @@
 /*
  * 
- * Copyright (C) 2024 Harsh Davda
+ * Copyright (C) 2025 Sachin Kumar
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -16,7 +16,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  * 
  * For inquiries or further information, you may contact:
- * Harsh Davda
+ * Sachin Kumar
  * Email: info@opensciencestack.org
 */
 
@@ -27,36 +27,27 @@
 namespace ras_bt_framework
 {
 
-NEW_PRIMITIVE_DECL(Trigger)
+NEW_PRIMITIVE_DECL(LoggerClientTrigger)
     public:
     void initialize() override
   {
 
-    node_ = rclcpp::Node::make_shared("trigger_node");
-    trigger_client = node_->create_client<std_srvs::srv::SetBool>("/fake_gripper");
+    node_ = rclcpp::Node::make_shared("logger_client_trigger_node");
+    trigger_client = node_->create_client<std_srvs::srv::SetBool>("/dummy_logging_server"); // TODO (Sachin): Change the service name
+    trigger_client->wait_for_service(); // TODO (Sachin): Check if this is required and where it should be executed
     
   }
 
   BT::NodeStatus tick() override
   {
 
-    std::cout << ("Trigger") << std::endl;
-
-    auto msg = getInput<bool>("trigger");
+    std::cout << ("Logger Client Trigger") << std::endl;
 
     auto request = std::make_shared<std_srvs::srv::SetBool::Request>();
 
-    if (msg == true)
-    {
-        request->data = true;
-    }
-    else
-    {
-        request->data = false;
-    }
-
+    request->data = true;
     auto result_future = trigger_client->async_send_request(
-        request, std::bind(&Trigger::trigger_response, this,
+        request, std::bind(&LoggerClientTrigger::trigger_response, this,
                             std::placeholders::_1)); 
 
     if (rclcpp::spin_until_future_complete(node_, result_future) ==
@@ -72,7 +63,7 @@ NEW_PRIMITIVE_DECL(Trigger)
 
   static BT::PortsList providedPorts()
   {
-    return { BT::InputPort<bool>("trigger") };
+    return {};
   }
 
 private:
