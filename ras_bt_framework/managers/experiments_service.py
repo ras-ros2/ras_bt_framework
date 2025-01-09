@@ -54,8 +54,9 @@ class ExperimentService(Node):
     def bt_execution_callback(self, req, resp):
         self.get_logger().info("Batman Called ...")
         if len(self.sequence_list) == 0:
-            self.get_logger().warning("Load Experiment First....")
-            pass
+            self.get_logger().error("Load Experiment First....")
+            resp.success = False
+            return
         counter_reset = SetBool.Request()
         counter_reset.data = True
         self.counter_reset_client.call_async(counter_reset)
@@ -73,8 +74,12 @@ class ExperimentService(Node):
         btg = BehaviorTreeGenerator(self.batman.alfred)
         btg.feed_root(new_module)
         bt_path = "/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml"
-        btg.generate_xml_trees(bt_path)
-        
+        try:
+            btg.generate_xml_trees(bt_path)
+        except Exception as e:
+            self.get_logger().error(f"Error in BT Generation: {e}")
+            resp.success = False
+            return resp
         # tree = ET.parse(path)
         # root = tree.getroot()
         # update_xml(root)

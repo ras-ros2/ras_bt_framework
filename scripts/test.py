@@ -8,6 +8,9 @@ from ras_bt_framework.behaviors.functions import Hello,SaySomethingPy
 from ras_bt_framework.behaviors.modules import SaySomething,ThinkSomethingToSay
 from ras_bt_framework.managers.BaTMan import BaTMan
 import rclpy.node
+import os
+from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
+from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
 def hello():
     print("hello")
     return BehaviorModule()
@@ -39,6 +42,19 @@ def main():
     # my_generator.verify_sanity()
     # my_generator.generate_xml_trees("test.xml")
     btm = BaTMan()
+    path = os.path.join(os.environ["RAS_APP_PATH"],"configs","experiments","0.yaml")
+        # print(path)
+    pose_dict,targets = read_yaml_to_pose_dict(path)
+    btm.generate_module_from_keywords(targets,pose_dict)
+    new_module = update_bt(btm.main_module)
+    btg = BehaviorTreeGenerator(btm.alfred)
+    bt_path = "/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml"
+    btg.feed_root(new_module)
+    try:
+        btg.generate_xml_trees(bt_path)
+    except Exception as e:
+        btm.get_logger().error(f"Error in BT Generation: {e}")
+        exit(1)
     # btm.run_module(myBehavior,"test.xml")
     btm.execute_bt("/ras_real_lab/ros2_ws/src/ras_aws_transport/real_bot_zip/real.xml")
     rclpy.spin(btm)

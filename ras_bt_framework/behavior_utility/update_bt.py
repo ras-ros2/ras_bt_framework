@@ -59,13 +59,13 @@ def update_bt(behavior: BehaviorModule, sequence=1):
             if isinstance(child, BehaviorModuleSequence):
                 new_children.append(update_bt(child, sequence))
             elif isinstance(child, MoveToPose):
-                new_child = ExecuteTrajectory(MoveToPose(input_ports={"sequence": str(sequence)}))
+                new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
                 new_children.append(new_child)
                 sequence += 1
             elif isinstance(child, Trigger):
                 new_children.append(child)
             elif isinstance(child, RotateEffector):
-                new_child = ExecuteTrajectory(RotateEffector(input_ports={"sequence": str(sequence)}))
+                new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
                 new_children.append(new_child)
                 sequence += 1
             elif isinstance(child, LoggerClientTrigger):
