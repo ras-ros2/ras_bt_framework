@@ -26,7 +26,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "ras_interfaces/srv/play_path.hpp" 
 #include "rclcpp/logging.hpp"
-#include <ras_interfaces/srv/status_log.hpp>    
+#include <ras_interfaces/srv/traj_log.hpp>    
 
 
 namespace ras_bt_framework
@@ -38,7 +38,7 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     {
         node_ = rclcpp::Node::make_shared("execute_traj");
         play_traj = node_->create_client<ras_interfaces::srv::PlayPath>("/play_trajectory");
-        client_log = node_->create_client<ras_interfaces::srv::StatusLog>("/traj_status");
+        client_log = node_->create_client<ras_interfaces::srv::TrajLog>("/traj_status");
 
     }
 
@@ -69,9 +69,8 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     rclcpp::FutureReturnCode::SUCCESS)
     {
 
-    auto request = std::make_shared<ras_interfaces::srv::StatusLog::Request>();
+    auto request = std::make_shared<ras_interfaces::srv::TrajLog::Request>();
     request->traj_status = "SUCCESS"; 
-    request->gripper_status = false;
     request->current_traj = stoi(msg.value()); 
 
     auto result_future = client_log->async_send_request(
@@ -85,13 +84,13 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     void play_traj_response(rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedFuture future) {
     }
 
-    void log_response(rclcpp::Client<ras_interfaces::srv::StatusLog>::SharedFuture future) {
+    void log_response(rclcpp::Client<ras_interfaces::srv::TrajLog>::SharedFuture future) {
     }
 
 private:
     rclcpp::Node::SharedPtr node_;
     rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedPtr play_traj;
-    rclcpp::Client<ras_interfaces::srv::StatusLog>::SharedPtr client_log;
+    rclcpp::Client<ras_interfaces::srv::TrajLog>::SharedPtr client_log;
     
 END_PRIMITIVE_DECL
 };
