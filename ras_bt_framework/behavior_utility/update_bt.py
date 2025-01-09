@@ -56,24 +56,28 @@ def update_bt(behavior: BehaviorModule, sequence=1):
     if isinstance(behavior, BehaviorModuleSequence):
         new_children = []
         new_children.append(LoggerClientTrigger())
-        def add_new_child(child):
-            new_children.append(child)
-            if isinstance(child, (ExecuteTrajectory)):
-                new_children.append(LoggerClientTrigger())
-            if isinstance(child, ExecuteTrajectory):
-                sequence += 1
+        # def add_new_child(child):
+        #     new_children.append(child)
+        #     if isinstance(child, (ExecuteTrajectory)):
+        #         new_children.append(LoggerClientTrigger())
+        #     if isinstance(child, ExecuteTrajectory):
+        #         sequence += 1
 
         for child in behavior.iterate():
             if isinstance(child, BehaviorModuleSequence):
                 new_children.append(update_bt(child, sequence))
             elif isinstance(child, MoveToPose):
                 new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
-                add_new_child(new_child)
+                new_children.append(new_child)
+                new_children.append(LoggerClientTrigger())
+                sequence += 1
             elif isinstance(child, Trigger):
-                add_new_child(child)
+                new_children.append(child)
             elif isinstance(child, RotateEffector):
                 new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
-                add_new_child(new_child)
+                new_children.append(new_child)
+                new_children.append(LoggerClientTrigger())
+                sequence += 1
             else:
                 raise ValueError(f"Invalid child type: {type(child)}")
 
