@@ -42,7 +42,6 @@ class ExperimentService(Node):
         self.batman = BaTMan()
 
     def load_exp(self, req, resp):
-        self.sequence_list = []
         exp_id = req.exepriment_id
         path = os.path.join(os.environ["RAS_APP_PATH"],"configs","experiments",f"{exp_id}.yaml")
         # print(path)
@@ -53,7 +52,7 @@ class ExperimentService(Node):
     
     def bt_execution_callback(self, req, resp):
         self.get_logger().info("Batman Called ...")
-        if len(self.sequence_list) == 0:
+        if isinstance(self.batman.main_module, type(None)):
             self.get_logger().error("Load Experiment First....")
             resp.success = False
             return
