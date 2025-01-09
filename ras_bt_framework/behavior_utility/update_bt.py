@@ -55,22 +55,25 @@ primitive
 def update_bt(behavior: BehaviorModule, sequence=1):
     if isinstance(behavior, BehaviorModuleSequence):
         new_children = []
+        new_children.append(LoggerClientTrigger())
+        def add_new_child(child):
+            new_children.append(child)
+            if isinstance(child, (ExecuteTrajectory)):
+                new_children.append(LoggerClientTrigger())
+            if isinstance(child, ExecuteTrajectory):
+                sequence += 1
+
         for child in behavior.iterate():
             if isinstance(child, BehaviorModuleSequence):
                 new_children.append(update_bt(child, sequence))
             elif isinstance(child, MoveToPose):
                 new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
-                new_children.append(new_child)
-                sequence += 1
+                add_new_child(new_child)
             elif isinstance(child, Trigger):
-                new_children.append(child)
+                add_new_child(child)
             elif isinstance(child, RotateEffector):
                 new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
-                new_children.append(new_child)
-                sequence += 1
-            elif isinstance(child, LoggerClientTrigger):
-                new_child = LoggerClientTrigger() # TODO (Sachin) : Confirm this change with Harsh
-                new_children.append(new_child)
+                add_new_child(new_child)
             else:
                 raise ValueError(f"Invalid child type: {type(child)}")
 
