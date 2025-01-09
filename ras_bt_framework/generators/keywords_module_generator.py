@@ -22,7 +22,18 @@ Email: info@opensciencestack.org
 from ..behavior_template.keyword import KeywordInput,keyword2module
 from typing import Dict,Iterable,List,Callable
 from ..behavior_template.module import BehaviorModuleSequence,BehaviorModule
+from ..behavior_template.instruction import FunctionalInstruction
 import inspect
+
+
+'''
+TODO: 
+modify
+logging server client and then gripper that
+
+
+include rosnode in logging server client in spinner /logging server
+'''
 
 class KeywordModuleGenerator(object):
     def __init__(self):

@@ -20,6 +20,12 @@ Email: info@opensciencestack.org
 """
 
 import xml.etree.ElementTree as ET
+from ras_bt_framework.managers.primitive_action_manager import PrimitiveActionManager
+from rclpy.node import Node
+from ..behavior_template.module import BehaviorModule, BehaviorModuleSequence
+
+from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger
+from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 
 mapping = {
     "MoveToPose": "ExecuteTrajectory",
@@ -29,6 +35,49 @@ mapping = {
 
 # tree = ET.parse("behavior_tree.xml")
 # root = tree.getroot()
+
+
+'''TODO
+create class
+primitive 
+'''
+
+
+
+# class BtConverter():
+#     def __init__(self, ros_node: Node):
+#         self.prim_action_manager = PrimitiveActionManager(ros_node)
+#         self.prim_action_manager.get_primitive_from()
+#         self.prim_action_manager.
+
+
+
+def update_bt(behavior: BehaviorModule, sequence=1):
+    if isinstance(behavior, BehaviorModuleSequence):
+        new_children = []
+        for child in behavior.iterate():
+            if isinstance(child, BehaviorModuleSequence):
+                new_children.append(update_bt(child, sequence))
+            elif isinstance(child, MoveToPose):
+                new_child = ExecuteTrajectory(MoveToPose(input_ports={"sequence": str(sequence)}))
+                new_children.append(new_child)
+                sequence += 1
+            elif isinstance(child, Trigger):
+                new_children.append(child)
+            elif isinstance(child, RotateEffector):
+                new_child = ExecuteTrajectory(RotateEffector(input_ports={"sequence": str(sequence)}))
+                new_children.append(new_child)
+                sequence += 1
+            elif isinstance(child, LoggerClientTrigger):
+                new_child = LoggerClientTrigger() # TODO (Sachin) : Confirm this change with Harsh
+                new_children.append(new_child)
+            else:
+                raise ValueError(f"Invalid child type: {type(child)}")
+
+        behavior.children = new_children
+    return behavior
+
+            
 
 # Function to update XML based on mapping
 def update_xml(element, sequence=1):

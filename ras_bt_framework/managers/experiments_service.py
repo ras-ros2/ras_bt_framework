@@ -20,7 +20,7 @@ Email: info@opensciencestack.org
 """
 import os
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
-from ras_bt_framework.behavior_utility.update_bt import update_xml
+from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
 import xml.etree.ElementTree as ET
 from rclpy.node import Node
 from rclpy.callback_groups import ReentrantCallbackGroup
@@ -29,6 +29,7 @@ from std_srvs.srv import SetBool
 from .BaTMan import BaTMan
 from pathlib import Path
 from ras_interfaces.msg import BTNodeStatus
+from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 
 
 class ExperimentService(Node):
@@ -68,9 +69,15 @@ class ExperimentService(Node):
             # resp.success = False
             # return resp
         self.get_logger().info("real_bt_generation_started")
-        tree = ET.parse(path)
-        root = tree.getroot()
-        update_xml(root)
-        tree.write("/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml", encoding="utf-8", xml_declaration=True)
+        new_module = update_bt(self.batman.main_module)
+        btg = BehaviorTreeGenerator(self.batman.alfred)
+        btg.feed_root(new_module)
+        bt_path = "/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml"
+        btg.generate_xml_trees(bt_path)
+        
+        # tree = ET.parse(path)
+        # root = tree.getroot()
+        # update_xml(root)
+        # tree.write("/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml", encoding="utf-8", xml_declaration=True)
         resp.success = True
         return resp
