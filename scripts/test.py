@@ -11,6 +11,8 @@ import rclpy.node
 import os
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
 from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
+from ras_common.package.utils import get_cmake_python_pkg_source_dir
+
 def hello():
     print("hello")
     return BehaviorModule()
@@ -48,7 +50,12 @@ def main():
     btm.generate_module_from_keywords(targets,pose_dict)
     new_module = update_bt(btm.main_module)
     btg = BehaviorTreeGenerator(btm.alfred)
-    bt_path = "/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml"
+    pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
+    if pkg_path is None:
+        btm.get_logger().error("Package Path Not Found")
+        exit(1)
+    
+    bt_path = str(pkg_path)+"/xml/real.xml"
     btg.feed_root(new_module)
     try:
         btg.generate_xml_trees(bt_path)
@@ -56,7 +63,8 @@ def main():
         btm.get_logger().error(f"Error in BT Generation: {e}")
         exit(1)
     # btm.run_module(myBehavior,"test.xml")
-    btm.execute_bt("/ras_real_lab/ros2_ws/src/ras_aws_transport/real_bot_zip/real.xml")
+    aws_pkg_path = get_cmake_python_pkg_source_dir("ras_aws_transport")
+    btm.execute_bt(str(aws_pkg_path)+"/real_bot_zip/real.xml")
     rclpy.spin(btm)
 
 if __name__ == "__main__":
