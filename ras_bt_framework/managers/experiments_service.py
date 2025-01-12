@@ -60,7 +60,12 @@ class ExperimentService(Node):
         counter_reset = SetBool.Request()
         counter_reset.data = True
         self.counter_reset_client.call_async(counter_reset)
-        path = Path(os.environ["RAS_WORKSPACE_PATH"])/"src"/"ras_bt_framework"/"xml"/"sim.xml"
+        pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
+        if pkg_path is None:
+            self.get_logger().error("ras_bt_framework package Path Not Found")
+            resp.success = False
+            return resp
+        path = Path(pkg_path)/"xml"/"sim.xml"
         # behavior = PickObject(self.sequence_list)
         status = self.batman.run_module(path)
         if status in [BTNodeStatus.SUCCESS,BTNodeStatus.IDLE]:
