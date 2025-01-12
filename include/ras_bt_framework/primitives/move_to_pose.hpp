@@ -57,57 +57,54 @@ inline geometry_msgs::msg::Pose convertFromString(StringView str)
 
 namespace ras_bt_framework
 {
+    NEW_PRIMITIVE_DECL(MoveToPose)
+        public:
+        void initialize() override
+        {
+            // Initialize other members here, like the ROS node
+            node_ = rclcpp::Node::make_shared("move_to_pose_node");
+            move_to_pose = node_->create_client<ras_interfaces::srv::PoseReq>("/create_traj");
+        }
 
-class MoveToPose : public PrimitiveBehavior {
-public:
-    MoveToPose(const std::string& name, const BT::NodeConfig& config)
-    : PrimitiveBehavior(name, config)
-    {
-        // Initialize other members here, like the ROS node
-        node_ = rclcpp::Node::make_shared("move_to_pose_node");
-        move_to_pose = node_->create_client<ras_interfaces::srv::PoseReq>("/create_traj");
-    }
+        ~MoveToPose() {}
+        
+        static BT::PortsList providedPorts()
+        {
+            return { BT::InputPort<geometry_msgs::msg::Pose>("pose") };
+        }
+        
+        virtual BT::NodeStatus tick() override {
+            std::cout << ("MoveToPose") << std::endl;
 
-    ~MoveToPose() {}
-    
-    static BT::PortsList providedPorts()
-    {
-        return { BT::InputPort<geometry_msgs::msg::Pose>("pose") };
-    }
-    
-   virtual BT::NodeStatus tick() override {
-    std::cout << ("MoveToPose") << std::endl;
+            auto msg = getInput<geometry_msgs::msg::Pose>("pose");
 
-    auto msg = getInput<geometry_msgs::msg::Pose>("pose");
+            auto request = std::make_shared<ras_interfaces::srv::PoseReq::Request>();
 
-    auto request = std::make_shared<ras_interfaces::srv::PoseReq::Request>();
+            // Direct assignment without using 'expected'
+            request->object_pose = msg.value();
 
-    // Direct assignment without using 'expected'
-    request->object_pose = msg.value();
+            request->type = "beaker";  // Corrected semicolon
 
-    request->type = "beaker";  // Corrected semicolon
+            auto result_future = move_to_pose->async_send_request(
+                    request, std::bind(&MoveToPose::move_to_pose_response, this,
+                                        std::placeholders::_1));  
 
-    auto result_future = move_to_pose->async_send_request(
-            request, std::bind(&MoveToPose::move_to_pose_response, this,
-                                std::placeholders::_1));  
+            if (rclcpp::spin_until_future_complete(node_, result_future) ==
+                rclcpp::FutureReturnCode::SUCCESS)
+            {
+            return BT::NodeStatus::SUCCESS;
+            }
+            return BT::NodeStatus::FAILURE;
+        }
 
-    if (rclcpp::spin_until_future_complete(node_, result_future) ==
-    rclcpp::FutureReturnCode::SUCCESS)
-    {
-    return BT::NodeStatus::SUCCESS;
-    }
-    
-   }
+        void move_to_pose_response(rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture future) {
+            // Handle the response if needed
+        }
 
+    private:
+        rclcpp::Node::SharedPtr node_;  // Node shared pointer to create clients
+        rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedPtr move_to_pose;
 
-
-    void move_to_pose_response(rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture future) {
-        // Handle the response if needed
-    }
-
-private:
-    rclcpp::Node::SharedPtr node_;  // Node shared pointer to create clients
-    rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedPtr move_to_pose;
+    END_PRIMITIVE_DECL
 };
 
-}

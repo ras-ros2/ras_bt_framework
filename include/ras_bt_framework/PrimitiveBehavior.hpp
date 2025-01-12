@@ -22,14 +22,46 @@
 
 #pragma once
 #include "behaviortree_cpp/action_node.h"
+#include "rclcpp/rclcpp.hpp"
+
+#define NEW_PRIMITIVE_DECL(name) class name : public PrimitiveBehavior<name>\
+    { public: \
+     name(const std::string& name, const BT::NodeConfig& config = {},rclcpp::Node::SharedPtr node=nullptr) :\
+         PrimitiveBehavior(name,config,node){\
+            this->initialize();\
+         }\
+      private:
+#define END_PRIMITIVE_DECL };
 
 namespace ras_bt_framework
 {
+    template <typename T>
     class PrimitiveBehavior : public BT::SyncActionNode
     {
     public:
-        inline PrimitiveBehavior(const std::string& name, const BT::NodeConfig& config) :
-         BT::SyncActionNode(name, config) {}
-        virtual BT::NodeStatus tick() = 0 ;
+        inline PrimitiveBehavior(const std::string& name, const BT::NodeConfig& config = {},rclcpp::Node::SharedPtr node=nullptr) :
+         BT::SyncActionNode(name, config),node_(node) {
+            if(node_==nullptr){
+                //NOT RECOMMENDED, PROVIDED FOR SPECIAL CASES ONLY
+                node_ = rclcpp::Node::make_shared(name+"_primitive_node");
+            }
+            
+         }
+        virtual void initialize() = 0;
+        virtual BT::NodeStatus tick() override = 0 ;
+        inline ~PrimitiveBehavior(){};
+
+        static inline BT::PortsList ProvidedPorts(){
+            auto ports = T::providedPorts();
+            return ports;
+        };
+        static BT::PortsList mergedPorts(const BT::PortsList& childPorts)
+        {
+            BT::PortsList ports = { };
+            ports.insert(childPorts.begin(), childPorts.end());
+            return ports;
+        }
+        protected:
+        rclcpp::Node::SharedPtr node_;
     };
 }

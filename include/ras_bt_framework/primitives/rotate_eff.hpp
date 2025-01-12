@@ -31,11 +31,9 @@
 namespace ras_bt_framework
 {
 
-    class RotateEffector : public PrimitiveBehavior
-    {
+        NEW_PRIMITIVE_DECL(RotateEffector)
     public:
-        RotateEffector(const std::string &name, const BT::NodeConfig &config)
-            : PrimitiveBehavior(name, config)
+    void initialize() override
         {
             node_ = rclcpp::Node::make_shared("rotate_effector_node");
             rotate_eff_client_ = node_->create_client<ras_interfaces::srv::RotateEffector>("/rotate_effector");
@@ -57,6 +55,7 @@ namespace ras_bt_framework
             if (!angle)
             {
                 throw BT::RuntimeError("Missing required input [rotation_angle]: ", angle.error());
+                // return BT::NodeStatus::FAILURE;
             }
 
             auto request = std::make_shared<ras_interfaces::srv::RotateEffector::Request>();
@@ -97,6 +96,6 @@ namespace ras_bt_framework
     private:
         rclcpp::Node::SharedPtr node_;
         rclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedPtr rotate_eff_client_;
-    };
+END_PRIMITIVE_DECL
 
 } // namespace ras_bt_framework

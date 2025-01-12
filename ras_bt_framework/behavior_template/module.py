@@ -126,6 +126,7 @@ class BehaviorModule(BehaviorBase,ABC):
                 raise AttributeError(f"The object for key '{key}' does not have a callable 'serialize' method.")
         return deserialized
 
+
     def get_port_map(self):
         return {**self.deserialize_ports(self._input_ports),**self.deserialize_ports(self._output_ports)}
 
@@ -176,6 +177,18 @@ class BehaviorModuleCollection(Composite,BehaviorModule):
             yield child
         for child in self.out_children:
             yield child
+    
+    def add_children(self, children:List[BehaviorModule]|BehaviorModule):
+        if isinstance(children,list):
+            for child in children:
+                self.add_children(child)
+        elif isinstance(children,BehaviorModule):
+            children.uid = children.get_type_info() + str(len(self.children))      
+            self.children.append(children)
+        else:
+            raise ValueError(f"Invalid children type: {type(children)}")
+            
+        
 
 @dataclass
 class BehaviorModuleSequence(Sequence,BehaviorModuleCollection):

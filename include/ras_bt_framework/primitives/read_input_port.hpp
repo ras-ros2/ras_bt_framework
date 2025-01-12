@@ -28,13 +28,11 @@
 namespace ras_bt_framework
 {
 
-class ReadInputPort : public PrimitiveBehavior
-{
-public:
-  ReadInputPort(const std::string& name, const BT::NodeConfig& config)
-    : PrimitiveBehavior(name, config)
+
+NEW_PRIMITIVE_DECL(ReadInputPort)
+    public:
+    void initialize() override
   {
-    node_ = rclcpp::Node::make_shared("input_port_node");
     blackboard_client = node_->create_client<ras_interfaces:srv:ReadBlack>("/read_blackboard");
   }
 
@@ -64,6 +62,6 @@ public:
 private:
     rclcpp::Node::SharedPtr node_;
     rclcpp::Client<ras_interfaces::srv::ReadBlack>::SharedPtr blackboard_client;
+END_PRIMITIVE_DECL
 };
     
-}

@@ -22,8 +22,19 @@ Email: info@opensciencestack.org
 from ..behavior_template.keyword import KeywordInput,keyword2module
 from typing import Dict,Iterable,List,Callable
 from ..behavior_template.module import BehaviorModuleSequence,BehaviorModule
+from ..behavior_template.instruction import FunctionalInstruction
 from ..behaviors.keywords import keyword_mapping
 import inspect
+
+
+'''
+TODO: 
+modify
+logging server client and then gripper that
+
+
+include rosnode in logging server client in spinner /logging server
+'''
 
 class KeywordModuleGenerator(object):
     def __init__(self,default_keywords:Dict[str,Callable]=keyword_mapping):
@@ -64,5 +75,5 @@ class KeywordModuleGenerator(object):
             kw_module = keyword2module(keyword,identifier,params)
             if not isinstance(kw_module,BehaviorModule):
                 raise ValueError(f"Invalid keyword module: {kw_module}")
-            behavior_module.children.append(kw_module)
+            behavior_module.add_children(kw_module)
         return behavior_module
