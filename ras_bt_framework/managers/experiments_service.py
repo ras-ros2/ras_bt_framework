@@ -30,6 +30,7 @@ from .BaTMan import BaTMan
 from pathlib import Path
 from ras_interfaces.msg import BTNodeStatus
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
+from ras_common.package.utils import get_cmake_python_pkg_source_dir
 
 
 class ExperimentService(Node):
@@ -72,16 +73,22 @@ class ExperimentService(Node):
         new_module = update_bt(self.batman.main_module)
         btg = BehaviorTreeGenerator(self.batman.alfred)
         btg.feed_root(new_module)
-        bt_path = "/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml"
-        try:
-            btg.generate_xml_trees(bt_path)
-        except Exception as e:
-            self.get_logger().error(f"Error in BT Generation: {e}")
+        pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
+        if pkg_path is None:
+            self.get_logger().error("Package Path Not Found")
             resp.success = False
             return resp
+        else:
+            bt_path = str(pkg_path)+"/xml/real.xml"
+            try:
+                btg.generate_xml_trees(bt_path)
+            except Exception as e:
+                self.get_logger().error(f"Error in BT Generation: {e}")
+                resp.success = False
+                return resp
         # tree = ET.parse(path)
         # root = tree.getroot()
         # update_xml(root)
-        # tree.write("/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml", encoding="utf-8", xml_declaration=True)
+        # tree.write(str(pkg_path)+"/xml/real.xml", encoding="utf-8", xml_declaration=True)
         resp.success = True
         return resp
