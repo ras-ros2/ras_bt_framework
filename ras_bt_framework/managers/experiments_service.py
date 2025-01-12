@@ -20,7 +20,7 @@ Email: info@opensciencestack.org
 """
 import os
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
-from ras_bt_framework.behavior_utility.update_bt import update_xml
+from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
 import xml.etree.ElementTree as ET
 from rclpy.node import Node
 from rclpy.callback_groups import ReentrantCallbackGroup
@@ -29,6 +29,8 @@ from std_srvs.srv import SetBool
 from .BaTMan import BaTMan
 from pathlib import Path
 from ras_interfaces.msg import BTNodeStatus
+from ..generators.behavior_tree_generator import BehaviorTreeGenerator
+from ras_common.package.utils import get_cmake_python_pkg_source_dir
 
 
 class ExperimentService(Node):
@@ -41,7 +43,6 @@ class ExperimentService(Node):
         self.batman = BaTMan()
 
     def load_exp(self, req, resp):
-        self.sequence_list = []
         exp_id = req.exepriment_id
         path = os.path.join(os.environ["RAS_APP_PATH"],"configs","experiments",f"{exp_id}.yaml")
         # print(path)
@@ -52,13 +53,19 @@ class ExperimentService(Node):
     
     def bt_execution_callback(self, req, resp):
         self.get_logger().info("Batman Called ...")
-        if len(self.sequence_list) == 0:
-            self.get_logger().warning("Load Experiment First....")
-            pass
+        if isinstance(self.batman.main_module, type(None)):
+            self.get_logger().error("Load Experiment First....")
+            resp.success = False
+            return
         counter_reset = SetBool.Request()
         counter_reset.data = True
         self.counter_reset_client.call_async(counter_reset)
-        path = Path(os.environ["RAS_WORKSPACE_PATH"])/"src"/"ras_bt_framework"/"xml"/"sim.xml"
+        pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
+        if pkg_path is None:
+            self.get_logger().error("ras_bt_framework package Path Not Found")
+            resp.success = False
+            return resp
+        path = Path(pkg_path)/"xml"/"sim.xml"
         # behavior = PickObject(self.sequence_list)
         status = self.batman.run_module(path)
         if status in [BTNodeStatus.SUCCESS,BTNodeStatus.IDLE]:
@@ -68,9 +75,25 @@ class ExperimentService(Node):
             # resp.success = False
             # return resp
         self.get_logger().info("real_bt_generation_started")
-        tree = ET.parse(path)
-        root = tree.getroot()
-        update_xml(root)
-        tree.write("/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/real.xml", encoding="utf-8", xml_declaration=True)
+        new_module = update_bt(self.batman.main_module)
+        btg = BehaviorTreeGenerator(self.batman.alfred)
+        btg.feed_root(new_module)
+        pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
+        if pkg_path is None:
+            self.get_logger().error("Package Path Not Found")
+            resp.success = False
+            return resp
+        else:
+            bt_path = str(pkg_path)+"/xml/real.xml"
+            try:
+                btg.generate_xml_trees(bt_path)
+            except Exception as e:
+                self.get_logger().error(f"Error in BT Generation: {e}")
+                resp.success = False
+                return resp
+        # tree = ET.parse(path)
+        # root = tree.getroot()
+        # update_xml(root)
+        # tree.write(str(pkg_path)+"/xml/real.xml", encoding="utf-8", xml_declaration=True)
         resp.success = True
         return resp

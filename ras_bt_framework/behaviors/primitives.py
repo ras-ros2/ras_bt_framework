@@ -54,3 +54,12 @@ class RotateEffector(PrimitiveInstruction):
 class Trigger(PrimitiveInstruction):
     name:str
     input_port_names: ClassVar[Set[bool]] = {"trigger"}
+
+@dataclass
+class ExecuteTrajectory(PrimitiveInstruction):
+    name:str
+    input_port_names: ClassVar[Set[str]] = {"sequence"}
+
+@dataclass
+class LoggerClientTrigger(PrimitiveInstruction):
+    name:str

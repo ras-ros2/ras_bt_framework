@@ -24,20 +24,30 @@ Email: info@opensciencestack.org
 import rclpy
 from rclpy.node import Node
 from std_srvs.srv import SetBool
+from ras_interfaces.srv import GripperLog
+from rclpy.callback_groups import ReentrantCallbackGroup
 
 class FakeGripperServer(Node):
     def __init__(self):
         super().__init__("fake_gripper_node")
+        self.my_callback_group = ReentrantCallbackGroup()
+
         self.get_logger().info("Node Init")
-        self.create_service(SetBool, "/fake_gripper", self.gripper_callback)
+        self.create_service(SetBool, "/fake_gripper", self.gripper_callback, callback_group=self.my_callback_group)
+        self.gripper_client = self.create_client(GripperLog, "/gripper_status", callback_group=self.my_callback_group)
 
     def gripper_callback(self, req, resp):
 
+        gripper_data = GripperLog.Request()
         if req.data == True:
             self.get_logger().info("Gripper ON")
+            gripper_data.gripper_status = True
         else:
             self.get_logger().info("Gripper OFF")
+            gripper_data.gripper_status = False
         
+        self.gripper_client.call_async(gripper_data)
+
         resp.success = True
 
         return resp
@@ -45,7 +55,8 @@ class FakeGripperServer(Node):
 def main():
     rclpy.init(args=None)
     node = FakeGripperServer()
-    rclpy.spin(node)
+    while rclpy.ok():
+        rclpy.spin_once(node)
     rclpy.shutdown()
 
 if __name__ == "__main__":

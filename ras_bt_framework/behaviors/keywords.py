@@ -21,6 +21,7 @@ Email: info@opensciencestack.org
 
 from ..behavior_template.module import BehaviorModuleSequence
 from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger
+from typing import List
 
 class TargetPoseMap(object):
     def __init__(self):
@@ -37,6 +38,9 @@ class TargetPoseMap(object):
                 raise ValueError(f"Invalid pose name {pose}")
         else:
             raise ValueError(f"Invalid pose input type {type(pose)}")
+        
+    def move2pose_sequence_module(self,poses:List[str]):
+        return BehaviorModuleSequence(children=[self.move2pose_module(pose) for pose in poses])
 
 def rotate(angle:float):
     return RotateEffector(input_ports={"rotation_angle":str(angle)})
@@ -44,9 +48,14 @@ def rotate(angle:float):
 def gripper(open:bool):
     return Trigger(input_ports={"trigger":str(open)})
 
-def pick_object(object_name:str,dst:str):
-    src = TargetPoseMap().pose_map[object_name]
-    return BehaviorModuleSequence(children=[MoveToPose(input_ports={"pose":src}),
-                                            Trigger(input_ports={"trigger":"True"}),
-                                            MoveToPose(input_ports={"pose":dst}),
-                                            Trigger(input_ports={"trigger":"False"})])
+# def pick_object(object_name:str,dst:str):
+#     src = TargetPoseMap().pose_map[object_name]
+#     return BehaviorModuleSequence(children=[MoveToPose(input_ports={"pose":src}),
+#                                             Trigger(input_ports={"trigger":"True"}),
+#                                             MoveToPose(input_ports={"pose":dst}),
+#                                             Trigger(input_ports={"trigger":"False"})])
+
+keyword_mapping = {
+            "rotate":rotate,
+            "gripper":gripper,
+            }
