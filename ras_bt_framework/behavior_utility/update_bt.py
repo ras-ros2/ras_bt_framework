@@ -26,6 +26,7 @@ from ..behavior_template.module import BehaviorModule, BehaviorModuleSequence
 
 from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
+from copy import deepcopy
 
 mapping = {
     "MoveToPose": "ExecuteTrajectory",
@@ -36,14 +37,6 @@ mapping = {
 # tree = ET.parse("behavior_tree.xml")
 # root = tree.getroot()
 
-
-'''TODO
-create class
-primitive 
-'''
-
-
-
 # class BtConverter():
 #     def __init__(self, ros_node: Node):
 #         self.prim_action_manager = PrimitiveActionManager(ros_node)
@@ -53,6 +46,7 @@ primitive
 
 
 def update_bt(behavior: BehaviorModule, sequence=1):
+    behavior = deepcopy(behavior)
     if isinstance(behavior, BehaviorModuleSequence):
         new_children = []
         new_children.append(LoggerClientTrigger())

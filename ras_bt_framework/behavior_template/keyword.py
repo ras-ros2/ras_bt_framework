@@ -62,7 +62,7 @@ def keyword2module(keyword: Callable,identifier:str = None, params: object|Dict[
     params_decl : Dict[str,KeyWordParam] = OrderedDict()
     for param in kw_sig.parameters.values():
         if str(param).startswith('*'):
-            raise ValueError(f"keyword {identifier} expects an invalid ambiguous parameter {param}")
+            raise ValueError(f"keyword {identifier} expects an valid non-ambiguous parameter {param}")
         params_decl[param.name] = KeyWordParam(name=param.name,type=param.annotation if param.annotation != param.empty else None,
                                 default=param.default if param.default != param.empty else None ,param=param)
     param_def = dict()
