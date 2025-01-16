@@ -43,10 +43,16 @@ def read_yaml_to_pose_dict(path):
             qx, qy, qz, qw
         ]))
 
-
     if 'targets' not in data:
         raise KeyError("The key 'targets' is missing from the YAML file.")
-        
+
+    # joints are optional, so no need to raise an exception
+    if 'Joints' in data:
+        joint_dict = {}
+        for joint_name, joint_values in data['Joints'].items():
+            joint_dict[joint_name] = joint_values
+        return pose_dict, joint_dict, data["targets"]
+
     # target_pose = []
 
     # for i in data["targets"]:
@@ -62,3 +68,20 @@ def read_yaml_to_pose_dict(path):
     #                 target_pose.append(pose_dict[j])
 
     return pose_dict,data["targets"]
+
+
+def read_yaml_to_joint_dict(path):
+    with open(path, 'r') as file:
+        data = yaml.safe_load(file)
+    
+    if 'Joints' not in data:
+        raise KeyError("The key 'joints' is missing from the YAML file.")
+    
+    joint_dict = {}
+    for joint_name, joint_values in data['Joints'].items():
+        joint_dict[joint_name] = joint_values
+
+    if 'targets' not in data:
+        raise KeyError("The key 'targets' is missing from the YAML file.")
+
+    return joint_dict

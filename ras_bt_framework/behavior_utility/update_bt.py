@@ -24,13 +24,14 @@ from ras_bt_framework.managers.primitive_action_manager import PrimitiveActionMa
 from rclpy.node import Node
 from ..behavior_template.module import BehaviorModule, BehaviorModuleSequence
 
-from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger
+from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger, MoveToJointState
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 
 mapping = {
     "MoveToPose": "ExecuteTrajectory",
     "Trigger": "Trigger",
-    "RotateEffector": "ExecuteTrajectory"
+    "RotateEffector": "ExecuteTrajectory",
+    "MoveToJointState": "MoveToJointState"
 }
 
 # tree = ET.parse("behavior_tree.xml")
@@ -69,6 +70,10 @@ def update_bt(behavior: BehaviorModule, sequence=1):
             elif isinstance(child, MoveToPose):
                 new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
                 new_children.append(new_child)
+                new_children.append(LoggerClientTrigger())
+                sequence += 1
+            elif isinstance(child, MoveToJointState):
+                new_children.append(child)
                 new_children.append(LoggerClientTrigger())
                 sequence += 1
             elif isinstance(child, Trigger):
