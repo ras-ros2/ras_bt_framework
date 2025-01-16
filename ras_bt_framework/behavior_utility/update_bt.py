@@ -33,25 +33,6 @@ mapping = {
     "RotateEffector": "ExecuteTrajectory"
 }
 
-# tree = ET.parse("behavior_tree.xml")
-# root = tree.getroot()
-
-
-'''TODO
-create class
-primitive 
-'''
-
-
-
-# class BtConverter():
-#     def __init__(self, ros_node: Node):
-#         self.prim_action_manager = PrimitiveActionManager(ros_node)
-#         self.prim_action_manager.get_primitive_from()
-#         self.prim_action_manager.
-
-
-
 def update_bt(behavior: BehaviorModule, sequence=1):
     if isinstance(behavior, BehaviorModuleSequence):
         new_children = []

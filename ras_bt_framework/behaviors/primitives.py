@@ -21,9 +21,38 @@ Email: info@opensciencestack.org
 
 from numpy import double
 from ..behavior_template.instruction import PrimitiveInstruction
+from ..behavior_template.port import PortStr,PortData
 from dataclasses import dataclass
 from typing import ClassVar,Set
 from geometry_msgs.msg import Pose
+
+@dataclass
+class PortPose(PortData):
+    value: Pose
+
+    def serialize(self):
+        return self.value
+
+@dataclass
+class PortDouble(PortData):
+    value: double
+
+    def serialize(self):
+        return PortData.default_serialize(self.value)
+
+@dataclass
+class PortBool(PortData):
+    value: bool
+
+    def serialize(self):
+        return PortData.default_serialize(self.value)
+    
+@dataclass
+class PortInt(PortData):
+    value: int
+
+    def serialize(self):
+        return PortData.default_serialize(self.value)
 
 @dataclass
 class ActionInstruction(PrimitiveInstruction):
@@ -32,33 +61,33 @@ class ActionInstruction(PrimitiveInstruction):
 @dataclass
 class SaySomething(PrimitiveInstruction):
     name:str
-    input_port_names: ClassVar[Set[str]] = {"message"}
+    i_message: PortStr
 
 @dataclass
 class ThinkSomethingToSay(PrimitiveInstruction):
     name:str
-    input_port_names: ClassVar[Set[str]] = {"reference"}
-    output_port_names: ClassVar[Set[str]] = {"message"}
+    i_reference: PortStr
+    o_message: PortStr
 
 @dataclass
 class MoveToPose(PrimitiveInstruction):
     name:str
-    input_port_names: ClassVar[Set[Pose]] = {"pose"}
+    i_pose: PortPose
 
 @dataclass
 class RotateEffector(PrimitiveInstruction):
     name:str
-    input_port_names: ClassVar[Set[double]] = {"rotation_angle"}
+    i_rotation_angle: PortDouble
 
 @dataclass
 class Trigger(PrimitiveInstruction):
     name:str
-    input_port_names: ClassVar[Set[bool]] = {"trigger"}
+    i_trigger: PortBool
 
 @dataclass
 class ExecuteTrajectory(PrimitiveInstruction):
     name:str
-    input_port_names: ClassVar[Set[str]] = {"sequence"}
+    i_sequence: PortInt
 
 @dataclass
 class LoggerClientTrigger(PrimitiveInstruction):
