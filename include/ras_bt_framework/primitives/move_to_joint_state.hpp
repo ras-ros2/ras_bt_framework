@@ -44,6 +44,8 @@ inline sensor_msgs::msg::JointState convertFromString(StringView str)
     }
 
     sensor_msgs::msg::JointState joint_state;
+    joint_state.name = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6"};
+    joint_state.position.resize(6);
     joint_state.position[0] = convertFromString<double>(parts[0]);
     joint_state.position[1] = convertFromString<double>(parts[1]);
     joint_state.position[2] = convertFromString<double>(parts[2]);
