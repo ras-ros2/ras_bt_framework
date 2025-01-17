@@ -22,7 +22,7 @@ Email: info@opensciencestack.org
 """
 
 import os
-from ras_bt_framework.generator.utils import read_yaml
+from .utils import read_yaml
 from dataclasses import dataclass, field
 from typing import List,Dict
 from string import Template
