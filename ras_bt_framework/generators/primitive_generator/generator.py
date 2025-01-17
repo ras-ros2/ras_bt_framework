@@ -45,8 +45,14 @@ class PrimitiveTemplate(ConfigLoaderBase):
         for port in self.output_ports:
             bt_ports.append(f'BT::OutputPort<std::string>("{port}")')
 
-        return ', '.join([f'{port}' for port in bt_ports]) 
-
+        return ',\n '.join([f'{port}' for port in bt_ports]) 
+    def get_instruction_ports(self):
+        ports_line = []
+        for port in self.input_ports:
+            ports_line.append(f"\ti_{port} : str")
+        for port in self.output_ports:
+            ports_line.append(f"\to_{port} : str")
+        return ports_line
     def get_template_data(self) -> dict:
         template_data = {
             "class_name": self.name.capitalize(),
@@ -85,12 +91,29 @@ class PrimitiveGenerator:
     def generate_primitives_header_files(self, pkg_path: str) -> None:
         if len(self.primitives) < 1:
             raise ValueError("Primitives not loaded")
-        generated_headers_folder = os.path.join(pkg_path, "generated_headers")
+        headers_folder = os.path.join(pkg_path,"include")
+        gen_headers_folder_name = "gen_primitives"
+        generated_headers_folder = os.path.join(headers_folder, gen_headers_folder_name)
         if not os.path.exists(generated_headers_folder):
             os.makedirs(generated_headers_folder)
-        template_path = os.path.join(pkg_path, "templates", "primitive_template.hpp.em")
+        templates_path = os.path.join(pkg_path, "templates" )
+        template_path = os.path.join(templates_path,"primitive_template.hpp.em")
+        generated_files = []
+        instruction_lines = []
         for prim in self.primitives:
+            instruction_lines.append(f"\n@dataclass\nclass {prim.name}(PrimitiveInstruction):")
+            port_lines = prim.get_instruction_ports()
+            if len(port_lines)==0:
+                instruction_lines.append("\tpass\n")
+            else:
+                instruction_lines.append("\n".join(port_lines))
+            generated_files.append(f"{gen_headers_folder_name}/{prim.name}.hpp")
             _expand_template(template_path, prim.get_template_data(), f"{generated_headers_folder}/{prim.name}.hpp")
+        include_template_path = os.path.join(templates_path,"include_primitives.hpp.em")
+        _expand_template(include_template_path,{"gen_primitive_files":generated_files},f"{generated_headers_folder}/include_all.hpp")
+        primitive_instruction_path = os.path.join(pkg_path,"ras_bt_framework","behaviors","gen_primitives.py")
+        primitive_instruction_template = os.path.join(templates_path,"primitive_instructions.py.em")
+        _expand_template(primitive_instruction_template,{"instruction_lines":instruction_lines},primitive_instruction_path)
         print(f"Generated header files in {generated_headers_folder}")
     
     def load_primitives(self, pkg_path: str) -> bool:

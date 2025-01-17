@@ -26,7 +26,7 @@ from ..behavior_template.module import BehaviorModule, BehaviorModuleSequence
 
 from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
-
+from copy import deepcopy
 mapping = {
     "MoveToPose": "ExecuteTrajectory",
     "Trigger": "Trigger",
@@ -48,22 +48,23 @@ def update_bt(behavior: BehaviorModule, sequence=1):
             if isinstance(child, BehaviorModuleSequence):
                 new_children.append(update_bt(child, sequence))
             elif isinstance(child, MoveToPose):
-                new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
+                new_child = ExecuteTrajectory(i_sequence =sequence)
                 new_children.append(new_child)
                 new_children.append(LoggerClientTrigger())
                 sequence += 1
             elif isinstance(child, Trigger):
                 new_children.append(child)
             elif isinstance(child, RotateEffector):
-                new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
+                new_child = ExecuteTrajectory(i_sequence =sequence)
                 new_children.append(new_child)
                 new_children.append(LoggerClientTrigger())
                 sequence += 1
             else:
                 raise ValueError(f"Invalid child type: {type(child)}")
-
-        behavior.children = new_children
-    return behavior
+        new_behavior = deepcopy(behavior)
+        new_behavior.children = list()
+        new_behavior.add_children(new_children)
+    return new_behavior
 
             
 

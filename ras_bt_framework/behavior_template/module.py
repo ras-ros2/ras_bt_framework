@@ -28,13 +28,10 @@ from typing import List,ClassVar,Set,Dict
 import re
 from geometry_msgs.msg import Pose
 
-@dataclass
+@dataclass(kw_only=True)
 class BehaviorBase(Behaviour,ABC):
     type_name: ClassVar[str] = field(default=None)
-
-    def __post_init__(self):
-        super().__init__()
-        
+    
     @classmethod
     def get_type_info(cls):
         if cls.type_name is None:
@@ -50,17 +47,11 @@ class BehaviorBase(Behaviour,ABC):
 
 @dataclass(kw_only=True)
 class BehaviorModule(BehaviorBase,ABC):
-    # input_port_names: ClassVar[Set[str]] = field(default=set())
-    # output_port_names: ClassVar[Set[str]] = field(default=set())
-    # input_ports: Dict[str,str] = field(default_factory=dict)
-    # output_ports: Dict[str,str] = field(default_factory=dict)
 
     @staticmethod
     def _check_ports(decl_set:set,def_dict:dict):
-        def_vals = def_dict.values()
-        for def_val in def_vals:
-            if not isinstance(def_val,Port):
-                raise ValueError(f"Invalid port type: {type(def_val)}")
+        if "name" in decl_set:
+            raise ValueError(f"port_name 'name' is reserved for unique id")
         def_set = set(def_dict.keys())
         if not def_set.issuperset(decl_set):
             raise ValueError(f"Missing ports: {decl_set - def_set}")
@@ -72,7 +63,6 @@ class BehaviorModule(BehaviorBase,ABC):
             
 
     def __post_init__(self):
-        super().__post_init__()
         self._input_port_names = set()
         self._output_port_names = set()
         self._input_ports = {}
@@ -95,22 +85,13 @@ class BehaviorModule(BehaviorBase,ABC):
         self._check_ports(self._input_port_names, self._input_ports)
         self._check_ports(self._output_port_names, self._output_ports)
 
-    @staticmethod
-    def serialize_ports(ports: Dict[str,Port]) -> Dict[str,str]:
-        serialized = {}
-        for key, value in ports.items():
-            if isinstance(value,Port):
-                serialized[key] = value.serialize()
-            else:
-                raise AttributeError(f"Port objects should be of type {Port}, got {type(value)}.")
-        return serialized
-
 
     def get_port_map(self):
-        return {**self.serialize_ports(self._input_ports),**self.serialize_ports(self._output_ports)}
+        return {**self._input_ports,**self._output_ports}
 
 @dataclass
 class BehaviorModuleCollection(Composite,BehaviorModule):
+    children: List[BehaviorModule] = field(default_factory=list)
     out_children: List[BehaviorModule] = field(default_factory=list,init=False)
 
     def __post_init__(self):

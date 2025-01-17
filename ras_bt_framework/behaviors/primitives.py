@@ -19,9 +19,8 @@ Harsh Davda
 Email: info@opensciencestack.org
 """
 
-from numpy import double
 from ..behavior_template.instruction import PrimitiveInstruction
-from ..behavior_template.port import PortStr,PortData
+from ..behavior_template.port import PortData
 from dataclasses import dataclass
 from typing import ClassVar,Set
 from geometry_msgs.msg import Pose
@@ -31,64 +30,41 @@ class PortPose(PortData):
     value: Pose
 
     def serialize(self):
-        return self.value
+        return f"{self.value.position.x},{self.value.position.y},{self.value.position.z},\
+            {self.value.orientation.x},{self.value.orientation.y},{self.value.orientation.z},\
+                {self.value.orientation.w}"
 
-@dataclass
-class PortDouble(PortData):
-    value: double
 
-    def serialize(self):
-        return PortData.default_serialize(self.value)
-
-@dataclass
-class PortBool(PortData):
-    value: bool
-
-    def serialize(self):
-        return PortData.default_serialize(self.value)
-    
-@dataclass
-class PortInt(PortData):
-    value: int
-
-    def serialize(self):
-        return PortData.default_serialize(self.value)
 
 @dataclass
 class ActionInstruction(PrimitiveInstruction):
-    name: str
+    pass
 
 @dataclass
 class SaySomething(PrimitiveInstruction):
-    name:str
-    i_message: PortStr
+    i_message: str
 
 @dataclass
 class ThinkSomethingToSay(PrimitiveInstruction):
-    name:str
-    i_reference: PortStr
-    o_message: PortStr
+    i_reference: str
+    o_message: str
 
 @dataclass
 class MoveToPose(PrimitiveInstruction):
-    name:str
     i_pose: PortPose
 
 @dataclass
 class RotateEffector(PrimitiveInstruction):
-    name:str
-    i_rotation_angle: PortDouble
+    i_rotation_angle: float
 
 @dataclass
 class Trigger(PrimitiveInstruction):
-    name:str
-    i_trigger: PortBool
+    i_trigger: bool
 
 @dataclass
 class ExecuteTrajectory(PrimitiveInstruction):
-    name:str
-    i_sequence: PortInt
+    i_sequence: int
 
 @dataclass
 class LoggerClientTrigger(PrimitiveInstruction):
-    name:str
+    pass

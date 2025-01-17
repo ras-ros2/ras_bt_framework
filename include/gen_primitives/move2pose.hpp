@@ -7,17 +7,18 @@
 namespace ras_bt_framework
 {
 
-    NEW_PRIMITIVE_DECL(@(class_name))
+    NEW_PRIMITIVE_DECL(Move2pose)
     
     public:
     void initialize() override
     {}
 
-    ~@(class_name)() {}
+    ~Move2pose() {}
     
     static BT::PortsList providedPorts()
     {
-        return { @(provided_ports) };
+        return { BT::InputPort<std::string>("pose"),
+ BT::OutputPort<std::string>("status") };
     }
 
    virtual BT::NodeStatus tick() override {

@@ -12,11 +12,12 @@ import os
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
 from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
 from ras_common.package.utils import get_cmake_python_pkg_source_dir
-
+from ras_bt_framework.behavior_template.port import PortDefault
+from dataclasses import dataclass
 def hello():
     print("hello")
     return BehaviorModule()
-def main():
+def test1():
     tpm = TargetPoseMap()
     # kmg = KeywordModuleGenerator()
     tpm.register_pose("pose1","1,2,3")
@@ -48,6 +49,7 @@ def main():
         # print(path)
     pose_dict,targets = read_yaml_to_pose_dict(path)
     btm.generate_module_from_keywords(targets,pose_dict)
+    # btm.run_module("test.xml")
     new_module = update_bt(btm.main_module)
     btg = BehaviorTreeGenerator(btm.alfred)
     pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
@@ -62,10 +64,13 @@ def main():
     except Exception as e:
         btm.get_logger().error(f"Error in BT Generation: {e}")
         exit(1)
+    print(btm.main_module)
     # btm.run_module(myBehavior,"test.xml")
-    aws_pkg_path = get_cmake_python_pkg_source_dir("ras_aws_transport")
-    btm.execute_bt(str(aws_pkg_path)+"/real_bot_zip/real.xml")
-    rclpy.spin(btm)
+    # aws_pkg_path = get_cmake_python_pkg_source_dir("ras_aws_transport")
+    # btm.execute_bt(str(aws_pkg_path)+"/real_bot_zip/real.xml")
+    # rclpy.spin(btm)
 
+def main():
+    test1()
 if __name__ == "__main__":
     main()

@@ -28,22 +28,22 @@ from geometry_msgs.msg import Pose
 from ..behavior_utility.yaml_parser import read_yaml_to_pose_dict
 
 from ament_index_python import get_package_share_directory
-from ..behavior_template.port import PortStr,PortData,PortEntry,RefPortEntry
+from ..behavior_template.port import PortData,PortEntry,RefPortEntry
 
 class SaySomethingSequence(BehaviorModuleSequence):
     def __init__(self,message_entry):
         self.o_message = RefPortEntry(message_entry,"out_message")
         super().__init__()
         self.add_children([
-            ThinkSomethingToSay(i_reference="Hello World!",o_message="{out_message}"),
+            ThinkSomethingToSay(i_reference="Hello World!",o_message=PortEntry("out_message")),
             ])
         
 class MyCustomSequence(BehaviorModuleSequence):
     def __init__(self):
         super().__init__()
         self.add_children([
-            SaySomethingSequence(message_entry="{my_message}"),
-            SaySomething(i_message="{my_message}"),
+            SaySomethingSequence(message_entry="my_message"),
+            SaySomething(i_message=PortEntry("my_message")),
             ])
 
 class PickObject(BehaviorModuleSequence):

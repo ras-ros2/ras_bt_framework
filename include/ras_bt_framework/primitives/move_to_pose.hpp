@@ -74,7 +74,7 @@ namespace ras_bt_framework
         }
         
         virtual BT::NodeStatus tick() override {
-            std::cout << ("MoveToPose") << std::endl;
+            std::cout << (this->name()) << std::endl;
 
             auto msg = getInput<geometry_msgs::msg::Pose>("pose");
 

@@ -33,20 +33,22 @@ class TargetPoseMap(object):
     def move2pose_module(self,pose:str):
         if (isinstance(pose,str)):
             if pose in self.pose_map:
-                return MoveToPose(input_ports={"pose":self.pose_map[pose]})
+                return MoveToPose(i_pose=self.pose_map[pose])
             else:
                 raise ValueError(f"Invalid pose name {pose}")
         else:
             raise ValueError(f"Invalid pose input type {type(pose)}")
         
     def move2pose_sequence_module(self,poses:List[str]):
-        return BehaviorModuleSequence(children=[self.move2pose_module(pose) for pose in poses])
+        move2pose_sequence = BehaviorModuleSequence()
+        move2pose_sequence.add_children([self.move2pose_module(pose) for pose in poses])
+        return move2pose_sequence
 
 def rotate(angle:float):
-    return RotateEffector(input_ports={"rotation_angle":str(angle)})
+    return RotateEffector(i_rotation_angle=angle)
 
 def gripper(open:bool):
-    return Trigger(input_ports={"trigger":str(open)})
+    return Trigger(i_trigger=open)
 
 # def pick_object(object_name:str,dst:str):
 #     src = TargetPoseMap().pose_map[object_name]

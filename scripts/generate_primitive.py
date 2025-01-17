@@ -21,7 +21,7 @@ Sachin Kumar
 Email: info@opensciencestack.org
 """
 
-from ras_bt_framework.generator.primitive_generator import PrimitiveGenerator
+from ras_bt_framework.generators.primitive_generator.generator import PrimitiveGenerator
 from ament_index_python.packages import get_package_share_directory
 from ras_common.package.utils import get_cmake_python_pkg_source_dir
 

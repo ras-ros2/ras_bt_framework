@@ -39,7 +39,7 @@ install(TARGETS
   executor
   DESTINATION lib/${PROJECT_NAME})
 
-install(DIRECTORY scripts
+install(DIRECTORY scripts/
  DESTINATION lib/${PROJECT_NAME}/)
 
 ament_python_install_package(${PROJECT_NAME})
