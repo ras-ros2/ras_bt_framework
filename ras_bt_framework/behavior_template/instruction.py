@@ -63,55 +63,13 @@ class BehaviorInstructionBase(BehaviorModule,ABC):
         pass
 
 @dataclass
-class FunctionalInstructionBase(BehaviorInstructionBase,Callable,ABC):
-    sig_kw : ClassVar[OrderedDict[str,type]] = OrderedDict()
-    func: Callable
-    params: dict = field(default_factory=dict)
+class GenerativeInstruction(BehaviorModule, ABC):
+    input_ports: ClassVar[OrderedDict[str,type]] = OrderedDict()
+    output_ports: ClassVar[OrderedDict[str,type]] = OrderedDict()
+    @abstractmethod
+    def tick(self):
+        pass
 
-    def __post_init__(self):
-        self.check_params()
-    
-    def check_params(self):
-        sig_kw = set(self.sig_kw.keys())
-        params_set = set(self.params.keys())
-        unused_params = params_set-sig_kw
-        if len(unused_params)>0:
-            print("WARN: Discarding unused params: ",unused_params)
-            for _key in unused_params:
-                del self.params[_key]
-    
-    def execute(self, **kwargs):
-        self.params.update(kwargs)
-        self.call()
-    
-    def verify_call(self):
-        self.check_params()
-        sig_kw = set(self.sig_kw.keys())
-        params_set = set(self.params.keys())
-        if not sig_kw.issuperset(params_set):
-            raise ValueError("Invalid argument for instruction")
-    
-    def call(self):
-        self.verify_call()
-        self.func(**self.params)
-
-    def __call__(self):
-        self.call()
-    
-def FunctionalInstruction(func:Callable) -> type[FunctionalInstructionBase]:
-    assert isinstance(func,Callable)
-    sig = inspect.signature(func)
-    param_kw = OrderedDict()
-    for name, param in sig.parameters.items():
-        if param.default != inspect.Parameter.empty:
-            param_kw[name] = param.annotation
-        else:
-            param_kw[name] = None
-    def init(instance:FunctionalInstructionBase,**kwargs):
-        FunctionalInstructionBase.__init__(instance,func,kwargs)
-    instruction_type = type(func.__name__,(FunctionalInstructionBase,),{"__init__":deepcopy(init)})
-    instruction_type.sig_kw = param_kw
-    return instruction_type
 
 class EmptyInstruction(BehaviorInstructionBase):
     def __init__(self):
