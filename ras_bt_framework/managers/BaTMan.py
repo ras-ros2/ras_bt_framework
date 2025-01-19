@@ -21,6 +21,7 @@ Email: info@opensciencestack.org
 
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 from .primitive_action_manager import PrimitiveActionManager
+from .generative_action_server import GenerativeActionServer
 # from ..behavior_template.instruction import TrajectoryPrimitive
 # from .BTconverter import BTconverter
 from ras_bt_framework.behaviors.keywords import TargetPoseMap, rotate, gripper
@@ -48,6 +49,7 @@ class BaTMan(Node):
         super().__init__("batman")
         # self.mode_sim = mode_sim
         self.alfred = PrimitiveActionManager(self)
+        self.robin = GenerativeActionServer(self)
         # self.converter = None
         
         self.get_logger().info("Node Init")
