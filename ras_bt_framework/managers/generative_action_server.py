@@ -26,43 +26,64 @@ from rclpy.node import Node
 from rclpy.action import ActionServer
 from rclpy.action.server import ServerGoalHandle
 from dataclasses import dataclass,field
-from typing import Callable,ClassVar,Set,Dict
+from typing import Callable,ClassVar,Set,Dict, List
 from ras_interfaces.action import BTGenerative
-from ras_interfaces.msg import BTNodeStatus
+from ras_interfaces.msg import BTNodeStatus, BTGenMapping
 import json
 import importlib
 from types import ModuleType
 from ras_bt_framework.behavior_template.instruction import GenerativeInstruction
+from ras_common.package.utils import include_module_import_class, get_module_path_and_class_name, ObjectInfo
+
+def convert_dict_to_gen_mapping(port_map: dict[str, str]) -> List[BTGenMapping]:
+    result: List[BTGenMapping] = list()
+    for key, value in port_map.items():
+        result.append(BTGenMapping(key=key, value=value))
+    return result
+
+# TODO: implement later
+def convert_gen_mapping_to_dict():
+    pass
 
 class GenerativeActionServer():
     def __init__(self,node:Node):
         self._node = node
         self._action_server = ActionServer(self._node, BTGenerative, 'bt_generative', self.execute_callback)
 
-    def include_module_import_class(self, module_path:str, class_name:str) -> type:
-        self._node.get_logger().info(f"module path: {module_path}")
-        module: ModuleType = importlib.import_module(module_path)
-        try:
-            class_ = getattr(module, class_name)
-        except:
-            self._node.get_logger().error(f"Class {class_name} not found in module {module_path}")
-            return None
-
-        return class_
-    
     def execute_callback(self, action_goal: ServerGoalHandle):
         self._node.get_logger().info('Executing goal...')
         req : BTGenerative.Goal = action_goal.request
         module_path: BTGenerative.Goal.module_path = req.module_path
         class_name: BTGenerative.Goal.class_name = req.class_name
-        class_argument: Dict[str,str] = req.class_argument
+        class_argument: Dict[str,str] = req.class_arguments
         input_ports: Dict[str,str] = req.input_ports
 
-        class_ = self.include_module_import_class(module_path, class_name)
+        class_ = include_module_import_class(module_path, class_name)
+        if class_ is None:
+            self._node.get_logger().error(f"Class {class_name} not found for module {module_path}")
+            result = BTGenerative.Result()
+            result.status = BTNodeStatus.FAILURE
+            action_goal.abort()
+            return result
 
-        self.generative_class: GenerativeInstruction = class_(**class_argument, **input_ports)
-        self.generative_class.tick()
+        try:
+            self.generative_class: GenerativeInstruction = class_(**class_argument, **input_ports)
+            self.generative_class.tick()
+            output_port_map: dict[str, str] = self.generative_class._output_ports
+            result = BTGenerative.Result()
+            result.status = BTNodeStatus.SUCCESS
+            result.output_ports = convert_dict_to_gen_mapping(output_port_map)
+            action_goal.succeed()
+            return result
+            
 
-        feedback_msg = BTGenerative.Feedback()
-        feedback_msg.status = BTNodeStatus.RUNNING
-        action_goal.publish_feedback(feedback_msg)
+        except Exception as e:
+            self._node.get_logger().error(f"Error executing generative class: {e}")
+            result = BTGenerative.Result()
+            result.status = BTNodeStatus.FAILURE
+            action_goal.abort()
+            return result
+
+        # feedback_msg = BTGenerative.Feedback()
+        # feedback_msg.status = BTNodeStatus.RUNNING
+        # action_goal.publish_feedback(feedback_msg)

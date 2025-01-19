@@ -64,11 +64,21 @@ class BehaviorInstructionBase(BehaviorModule,ABC):
 
 @dataclass
 class GenerativeInstruction(BehaviorModule, ABC):
-    input_ports: ClassVar[OrderedDict[str,type]] = OrderedDict()
-    output_ports: ClassVar[OrderedDict[str,type]] = OrderedDict()
     @abstractmethod
     def tick(self):
         pass
+
+# TODO: Remove this later
+class TriggerGripper(GenerativeInstruction):
+    i_trigger: bool
+    o_status: bool
+    def tick(self):
+        print("Triggering Gripper")
+        if self.i_trigger:
+            print("gripper is open")
+        else:
+            print("gripper is closed")
+        self.o_status = True
 
 
 class EmptyInstruction(BehaviorInstructionBase):

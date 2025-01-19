@@ -56,16 +56,16 @@ namespace ras_bt_framework
             }
 
             auto goal_msg = ras_interfaces::action::BTGenerative::Goal();
-            goal_msg.module_path = "ras_bt_framework/gen_primitives";
-            goal_msg.class_name = "GripperTrigger";
+            goal_msg.module_path = "my_module.my_class";
+            goal_msg.class_name = "MyClass";
             BTGenerativeMsg class_agrument = BTGenerativeMsg();
             class_agrument.key = "some_key";
             class_agrument.value = "some_value";
             BTGenerativeMsg input_port = BTGenerativeMsg();
-            input_port.key = "input_port_key";
-            input_port.value = "input_port_value";
-            goal_msg.class_argument.resize(1);
-            goal_msg.class_argument.push_back(class_agrument);
+            input_port.key = "trigger";
+            input_port.value = "true";
+            goal_msg.class_arguments.resize(1);
+            goal_msg.class_arguments.push_back()
             goal_msg.input_ports.resize(1);
             goal_msg.input_ports.push_back(input_port);
             auto send_goal_options = rclcpp_action::Client<BTGenerative>::SendGoalOptions();
