@@ -71,5 +71,5 @@ class LoggerClientTrigger(PrimitiveInstruction):
 
 @dataclass
 class MoveToJointState(PrimitiveInstruction):
-    name:str
-    input_port_names: ClassVar[Set[str]] = {"joint_state"}
+    i_joint_state: str
+    
