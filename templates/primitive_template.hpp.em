@@ -13,7 +13,8 @@ namespace ras_bt_framework
     void initialize() override
     {}
 
-    ~@(class_name)() {}
+    void destroy() override
+    {}
     
     static BT::PortsList providedPorts()
     {
