@@ -56,7 +56,6 @@ def update_bt(behavior: BehaviorModule, sequence=1):
             elif isinstance(child, MoveToJointState):
                 new_children.append(child)
                 new_children.append(LoggerClientTrigger())
-                sequence += 1
             elif isinstance(child, Trigger):
                 new_children.append(child)
             elif isinstance(child, RotateEffector):

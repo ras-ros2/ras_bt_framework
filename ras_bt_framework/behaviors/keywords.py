@@ -52,7 +52,7 @@ def gripper(open:bool):
 
 
 def joint_state(joints:list):
-    return MoveToJointState(input_ports={"joint_state": ','.join(map(str,joints))})
+    return MoveToJointState(i_joint_state=','.join(map(str,joints)))
 
 # def pick_object(object_name:str,dst:str):
 #     src = TargetPoseMap().pose_map[object_name]
