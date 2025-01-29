@@ -68,3 +68,8 @@ class ExecuteTrajectory(PrimitiveInstruction):
 @dataclass
 class LoggerClientTrigger(PrimitiveInstruction):
     pass
+
+@dataclass
+class MoveToJointState(PrimitiveInstruction):
+    name:str
+    input_port_names: ClassVar[Set[str]] = {"joint_state"}

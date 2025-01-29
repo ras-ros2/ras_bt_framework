@@ -20,7 +20,7 @@ Email: info@opensciencestack.org
 """
 
 from ..behavior_template.module import BehaviorModuleSequence
-from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger
+from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger, MoveToJointState
 from typing import List
 
 class TargetPoseMap(object):
@@ -50,6 +50,10 @@ def rotate(angle:float):
 def gripper(open:bool):
     return Trigger(i_trigger=open)
 
+
+def joint_state(joints:list):
+    return MoveToJointState(input_ports={"joint_state": ','.join(map(str,joints))})
+
 # def pick_object(object_name:str,dst:str):
 #     src = TargetPoseMap().pose_map[object_name]
 #     return BehaviorModuleSequence(children=[MoveToPose(input_ports={"pose":src}),
@@ -60,4 +64,5 @@ def gripper(open:bool):
 keyword_mapping = {
             "rotate":rotate,
             "gripper":gripper,
+            'joint_state': joint_state
             }
