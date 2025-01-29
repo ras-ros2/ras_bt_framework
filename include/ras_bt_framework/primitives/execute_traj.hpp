@@ -36,7 +36,7 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     public:
     void initialize() override
     {
-        node_ = rclcpp::Node::make_shared("execute_traj");
+        // node_ = rclcpp::Node::make_shared("execute_traj");
         play_traj = node_->create_client<ras_interfaces::srv::PlayPath>("/play_trajectory");
         client_log = node_->create_client<ras_interfaces::srv::TrajLog>("/traj_status");
 
@@ -88,7 +88,6 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     }
 
 private:
-    rclcpp::Node::SharedPtr node_;
     rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedPtr play_traj;
     rclcpp::Client<ras_interfaces::srv::TrajLog>::SharedPtr client_log;
     

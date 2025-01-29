@@ -32,7 +32,7 @@ NEW_PRIMITIVE_DECL(LoggerClientTrigger)
     void initialize() override
   {
 
-    node_ = rclcpp::Node::make_shared("logger_client_trigger_node");
+    // node_ = rclcpp::Node::make_shared("logger_client_trigger_node");
     trigger_client = node_->create_client<std_srvs::srv::SetBool>("/dummy_logging_server"); // TODO (Sachin): Change the service name
     trigger_client->wait_for_service(); // TODO (Sachin): Check if this is required and where it should be executed
     
@@ -67,7 +67,6 @@ NEW_PRIMITIVE_DECL(LoggerClientTrigger)
   }
 
 private:
-rclcpp::Node::SharedPtr node_; 
 rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr trigger_client;
 
 END_PRIMITIVE_DECL

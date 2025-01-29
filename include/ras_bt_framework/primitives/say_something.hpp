@@ -40,7 +40,8 @@ NEW_PRIMITIVE_DECL(SaySomething)
     {
       throw BT::RuntimeError("missing required input [message]: ", msg.error());
     }
-
+    // node_->get_logger()("Robot says: {}", msg.value());
+    RCLCPP_INFO(node_->get_logger(), "Robot says: %s", msg.value().c_str());
     std::cout << "Robot says: " << msg.value() << std::endl;
     return BT::NodeStatus::SUCCESS;
   };

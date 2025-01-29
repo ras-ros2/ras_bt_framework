@@ -65,7 +65,7 @@ namespace ras_bt_framework
         void initialize() override
         {
             // Initialize other members here, like the ROS node
-            node_ = rclcpp::Node::make_shared("move_to_joint_state_node");
+            // node_ = rclcpp::Node::make_shared("move_to_joint_state_node");
             move_to_joint_state = node_->create_client<ras_interfaces::srv::JointReq>("/move_to_joint_states");
         }
 
@@ -104,7 +104,6 @@ namespace ras_bt_framework
 
 
     private:
-        rclcpp::Node::SharedPtr node_;  // Node shared pointer to create clients
         rclcpp::Client<ras_interfaces::srv::JointReq>::SharedPtr move_to_joint_state;
         sensor_msgs::msg::JointState joint_state_msg_;
 

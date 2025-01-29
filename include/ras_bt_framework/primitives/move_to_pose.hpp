@@ -62,7 +62,8 @@ namespace ras_bt_framework
         void initialize() override
         {
             // Initialize other members here, like the ROS node
-            node_ = rclcpp::Node::make_shared("move_to_pose_node");
+            // node_ = rclcpp::Node::make_shared("move_to_pose_node");
+            RCLCPP_INFO(node_->get_logger(), "MoveToPose initialized");
             move_to_pose = node_->create_client<ras_interfaces::srv::PoseReq>("/create_traj");
         }
 
@@ -103,7 +104,6 @@ namespace ras_bt_framework
 
 
     private:
-        rclcpp::Node::SharedPtr node_;  // Node shared pointer to create clients
         rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedPtr move_to_pose;
 
     END_PRIMITIVE_DECL

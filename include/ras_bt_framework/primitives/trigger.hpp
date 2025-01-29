@@ -32,7 +32,6 @@ NEW_PRIMITIVE_DECL(Trigger)
     void initialize() override
   {
 
-    node_ = rclcpp::Node::make_shared("trigger_node");
     trigger_client = node_->create_client<std_srvs::srv::SetBool>("/fake_gripper");
     
   }
@@ -76,7 +75,6 @@ NEW_PRIMITIVE_DECL(Trigger)
   }
 
 private:
-rclcpp::Node::SharedPtr node_; 
 rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr trigger_client;
 
 END_PRIMITIVE_DECL

@@ -43,6 +43,7 @@ namespace ras_bt_framework
          BT::SyncActionNode(name, config),node_(node) {
             if(node_==nullptr){
                 //NOT RECOMMENDED, PROVIDED FOR SPECIAL CASES ONLY
+                printf("Node is null, creating a new node\n");
                 node_ = rclcpp::Node::make_shared(name+"_primitive_node");
             }
             
