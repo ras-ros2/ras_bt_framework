@@ -67,7 +67,9 @@ namespace ras_bt_framework
             move_to_pose = node_->create_client<ras_interfaces::srv::PoseReq>("/create_traj");
         }
 
-        ~MoveToPose() {}
+        void destroy() override
+        {
+        }
         
         static BT::PortsList providedPorts()
         {

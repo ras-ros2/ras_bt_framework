@@ -37,6 +37,9 @@ NEW_PRIMITIVE_DECL(LoggerClientTrigger)
     trigger_client->wait_for_service(); // TODO (Sachin): Check if this is required and where it should be executed
     
   }
+  void destroy() override
+    {
+    }
 
   BT::NodeStatus tick() override
   {

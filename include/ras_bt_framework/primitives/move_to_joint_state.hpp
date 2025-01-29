@@ -69,7 +69,9 @@ namespace ras_bt_framework
             move_to_joint_state = node_->create_client<ras_interfaces::srv::JointReq>("/move_to_joint_states");
         }
 
-        ~MoveToJointState() {}
+        void destroy() override
+        {
+        }
         
         static BT::PortsList providedPorts()
         {

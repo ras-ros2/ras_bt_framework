@@ -39,7 +39,9 @@ namespace ras_bt_framework
             rotate_eff_client_ = node_->create_client<ras_interfaces::srv::RotateEffector>("/rotate_effector");
         }
 
-        ~RotateEffector() {}
+        void destroy() override
+    {
+    }
 
         static BT::PortsList providedPorts()
         {

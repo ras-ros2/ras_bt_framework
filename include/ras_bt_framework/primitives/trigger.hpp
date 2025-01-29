@@ -35,11 +35,13 @@ NEW_PRIMITIVE_DECL(Trigger)
     trigger_client = node_->create_client<std_srvs::srv::SetBool>("/fake_gripper");
     
   }
-
+  void destroy() override
+    {
+    }
   BT::NodeStatus tick() override
   {
 
-    std::cout << ("Trigger") << std::endl;
+    std::cout << (this->name()) << std::endl;
 
     auto msg = getInput<bool>("trigger");
 

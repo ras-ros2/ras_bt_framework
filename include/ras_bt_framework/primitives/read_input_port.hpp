@@ -36,6 +36,9 @@ NEW_PRIMITIVE_DECL(ReadInputPort)
     blackboard_client = node_->create_client<ras_interfaces:srv:ReadBlack>("/read_blackboard");
   }
 
+  void destroy() override
+    {
+    }
 
   static BT::PortsList providedPorts()
   {

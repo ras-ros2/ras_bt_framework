@@ -41,9 +41,11 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
         client_log = node_->create_client<ras_interfaces::srv::TrajLog>("/traj_status");
 
     }
-
+    void destroy() override
+    {
+    }
     int instruction_no;
-    ~ExecuteTrajectory() {}
+    
     
     static BT::PortsList providedPorts()
     {

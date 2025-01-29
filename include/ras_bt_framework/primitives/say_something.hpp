@@ -32,6 +32,9 @@ NEW_PRIMITIVE_DECL(SaySomething)
     void initialize() override
     {
     }
+    void destroy() override
+    {
+    }
 
   BT::NodeStatus tick() override
   {
