@@ -26,7 +26,7 @@ from typing import Iterable,List,Dict,Set
 from dataclasses import dataclass,field
 from ras_common.xml_utils.behavior_tree_gen import BTXml,ElementTree
 from ..managers.primitive_action_manager import PrimitiveActionManager
-
+from ..managers.PortMan import PortMan
 
 __registered_primitives : Set[type[PrimitiveInstruction]] = {}
 
@@ -35,8 +35,12 @@ class BehaviorTreeGenerator(object):
     root_behavior: BehaviorModuleSequence = field(init=False,default=None)
     action_manager: PrimitiveActionManager
 
+    def __post_init__(self):
+        self.portman = PortMan()
+
     def feed_root(self,behavior:type[BehaviorModule]|type[BehaviorModuleSequence]):
        self.root_behavior = behavior
+       self.portman.reset_session()
     
     @staticmethod
     def is_valid_primitive(primitive:type[PrimitiveInstruction]|PrimitiveInstruction|type[FunctionalInstructionBase]|FunctionalInstructionBase|str):
@@ -82,7 +86,9 @@ class BehaviorTreeGenerator(object):
     def generate_xml_trees(self,file_path:str):
         self.verify_sanity()
         tree_gen = BTXml()
+        self.portman.reset_session()
         def  _iterate_tree(behavior:BehaviorModule|BehaviorModuleSequence,parent_elem:ElementTree):
+            behavior = self.portman.get_serialized_module(behavior)
             if isinstance(behavior,BehaviorModuleCollection):
                 new_tree,subtree = tree_gen.new_subtree(behavior.get_type_info(),parent_elem,behavior.get_port_map())
                 collection_elem = None

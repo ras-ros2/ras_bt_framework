@@ -9,7 +9,16 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <depend>ament_cmake_python</depend>
+  <depend>behaviortree_cpp</depend>
+  <depend>control_msgs</depend>
+  <depend>interactive_markers</depend>
+  <depend>moveit_ros_planning</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>rclcpp</depend>
   <depend>ras_interfaces</depend>
+  <depend>std_srvs</depend>
+  <depend>trajectory_msgs</depend>
 
 
   <test_depend>ament_lint_auto</test_depend>
