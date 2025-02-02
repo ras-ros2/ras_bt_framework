@@ -34,6 +34,7 @@
 #include "ras_bt_framework/primitives/rotate_eff.hpp"
 #include "ras_bt_framework/PrimitiveActionClient.hpp"
 #include "ras_bt_framework/primitives/logger_client_trigger.hpp"
+#include "ras_bt_framework/primitives/update_real_inventory.hpp"
 
 #define REGISTER_NODE_TYPE_ROS(namespace,nodetype,rclnode) { factory->registerNodeType<namespace::nodetype>(#nodetype,rclnode); }
 #define REGISTER_NODE_TYPE(namespace,nodetype) { REGISTER_NODE_TYPE_ROS(namespace,nodetype,node); }
@@ -49,5 +50,6 @@ namespace ras_bt_framework {
         REGISTER_NODE_TYPE_PRIMITIVE(RotateEffector);
         REGISTER_NODE_TYPE_PRIMITIVE(PrimitiveActionClient);
         REGISTER_NODE_TYPE_PRIMITIVE(LoggerClientTrigger);
+        REGISTER_NODE_TYPE_PRIMITIVE(UpdateRealInventory);
     }
 }

@@ -63,3 +63,7 @@ class ExecuteTrajectory(PrimitiveInstruction):
 @dataclass
 class LoggerClientTrigger(PrimitiveInstruction):
     name:str
+
+@dataclass
+class UpdateRealInventory(PrimitiveInstruction):
+    name:str
