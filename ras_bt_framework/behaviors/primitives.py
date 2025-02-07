@@ -71,6 +71,5 @@ class LoggerClientTrigger(PrimitiveInstruction):
 
 @dataclass
 class MoveToJointState(PrimitiveInstruction):
-    i_joint_names: str
-    i_joint_values: str
+    i_joint_state: str
     

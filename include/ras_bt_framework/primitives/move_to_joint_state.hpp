@@ -36,22 +36,27 @@ namespace BT
 template <>
 inline sensor_msgs::msg::JointState convertFromString(StringView str)
 {
-    // Expect a string like: "0.2,0.25,0.1,0.0,0.0,0.0"
-    auto parts = BT::splitString(str, ',');
-    if (parts.size() != 6)
-    {
-        throw BT::RuntimeError("invalid input string for geometry_msgs::msg::Pose: ", str);
-    }
-
+    // Expect a string like: "joint1:0.2,joint2:0.25,joint3:0.1,joint4:0.0,joint5:0.0,joint6:0.0"
+    
     sensor_msgs::msg::JointState joint_state;
-    joint_state.name = {"joint1", "joint2", "joint3", "joint4", "joint5", "joint6"};
-    joint_state.position.resize(6);
-    joint_state.position[0] = convertFromString<double>(parts[0]);
-    joint_state.position[1] = convertFromString<double>(parts[1]);
-    joint_state.position[2] = convertFromString<double>(parts[2]);
-    joint_state.position[3] = convertFromString<double>(parts[3]);
-    joint_state.position[4] = convertFromString<double>(parts[4]);
-    joint_state.position[5] = convertFromString<double>(parts[5]);
+    auto parts = BT::splitString(str, ',');
+    for (StringView& part : parts)
+    {
+        auto pair = BT::splitString(part, ':');
+        if (pair.size() != 2)
+        {
+            throw BT::RuntimeError("Expected a string like: joint1:0.0,joint2:0.0,joint3:0.0,joint4:0.0,joint5:0.0,joint6:0.0");
+        }
+        for (const StringView& _str: pair)
+        {
+            if (_str.empty())
+            {
+                throw BT::RuntimeError("Expected a string like: joint1:0.0,joint2:0.0,joint3:0.0,joint4:0.0,joint5:0.0,joint6:0.0");
+            }
+        }
+        joint_state.name.push_back(std::string(pair[0]));
+        joint_state.position.push_back(convertFromString<double>(pair[1]));
+    }
 
     return joint_state;
 }
