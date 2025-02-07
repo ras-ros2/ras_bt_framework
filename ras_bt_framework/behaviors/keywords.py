@@ -50,9 +50,19 @@ def rotate(angle:float):
 def gripper(open:bool):
     return Trigger(i_trigger=open)
 
+# def home_joint_state():
+#     from ras_common.config.loaders.lab_setup import LabSetup
+#     LabSetup.init()
+#     return MoveToJointState(i_joint_names=','.join(map(str,LabSetup.conf.robot.home_joint_state.keys())),i_joint_values=','.join(map(str,LabSetup.conf.robot.home_joint_state.values())))
 
 def joint_state(joints:list):
-    return MoveToJointState(i_joint_state=','.join(map(str,joints)))
+    from ras_common.config.loaders.lab_setup import LabSetup
+    LabSetup.init()
+    joint_names = list(LabSetup.conf.robot.home_joint_state.keys())
+    if len(joints) != len(joint_names): 
+        raise ValueError(f"Invalid number of joints {len(joints)}")
+    joint_state = ",".join([f"{joint_names[i]}:{joints[i]}" for i in range(len(joints))])
+    return MoveToJointState(i_joint_state=joint_state)
 
 # def pick_object(object_name:str,dst:str):
 #     src = TargetPoseMap().pose_map[object_name]
