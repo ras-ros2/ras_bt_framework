@@ -36,6 +36,9 @@ NEW_PRIMITIVE_DECL(ReadInputPort)
     blackboard_client = node_->create_client<ras_interfaces:srv:ReadBlack>("/read_blackboard");
   }
 
+  void destroy() override
+    {
+    }
 
   static BT::PortsList providedPorts()
   {
@@ -60,7 +63,6 @@ NEW_PRIMITIVE_DECL(ReadInputPort)
     void blackboard_response(rclcpp::Client<ras_interfaces::srv::ReadBlack>::SharedFuture future) {}
 
 private:
-    rclcpp::Node::SharedPtr node_;
     rclcpp::Client<ras_interfaces::srv::ReadBlack>::SharedPtr blackboard_client;
 END_PRIMITIVE_DECL
 };

@@ -43,8 +43,9 @@ namespace ras_bt_framework
         using BTPrimitive = ras_interfaces::action::BTPrimitive;
         using GoalHandle = rclcpp_action::ClientGoalHandle<BTPrimitive>;
 
-        ~PrimitiveActionClient(){
-        }
+        void destroy() override
+    {
+    }
 
         void execute(const std::string& identifier, const std::string& json_param){
             if (!this->client_ptr_->wait_for_action_server()) {

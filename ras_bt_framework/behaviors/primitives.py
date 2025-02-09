@@ -19,47 +19,57 @@ Harsh Davda
 Email: info@opensciencestack.org
 """
 
-from numpy import double
 from ..behavior_template.instruction import PrimitiveInstruction
+from ..behavior_template.port import PortData
 from dataclasses import dataclass
 from typing import ClassVar,Set
 from geometry_msgs.msg import Pose
 
 @dataclass
+class PortPose(PortData):
+    value: Pose
+
+    def serialize(self):
+        return f"{self.value.position.x},{self.value.position.y},{self.value.position.z},\
+            {self.value.orientation.x},{self.value.orientation.y},{self.value.orientation.z},\
+                {self.value.orientation.w}"
+
+
+
+@dataclass
 class ActionInstruction(PrimitiveInstruction):
-    name: str
+    pass
 
 @dataclass
 class SaySomething(PrimitiveInstruction):
-    name:str
-    input_port_names: ClassVar[Set[str]] = {"message"}
+    i_message: str
 
 @dataclass
 class ThinkSomethingToSay(PrimitiveInstruction):
-    name:str
-    input_port_names: ClassVar[Set[str]] = {"reference"}
-    output_port_names: ClassVar[Set[str]] = {"message"}
+    i_reference: str
+    o_message: str
 
 @dataclass
 class MoveToPose(PrimitiveInstruction):
-    name:str
-    input_port_names: ClassVar[Set[Pose]] = {"pose"}
+    i_pose: PortPose
 
 @dataclass
 class RotateEffector(PrimitiveInstruction):
-    name:str
-    input_port_names: ClassVar[Set[double]] = {"rotation_angle"}
+    i_rotation_angle: float
 
 @dataclass
 class Trigger(PrimitiveInstruction):
-    name:str
-    input_port_names: ClassVar[Set[bool]] = {"trigger"}
+    i_trigger: bool
 
 @dataclass
 class ExecuteTrajectory(PrimitiveInstruction):
-    name:str
-    input_port_names: ClassVar[Set[str]] = {"sequence"}
+    i_sequence: int
 
 @dataclass
 class LoggerClientTrigger(PrimitiveInstruction):
-    name:str
+    pass
+
+@dataclass
+class MoveToJointState(PrimitiveInstruction):
+    i_joint_state: str
+    

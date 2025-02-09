@@ -27,15 +27,6 @@ from ..behaviors.keywords import keyword_mapping
 import inspect
 
 
-'''
-TODO: 
-modify
-logging server client and then gripper that
-
-
-include rosnode in logging server client in spinner /logging server
-'''
-
 class KeywordModuleGenerator(object):
     def __init__(self,default_keywords:Dict[str,Callable]=keyword_mapping):
         self.registered_keywords : Dict[str,type[BehaviorModule]] = default_keywords

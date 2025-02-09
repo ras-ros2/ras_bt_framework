@@ -121,10 +121,8 @@ class EmptyInstruction(BehaviorInstructionBase):
         return
 # EmptyInstruction = EmptyInstruction()
 
-@dataclass   
+@dataclass(kw_only=True)
 class PrimitiveInstruction(BehaviorInstructionBase,ABC):
-    name: str = field(default=None)
-
     def execute(self, **kwargs):
         raise Exception("Invalid call for primitives.")
 

@@ -34,8 +34,14 @@ int main(int argc, char** argv) {
     std::shared_ptr<BT::BehaviorTreeFactory> factory = std::make_shared<BT::BehaviorTreeFactory>();
     ras_bt_framework::registerNodes(factory,node);
     std::shared_ptr<ras_bt_framework::BTExecutor> bt_executor = std::make_shared<ras_bt_framework::BTExecutor>(factory);
-    executor.add_node(node);
+    // executor.add_node(node);
     executor.add_node(bt_executor);
-    executor.spin();
+    while (rclcpp::ok())
+    {
+        executor.spin_some();
+        rclcpp::spin_some(node);
+    }
+    
+    // executor.spin();
     return 0;
 }

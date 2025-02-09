@@ -43,10 +43,9 @@ def read_yaml_to_pose_dict(path):
             qx, qy, qz, qw
         ]))
 
-
     if 'targets' not in data:
         raise KeyError("The key 'targets' is missing from the YAML file.")
-        
+
     # target_pose = []
 
     # for i in data["targets"]:
