@@ -31,6 +31,7 @@ from pathlib import Path
 from ras_interfaces.msg import BTNodeStatus
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 from ras_common.package.utils import get_cmake_python_pkg_source_dir
+from ras_common.globals import RAS_CONFIGS_PATH
 
 
 class ExperimentService(Node):
@@ -44,7 +45,7 @@ class ExperimentService(Node):
 
     def load_exp(self, req, resp):
         exp_id = req.exepriment_id
-        path = os.path.join(os.environ["RAS_APP_PATH"],"configs","experiments",f"{exp_id}.yaml")
+        path = os.path.join(RAS_CONFIGS_PATH,"experiments",f"{exp_id}.yaml")
         # print(path)
         pose_dict,targets = read_yaml_to_pose_dict(path)
         self.batman.generate_module_from_keywords(targets,pose_dict)

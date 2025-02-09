@@ -10,6 +10,7 @@ from ras_bt_framework.behaviors.modules import SaySomething,ThinkSomethingToSay
 from ras_bt_framework.managers.BaTMan import BaTMan
 import rclpy.node
 import os
+from ras_common.globals import RAS_APP_PATH,RAS_CONFIG_PATH
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
 from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
 from ras_common.package.utils import get_cmake_python_pkg_source_dir
@@ -48,7 +49,8 @@ def test1():
     # my_generator.verify_sanity()
     # my_generator.generate_xml_trees("test.xml")
     btm = BaTMan()
-    # path = os.path.join(os.environ["RAS_APP_PATH"],"configs","experiments","0.yaml")
+
+    path = os.path.join(RAS_CONFIG_PATH,"experiments","0.yaml")
         # print(path)
     # pose_dict,targets = read_yaml_to_pose_dict(path)
     # btm.generate_module_from_keywords(targets,pose_dict)
