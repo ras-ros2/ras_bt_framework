@@ -24,33 +24,15 @@ from ras_bt_framework.managers.primitive_action_manager import PrimitiveActionMa
 from rclpy.node import Node
 from ..behavior_template.module import BehaviorModule, BehaviorModuleSequence
 
-from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger
+from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger, MoveToJointState
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
-
+from copy import deepcopy
 mapping = {
     "MoveToPose": "ExecuteTrajectory",
     "Trigger": "Trigger",
-    "RotateEffector": "ExecuteTrajectory"
+    "RotateEffector": "ExecuteTrajectory",
+    "MoveToJointState": "MoveToJointState"
 }
-
-# tree = ET.parse("behavior_tree.xml")
-# root = tree.getroot()
-
-
-'''TODO
-create class
-primitive 
-'''
-
-
-
-# class BtConverter():
-#     def __init__(self, ros_node: Node):
-#         self.prim_action_manager = PrimitiveActionManager(ros_node)
-#         self.prim_action_manager.get_primitive_from()
-#         self.prim_action_manager.
-
-
 
 def update_bt(behavior: BehaviorModule, sequence=1):
     if isinstance(behavior, BehaviorModuleSequence):
@@ -67,22 +49,26 @@ def update_bt(behavior: BehaviorModule, sequence=1):
             if isinstance(child, BehaviorModuleSequence):
                 new_children.append(update_bt(child, sequence))
             elif isinstance(child, MoveToPose):
-                new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
+                new_child = ExecuteTrajectory(i_sequence =sequence)
                 new_children.append(new_child)
                 new_children.append(LoggerClientTrigger())
                 sequence += 1
+            elif isinstance(child, MoveToJointState):
+                new_children.append(child)
+                new_children.append(LoggerClientTrigger())
             elif isinstance(child, Trigger):
                 new_children.append(child)
             elif isinstance(child, RotateEffector):
-                new_child = ExecuteTrajectory(input_ports={"sequence": str(sequence)})
+                new_child = ExecuteTrajectory(i_sequence =sequence)
                 new_children.append(new_child)
                 new_children.append(LoggerClientTrigger())
                 sequence += 1
             else:
                 raise ValueError(f"Invalid child type: {type(child)}")
-
-        behavior.children = new_children
-    return behavior
+        new_behavior = deepcopy(behavior)
+        new_behavior.children = list()
+        new_behavior.add_children(new_children)
+    return new_behavior
 
             
 
