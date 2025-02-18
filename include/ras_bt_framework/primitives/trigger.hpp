@@ -60,8 +60,8 @@ NEW_PRIMITIVE_DECL(Trigger)
         request, std::bind(&Trigger::trigger_response, this,
                             std::placeholders::_1)); 
 
-    if (rclcpp::spin_until_future_complete(node_, result_future) ==
-    rclcpp::FutureReturnCode::SUCCESS)
+    if ((rclcpp::spin_until_future_complete(node_, result_future) ==
+    rclcpp::FutureReturnCode::SUCCESS)&&result_future.get()->success)
     {
     return BT::NodeStatus::SUCCESS;
     }
