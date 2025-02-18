@@ -125,7 +125,12 @@ class TrajectoryRecordsService(Node):
         request.traj = traj
         future = traj_client.call_async(request)
         rclpy.spin_until_future_complete(self, future)
-        resp.success = True
+        if future.result() is not None:
+            self.get_logger().info(f"Response: {future.result().success}")
+            resp.success = future.result().success
+        else:
+            self.get_logger().error(f"Service call failed: {future.exception()}")
+            resp.success = False
         return resp
 
     def load_path(self, req, resp):
