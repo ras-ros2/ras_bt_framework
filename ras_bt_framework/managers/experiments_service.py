@@ -51,8 +51,8 @@ class ExperimentService(Node):
             resp.success = False
             return resp
         # print(path)
-        pose_dict,targets = read_yaml_to_pose_dict(path)
-        self.batman.generate_module_from_keywords(targets,pose_dict)
+        pose_dict,targets,grid_dict = read_yaml_to_pose_dict(path)
+        self.batman.generate_module_from_keywords(targets,pose_dict,grid_dict)
         self.get_logger().info("Experiment Loaded...")
         resp.success = True
         return resp

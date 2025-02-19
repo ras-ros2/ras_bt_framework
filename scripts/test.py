@@ -10,7 +10,7 @@ from ras_bt_framework.behaviors.modules import SaySomething,ThinkSomethingToSay
 from ras_bt_framework.managers.BaTMan import BaTMan
 import rclpy.node
 import os
-from ras_common.globals import RAS_APP_PATH,RAS_CONFIG_PATH
+from ras_common.globals import RAS_APP_PATH,RAS_CONFIGS_PATH
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
 from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
 from ras_common.package.utils import get_cmake_python_pkg_source_dir
@@ -74,8 +74,16 @@ def test1():
     # aws_pkg_path = get_cmake_python_pkg_source_dir("ras_aws_transport")
     # btm.execute_bt(str(aws_pkg_path)+"/real_bot_zip/real.xml")
     # rclpy.spin(btm)
+def test2():
+    from ras_bt_framework.behavior_utility.grid_parser import GridConfig
+    from ras_common.config.file_utils.formats.yaml import YamlFormat
+    from ras_common.globals import RAS_CONFIGS_PATH
+    yaml_format = YamlFormat.load(os.path.join(RAS_CONFIGS_PATH,"experiments","test_multi.yaml"))
+    for _v in yaml_format["Grids"].values():
+        grid = GridConfig.from_dict(_v)
+        print(grid)
 
 def main():
-    test1()
+    test2()
 if __name__ == "__main__":
     main()

@@ -23,9 +23,9 @@ from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 from .primitive_action_manager import PrimitiveActionManager
 # from ..behavior_template.instruction import TrajectoryPrimitive
 # from .BTconverter import BTconverter
-from ras_bt_framework.behaviors.keywords import TargetPoseMap, rotate, gripper
+from ras_bt_framework.behaviors.keywords import TargetPoseMap,GridLocationMap, rotate, gripper
 from ras_bt_framework.generators.keywords_module_generator import  KeywordModuleGenerator
-from ras_bt_framework.behaviors.modules import SaySomethingSequence,MyCustomSequence,PickObject,BehaviorModuleSequence
+from ras_bt_framework.behaviors.modules import BehaviorModuleSequence
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionClient
@@ -55,20 +55,26 @@ class BaTMan(Node):
         self.manager = BehaviorTreeGenerator(self.alfred)
         self._action_client = ActionClient(self,BTInterface,"bt_executor")
         self.target_pose_map =  TargetPoseMap()
+        self.grid_location_map = GridLocationMap(stack_height=0.0252)
         self.keyword_module_gen = KeywordModuleGenerator()
         self.keyword_module_gen.register({
             "move2pose":self.target_pose_map.move2pose_module,
             "rotate":rotate,
-            "gripper":gripper
+            "gripper":gripper,
+            "move2pose_sequence":self.target_pose_map.move2pose_sequence_module,
+            "pick_location":self.grid_location_map.pick_location,
+            "place_location":self.grid_location_map.place_location,
         })
         self.main_module = BehaviorModuleSequence()
         self.tick_cli = self.create_client(PrimitiveExec, '/bt_tick')
         self.loop_rate = self.create_rate(10)
         self.session_started = False
 
-    def generate_module_from_keywords(self,keywords:list,pose_targets:dict):
+    def generate_module_from_keywords(self,keywords:list,pose_targets:dict,grids:dict = {}):
         for _k,_v in pose_targets.items():
             self.target_pose_map.register_pose(_k,_v)
+        for _k,_v in grids.items():
+            self.grid_location_map.register_grid(_k,_v)
         self.main_module = self.keyword_module_gen.generate("MainModule",keywords)
     
     def send_goal(self,path:str):
