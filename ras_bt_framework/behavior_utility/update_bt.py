@@ -27,17 +27,31 @@ from ..behavior_template.module import BehaviorModule, BehaviorModuleSequence
 from ..behaviors.primitives import MoveToPose, Trigger, RotateEffector, ExecuteTrajectory, LoggerClientTrigger, MoveToJointState
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 from copy import deepcopy
+from dataclasses import dataclass
 mapping = {
     "MoveToPose": "ExecuteTrajectory",
     "Trigger": "Trigger",
     "RotateEffector": "ExecuteTrajectory",
     "MoveToJointState": "MoveToJointState"
 }
+@dataclass
+class SequenceId:
+    sequence: int = 1
 
-def update_bt(behavior: BehaviorModule, sequence=1):
+    def inc(self):
+        self.sequence += 1
+    
+    def get(self):
+        return self.sequence
+    
+def update_bt(behavior: BehaviorModule, sequence=None):
+    if not isinstance(sequence, SequenceId):
+        sequence = SequenceId()
     if isinstance(behavior, BehaviorModuleSequence):
         new_children = []
         new_children.append(LoggerClientTrigger())
+        print(f"Sequence: {sequence.get()}")
+        print(f"Behavior: {behavior}")
         # def add_new_child(child):
         #     new_children.append(child)
         #     if isinstance(child, (ExecuteTrajectory)):
@@ -49,20 +63,20 @@ def update_bt(behavior: BehaviorModule, sequence=1):
             if isinstance(child, BehaviorModuleSequence):
                 new_children.append(update_bt(child, sequence))
             elif isinstance(child, MoveToPose):
-                new_child = ExecuteTrajectory(i_sequence =sequence)
+                new_child = ExecuteTrajectory(i_sequence =sequence.get())
                 new_children.append(new_child)
                 new_children.append(LoggerClientTrigger())
-                sequence += 1
+                sequence.inc()
             elif isinstance(child, MoveToJointState):
                 new_children.append(child)
                 new_children.append(LoggerClientTrigger())
             elif isinstance(child, Trigger):
                 new_children.append(child)
             elif isinstance(child, RotateEffector):
-                new_child = ExecuteTrajectory(i_sequence =sequence)
+                new_child = ExecuteTrajectory(i_sequence =sequence.get())
                 new_children.append(new_child)
                 new_children.append(LoggerClientTrigger())
-                sequence += 1
+                sequence.inc()
             else:
                 raise ValueError(f"Invalid child type: {type(child)}")
         new_behavior = deepcopy(behavior)
