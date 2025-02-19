@@ -67,3 +67,7 @@ class LoggerClientTrigger(PrimitiveInstruction):
 @dataclass
 class UpdateRealInventory(PrimitiveInstruction):
     name:str
+    
+@dataclass
+class Capture(PrimitiveInstruction):
+    i_capture:bool
