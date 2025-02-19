@@ -82,6 +82,7 @@ class TrajectoryRecordsService(Node):
             }
         self.counter += 1  # Increment the counter
         unique_id = str(self.counter)
+        print(f"Unique ID: {unique_id}")
         pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
         if pkg_path is None:
             raise RuntimeError(f"Invalid package path")
@@ -124,8 +125,14 @@ class TrajectoryRecordsService(Node):
         request = ActionTraj.Request()
         request.traj = traj
         future = traj_client.call_async(request)
+        print(f"Playing trajectory with UUID: {uuid}")
         rclpy.spin_until_future_complete(self, future)
-        resp.success = True
+        if future.result() is not None:
+            self.get_logger().info(f"Response: {future.result().success}")
+            resp.success = future.result().success
+        else:
+            self.get_logger().error(f"Service call failed: {future.exception()}")
+            resp.success = False
         return resp
 
     def load_path(self, req, resp):

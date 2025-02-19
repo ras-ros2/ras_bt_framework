@@ -29,6 +29,8 @@ from ..behavior_utility.yaml_parser import read_yaml_to_pose_dict
 
 from ament_index_python import get_package_share_directory
 from ..behavior_template.port import PortData,PortEntry,RefPortEntry
+from ..behaviors.ports import PortPoseCfg
+from copy import deepcopy
 
 class SaySomethingSequence(BehaviorModuleSequence):
     def __init__(self,message_entry):
@@ -57,7 +59,35 @@ class RotateEffectorSequence(BehaviorModuleSequence):
         self.add_children([
             RotateEffector(i_rotation_angle=1.8),
             ])
-    
+
+class PickSequence(BehaviorModuleSequence):
+    def __init__(self,src_pose:PortPoseCfg,clearance:float,height:float):
+        super().__init__()
+        clearance_pose = deepcopy(src_pose)
+        clearance_pose.pose.z += clearance
+        pick_pose = deepcopy(src_pose)
+        pick_pose.pose.z += height
+        self.add_children([
+            MoveToPose(i_pose=clearance_pose),
+            MoveToPose(i_pose=src_pose),
+            Trigger(i_trigger=True),
+            MoveToPose(i_pose=pick_pose),
+            ])
+        print(self)
+
+class PlaceSequence(BehaviorModuleSequence):
+    def __init__(self,dest_pose:PortPoseCfg,clearance:float):
+        super().__init__()
+        clearance_pose = deepcopy(dest_pose)
+        clearance_pose.pose.z += clearance
+        self.add_children([
+            MoveToPose(i_pose=clearance_pose),
+            MoveToPose(i_pose=dest_pose),
+            Trigger(i_trigger=False),
+            MoveToPose(i_pose=clearance_pose),
+            ])
+        print(self)
+
 class PressButton(BehaviorModuleSequence):
     def __init__(self,pose:Pose,travel_length):
         super().__init__()

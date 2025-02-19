@@ -21,7 +21,11 @@ Email: info@opensciencestack.org
 
 from ..behavior_template.module import BehaviorModuleSequence
 from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger, MoveToJointState
-from typing import List
+from ..behaviors.modules import PickSequence,PlaceSequence
+from typing import List,Dict
+from ..behavior_utility.grid_parser import GridConfig
+from .ports import PortPoseCfg
+from copy import deepcopy
 
 class TargetPoseMap(object):
     def __init__(self):
@@ -43,6 +47,71 @@ class TargetPoseMap(object):
         move2pose_sequence = BehaviorModuleSequence()
         move2pose_sequence.add_children([self.move2pose_module(pose) for pose in poses])
         return move2pose_sequence
+
+    def pick_module(self,pose:str,clearance:float=0.10,height:float=0.10):
+        if pose in self.pose_map:
+            return PickSequence(pose,clearance=clearance,height=height)
+        else:
+            raise ValueError(f"Invalid pose name {pose}")
+    
+    def place_module(self,pose:str,clearance:float=0.10,height:float=0.10):
+        if pose in self.pose_map:
+            return PlaceSequence(pose,clearance=clearance,height=height)
+        else:
+            raise ValueError(f"Invalid pose name {pose}")
+        
+    
+
+class GridLocationMap(object):
+    def __init__(self,stack_height):
+        self.grid_pose_map : Dict[str,TargetPoseMap] = {}
+        self.stack_height = stack_height
+    
+    def register_grid(self,grid_name,grid:GridConfig):
+        pose_map = TargetPoseMap()
+        
+        for location_name,location in grid.locations.items():
+            pose_config = deepcopy(grid.pose)
+            pose_config.x += location.x
+            pose_config.y += location.y
+            pose = PortPoseCfg(pose=pose_config)
+            pose_map.register_pose(location_name,pose)
+        self.grid_pose_map[grid_name] = pose_map
+    
+    def move2location(self,grid:str,location:str):
+        if grid in self.grid_pose_map:
+            return self.grid_pose_map[grid].move2pose_module(location)
+        else:
+            raise ValueError(f"Invalid grid name {grid}")
+    def move2location_sequence(self,grid:str,locations:List[str]):
+        if grid in self.grid_pose_map:
+            return self.grid_pose_map[grid].move2pose_sequence_module(locations)
+        else:
+            raise ValueError(f"Invalid grid name {grid}")
+    
+    def pick_location(self,grid:str,location:str,level:int=0,clearance:float=0.07,height:float=0.07):
+        if grid in self.grid_pose_map:
+            pose_map = self.grid_pose_map[grid].pose_map
+            if location in pose_map:
+                pose : PortPoseCfg = deepcopy(pose_map[location])
+                pose.pose.z += level*self.stack_height
+                return PickSequence(pose,clearance=clearance,height=height)
+            else:
+                raise ValueError(f"Invalid location name {location}")
+        else:
+            raise ValueError(f"Invalid grid name {grid}")
+    
+    def place_location(self,grid:str,location:str,level:int=0,clearance:float=0.07):
+        if grid in self.grid_pose_map:
+            pose_map = self.grid_pose_map[grid].pose_map
+            if location in pose_map:
+                pose : PortPoseCfg = deepcopy(pose_map[location])
+                pose.pose.z += level*self.stack_height
+                return PlaceSequence(pose,clearance=clearance)
+            else:
+                raise ValueError(f"Invalid location name {location}")
+        else:
+            raise ValueError(f"Invalid grid name {grid}")
 
 def rotate(angle:float):
     return RotateEffector(i_rotation_angle=angle)

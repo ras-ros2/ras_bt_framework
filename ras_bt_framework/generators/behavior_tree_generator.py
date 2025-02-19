@@ -90,7 +90,7 @@ class BehaviorTreeGenerator(object):
         def  _iterate_tree(behavior:BehaviorModule|BehaviorModuleSequence,parent_elem:ElementTree):
             behavior = self.portman.get_serialized_module(behavior)
             if isinstance(behavior,BehaviorModuleCollection):
-                new_tree,subtree = tree_gen.new_subtree(behavior.get_type_info(),parent_elem,behavior.get_port_map())
+                new_tree,subtree = tree_gen.new_subtree(behavior.uid,parent_elem,behavior.get_port_map())
                 collection_elem = None
                 if isinstance(behavior,BehaviorModuleSequence):
                     collection_elem = tree_gen.add_sequence(new_tree)

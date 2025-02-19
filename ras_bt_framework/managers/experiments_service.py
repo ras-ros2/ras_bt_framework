@@ -46,10 +46,15 @@ class ExperimentService(Node):
     def load_exp(self, req, resp):
         exp_id = req.exepriment_id
         path = os.path.join(RAS_CONFIGS_PATH,"experiments",f"{exp_id}.yaml")
+        if not Path(path).exists():
+            self.get_logger().error("Experiment Not Found")
+            resp.success = False
+            return resp
         # print(path)
-        pose_dict,targets = read_yaml_to_pose_dict(path)
-        self.batman.generate_module_from_keywords(targets,pose_dict)
+        pose_dict,targets,grid_dict = read_yaml_to_pose_dict(path)
+        self.batman.generate_module_from_keywords(targets,pose_dict,grid_dict)
         self.get_logger().info("Experiment Loaded...")
+        resp.success = True
         return resp
     
     def bt_execution_callback(self, req, resp):

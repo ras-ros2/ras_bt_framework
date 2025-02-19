@@ -47,7 +47,6 @@ class BehaviorBase(Behaviour,ABC):
 
 @dataclass(kw_only=True)
 class BehaviorModule(BehaviorBase,ABC):
-
     @staticmethod
     def _check_ports(decl_set:set,def_dict:dict):
         if "name" in decl_set:
@@ -63,6 +62,7 @@ class BehaviorModule(BehaviorBase,ABC):
             
 
     def __post_init__(self):
+        self.uid = self.get_type_info()
         self._input_port_names = set()
         self._output_port_names = set()
         self._input_ports = {}

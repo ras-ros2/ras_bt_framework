@@ -97,8 +97,8 @@ namespace ras_bt_framework
                     request, std::bind(&MoveToJointState::move_to_joint_state_response, this,
                                         std::placeholders::_1));  
 
-            if (rclcpp::spin_until_future_complete(node_, result_future) ==
-                rclcpp::FutureReturnCode::SUCCESS)
+            if ((rclcpp::spin_until_future_complete(node_, result_future) ==
+                rclcpp::FutureReturnCode::SUCCESS)&&(result_future.get()->success))
             {
             return BT::NodeStatus::SUCCESS;
             }

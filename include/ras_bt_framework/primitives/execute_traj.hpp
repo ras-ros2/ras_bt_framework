@@ -67,8 +67,8 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
             request, std::bind(&ExecuteTrajectory::play_traj_response, this,
                                 std::placeholders::_1));  
 
-    if (rclcpp::spin_until_future_complete(node_, result_future) ==
-    rclcpp::FutureReturnCode::SUCCESS)
+    if ((rclcpp::spin_until_future_complete(node_, result_future) ==
+    rclcpp::FutureReturnCode::SUCCESS)&&(result_future.get()->success))
     {
 
     auto request = std::make_shared<ras_interfaces::srv::TrajLog::Request>();
@@ -78,7 +78,10 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     auto result_future = client_log->async_send_request(
     request, std::bind(&ExecuteTrajectory::log_response, this,
                     std::placeholders::_1));
+    if ((rclcpp::spin_until_future_complete(node_, result_future) ==
+    rclcpp::FutureReturnCode::SUCCESS)&&(result_future.get()->success)){
     return BT::NodeStatus::SUCCESS;
+    }
     }
     return BT::NodeStatus::FAILURE;
    }

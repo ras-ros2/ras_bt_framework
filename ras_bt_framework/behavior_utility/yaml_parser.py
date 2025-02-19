@@ -24,6 +24,9 @@ Email: info@opensciencestack.org
 import os
 import yaml
 import tf_transformations
+from .grid_parser import GridConfig
+from ..behaviors.ports import PortPoseCfg
+from ras_common.config.loaders.common import PoseConfig
 
 
 def read_yaml_to_pose_dict(path):
@@ -35,17 +38,21 @@ def read_yaml_to_pose_dict(path):
     
     pose_dict = {}
     for pose_name, pose_values in data['Poses'].items():
-        qx, qy, qz, qw = tf_transformations.quaternion_from_euler(pose_values['roll'], pose_values['pitch'], pose_values['yaw'])
-        pose_dict[pose_name] = ",".join(map(str,[
-            pose_values['x'],
-            pose_values['y'],
-            pose_values['z'],
-            qx, qy, qz, qw
-        ]))
+        # qx, qy, qz, qw = tf_transformations.quaternion_from_euler(pose_values['roll'], pose_values['pitch'], pose_values['yaw'])
+        # pose_dict[pose_name] = ",".join(map(str,[
+        #     pose_values['x'],
+        #     pose_values['y'],
+        #     pose_values['z'],
+        #     qx, qy, qz, qw
+        # ]))
+        pose_dict[pose_name] = PortPoseCfg(pose=PoseConfig.from_dict(pose_values))
 
     if 'targets' not in data:
         raise KeyError("The key 'targets' is missing from the YAML file.")
-
+    grid_dict = {}
+    if "Grids" in data:
+        for grid_name, grid_values in data['Grids'].items():
+            grid_dict[grid_name] = GridConfig.from_dict(grid_values)
     # target_pose = []
 
     # for i in data["targets"]:
@@ -60,4 +67,4 @@ def read_yaml_to_pose_dict(path):
     #             if j == i:
     #                 target_pose.append(pose_dict[j])
 
-    return pose_dict,data["targets"]
+    return pose_dict,data["targets"],grid_dict
