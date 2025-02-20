@@ -24,6 +24,7 @@ from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger, MoveToJoin
 from ..behaviors.modules import PickSequence,PlaceSequence
 from typing import List,Dict
 from ..behavior_utility.grid_parser import GridConfig
+from ras_common.config.loaders.objects import ObjectTypes
 from .ports import PortPoseCfg
 from copy import deepcopy
 
@@ -63,9 +64,9 @@ class TargetPoseMap(object):
     
 
 class GridLocationMap(object):
-    def __init__(self,stack_height):
+    def __init__(self):
         self.grid_pose_map : Dict[str,TargetPoseMap] = {}
-        self.stack_height = stack_height
+        # self.stack_height = stack_height
     
     def register_grid(self,grid_name,grid:GridConfig):
         pose_map = TargetPoseMap()
@@ -89,24 +90,30 @@ class GridLocationMap(object):
         else:
             raise ValueError(f"Invalid grid name {grid}")
     
-    def pick_location(self,grid:str,location:str,level:int=0,clearance:float=0.07,height:float=0.07):
+    def pick_location(self,object:str,grid:str,location:str,level:int=0,clearance:float=0.07,height:float=0.07):
         if grid in self.grid_pose_map:
             pose_map = self.grid_pose_map[grid].pose_map
             if location in pose_map:
+                ObjectTypes.init()
+                object_config = ObjectTypes.get_object(object)
                 pose : PortPoseCfg = deepcopy(pose_map[location])
-                pose.pose.z += level*self.stack_height
+                height_delta = object_config.interaction_height + (level*object_config.max_height)
+                pose.pose.z += height_delta
                 return PickSequence(pose,clearance=clearance,height=height)
             else:
                 raise ValueError(f"Invalid location name {location}")
         else:
             raise ValueError(f"Invalid grid name {grid}")
     
-    def place_location(self,grid:str,location:str,level:int=0,clearance:float=0.07):
+    def place_location(self,object:str,grid:str,location:str,level:int=0,clearance:float=0.07):
         if grid in self.grid_pose_map:
             pose_map = self.grid_pose_map[grid].pose_map
             if location in pose_map:
+                ObjectTypes.init()
+                object_config = ObjectTypes.get_object(object)
                 pose : PortPoseCfg = deepcopy(pose_map[location])
-                pose.pose.z += level*self.stack_height
+                height_delta = object_config.interaction_height + (level*object_config.max_height)
+                pose.pose.z += height_delta
                 return PlaceSequence(pose,clearance=clearance)
             else:
                 raise ValueError(f"Invalid location name {location}")

@@ -55,7 +55,7 @@ class BaTMan(Node):
         self.manager = BehaviorTreeGenerator(self.alfred)
         self._action_client = ActionClient(self,BTInterface,"bt_executor")
         self.target_pose_map =  TargetPoseMap()
-        self.grid_location_map = GridLocationMap(stack_height=0.0252)
+        self.grid_location_map = GridLocationMap()
         self.keyword_module_gen = KeywordModuleGenerator()
         self.keyword_module_gen.register({
             "move2pose":self.target_pose_map.move2pose_module,

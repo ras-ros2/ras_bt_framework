@@ -73,7 +73,6 @@ class PickSequence(BehaviorModuleSequence):
             Trigger(i_trigger=True),
             MoveToPose(i_pose=pick_pose),
             ])
-        print(self)
 
 class PlaceSequence(BehaviorModuleSequence):
     def __init__(self,dest_pose:PortPoseCfg,clearance:float):
@@ -86,7 +85,6 @@ class PlaceSequence(BehaviorModuleSequence):
             Trigger(i_trigger=False),
             MoveToPose(i_pose=clearance_pose),
             ])
-        print(self)
 
 class PressButton(BehaviorModuleSequence):
     def __init__(self,pose:Pose,travel_length):
