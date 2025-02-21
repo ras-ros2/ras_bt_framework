@@ -36,14 +36,16 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     public:
     void initialize() override
     {
-        node_ = rclcpp::Node::make_shared("execute_traj");
+        // node_ = rclcpp::Node::make_shared("execute_traj");
         play_traj = node_->create_client<ras_interfaces::srv::PlayPath>("/play_trajectory");
         client_log = node_->create_client<ras_interfaces::srv::TrajLog>("/traj_status");
 
     }
-
+    void destroy() override
+    {
+    }
     int instruction_no;
-    ~ExecuteTrajectory() {}
+    
     
     static BT::PortsList providedPorts()
     {
@@ -65,8 +67,8 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
             request, std::bind(&ExecuteTrajectory::play_traj_response, this,
                                 std::placeholders::_1));  
 
-    if (rclcpp::spin_until_future_complete(node_, result_future) ==
-    rclcpp::FutureReturnCode::SUCCESS)
+    if ((rclcpp::spin_until_future_complete(node_, result_future) ==
+    rclcpp::FutureReturnCode::SUCCESS)&&(result_future.get()->success))
     {
 
     auto request = std::make_shared<ras_interfaces::srv::TrajLog::Request>();
@@ -76,7 +78,10 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     auto result_future = client_log->async_send_request(
     request, std::bind(&ExecuteTrajectory::log_response, this,
                     std::placeholders::_1));
+    if ((rclcpp::spin_until_future_complete(node_, result_future) ==
+    rclcpp::FutureReturnCode::SUCCESS)&&(result_future.get()->success)){
     return BT::NodeStatus::SUCCESS;
+    }
     }
     return BT::NodeStatus::FAILURE;
    }
@@ -88,7 +93,6 @@ NEW_PRIMITIVE_DECL(ExecuteTrajectory)
     }
 
 private:
-    rclcpp::Node::SharedPtr node_;
     rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedPtr play_traj;
     rclcpp::Client<ras_interfaces::srv::TrajLog>::SharedPtr client_log;
     

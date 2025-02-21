@@ -35,6 +35,7 @@ from rosidl_runtime_py.set_message import set_message_fields
 from builtin_interfaces.msg import Duration
 from rclpy.callback_groups import ReentrantCallbackGroup
 from std_srvs.srv import SetBool
+from ras_common.package.utils import get_cmake_python_pkg_source_dir
 
 
 
@@ -81,7 +82,11 @@ class TrajectoryRecordsService(Node):
             }
         self.counter += 1  # Increment the counter
         unique_id = str(self.counter)
-        with open(f"/ras_sim_lab/ros2_ws/src/ras_bt_framework/xml/trajectory/{unique_id}.txt", 'w') as file:
+        print(f"Unique ID: {unique_id}")
+        pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
+        if pkg_path is None:
+            raise RuntimeError(f"Invalid package path")
+        with open(f"{str(pkg_path)}/xml/trajectory/{unique_id}.txt", 'w') as file:
             file.write(f"{trajectory_data}")
 
     def load_trajectory(self, uuid: str) -> JointTrajectory:
@@ -120,8 +125,14 @@ class TrajectoryRecordsService(Node):
         request = ActionTraj.Request()
         request.traj = traj
         future = traj_client.call_async(request)
+        print(f"Playing trajectory with UUID: {uuid}")
         rclpy.spin_until_future_complete(self, future)
-        resp.success = True
+        if future.result() is not None:
+            self.get_logger().info(f"Response: {future.result().success}")
+            resp.success = future.result().success
+        else:
+            self.get_logger().error(f"Service call failed: {future.exception()}")
+            resp.success = False
         return resp
 
     def load_path(self, req, resp):

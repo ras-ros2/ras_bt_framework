@@ -77,10 +77,9 @@ namespace ras_bt_framework
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::SKIPPED;
                 break;
             default:
-
                 ret_status.data = ras_interfaces::msg::BTNodeStatus::IDLE;
-            return ret_status;
         }
+        return ret_status;
     }
 
     BTExecutor::BTSession::BTSession(const std::string& _bt_path, BTIGoalHandlePtr _goal_handle) :
@@ -159,12 +158,13 @@ namespace ras_bt_framework
         BT::NodeStatus status = BT::NodeStatus::RUNNING;
         switch(request->exec_mode){}; //TODO: Implement this for dynamic task execution
         RCLCPP_INFO(this->get_logger(), "Executing tick");
-        status = bt_session_->tree.tickOnce();
+        status = bt_session_->tree.tickExactlyOnce();
         // if(bt_session_->first){
         //     bt_session_->first = false;
         //     status = BT::NodeStatus::RUNNING;
         //     RCLCPP_INFO(this->get_logger(), "Force Status: %d", status);
         // }
+        RCLCPP_INFO(this->get_logger(), "preStatus: %d", status);
         feedback->status = cast_status(status);
         response->status = feedback->status;
         response->current_stack = request->target_stack;

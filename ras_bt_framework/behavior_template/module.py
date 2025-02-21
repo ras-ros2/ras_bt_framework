@@ -22,14 +22,16 @@ Email: info@opensciencestack.org
 from  dataclasses import dataclass, field
 from py_trees.behaviour import Behaviour
 from py_trees.composites import Composite,Sequence
+from .port import Port,RefPortEntry
 from abc import ABC,abstractmethod
 from typing import List,ClassVar,Set,Dict
 import re
+from geometry_msgs.msg import Pose
 
-@dataclass
+@dataclass(kw_only=True)
 class BehaviorBase(Behaviour,ABC):
     type_name: ClassVar[str] = field(default=None)
-
+    
     @classmethod
     def get_type_info(cls):
         if cls.type_name is None:
@@ -38,20 +40,17 @@ class BehaviorBase(Behaviour,ABC):
     
     def update(self):
         return
+    
+    def add_child(self, child):
+        return
 
 
 @dataclass(kw_only=True)
 class BehaviorModule(BehaviorBase,ABC):
-    input_port_names: ClassVar[Set[str]] = field(default=set())
-    output_port_names: ClassVar[Set[str]] = field(default=set())
-    input_ports: Dict[str,str] = field(default_factory=dict)
-    output_ports: Dict[str,str] = field(default_factory=dict)
-    uid: str = field(default=None)
-
     @staticmethod
     def _check_ports(decl_set:set,def_dict:dict):
         if "name" in decl_set:
-            raise ValueError("Port name 'name' is reserved for uid")
+            raise ValueError(f"port_name 'name' is reserved for unique id")
         def_set = set(def_dict.keys())
         if not def_set.issuperset(decl_set):
             raise ValueError(f"Missing ports: {decl_set - def_set}")
@@ -60,55 +59,70 @@ class BehaviorModule(BehaviorBase,ABC):
             print(f"WARNING: Undeclared ports: {undecl_keys}")
             for key in undecl_keys:
                 del def_dict[key]
+            
+
     def __post_init__(self):
-        if self.uid is None:
-            self.uid = self.get_type_info()
-        if len(self.input_port_names.intersection(self.output_port_names)) > 0:
-            raise ValueError(f"Duplicate ports: {self.input_port_names.intersection(self.output_port_names)}")
-        self._check_ports(self.__class__.input_port_names,self.input_ports)
-        self._check_ports(self.__class__.output_port_names,self.output_ports)
+        self.uid = self.get_type_info()
+        self._input_port_names = set()
+        self._output_port_names = set()
+        self._input_ports = {}
+        self._output_ports = {}
+
+        for _k in self.__dict__.keys():
+            if _k.startswith("i_"):
+                self._input_port_names.add(_k[2:])
+            elif _k.startswith("o_"):
+                self._output_port_names.add(_k[2:])
+
+        if len(self._input_port_names.intersection(self._output_port_names)) > 0:
+            raise ValueError(f"Duplicate ports: {self._input_port_names.intersection(self._output_port_names)}")
+        for _k, _v in self.__dict__.items():
+            if _k.startswith("i_"):
+                self._input_ports[_k[2:]] = _v
+            elif _k.startswith("o_"):
+                self._output_ports[_k[2:]] = _v
+            
+        self._check_ports(self._input_port_names, self._input_ports)
+        self._check_ports(self._output_port_names, self._output_ports)
+
 
     def get_port_map(self):
-        return {**self.input_ports,**self.output_ports}
+        return {**self._input_ports,**self._output_ports}
 
 @dataclass
 class BehaviorModuleCollection(Composite,BehaviorModule):
-    output_port_values : Dict[str,str] = field(default_factory=dict)
     children: List[BehaviorModule] = field(default_factory=list)
     out_children: List[BehaviorModule] = field(default_factory=list,init=False)
 
     def __post_init__(self):
         super().__post_init__()
         from .instruction import ScriptInstruction
-        ref_set = set(self.output_port_values.keys())
-        decl_set = set(self.output_port_names)
-        if not decl_set.issuperset(ref_set):
-            raise ValueError(f"Missing ports values: {ref_set - decl_set}")
-        undecl_keys = ref_set - decl_set
-        if len(undecl_keys) > 0:
-            print(f"WARNING: Undeclared ports: {undecl_keys}")
-            for key in undecl_keys:
-                del self.output_port_values[key]
-        pattern = r"^\{([a-zA-Z_][a-zA-Z0-9_]*)\}$"
-        
-        for port_name in self.output_port_names:
-            value = self.output_port_values[port_name]
-            if isinstance(value,str):
-                key_match = re.fullmatch(pattern,value)
-                if isinstance(key_match,re.Match):
-                    value = key_match.group(1)
+        for _port_name,_value in self._output_ports.items():
+            if isinstance(_value,RefPortEntry):
+                self.out_children.append(ScriptInstruction(code=_value.ref_serialize()))
             else:
-                raise ValueError(f"Invalid output port value: {value}")
-            self.out_children.append(ScriptInstruction(code=f" {port_name}:={value} "))
+                raise ValueError(f"Invalid output port type: {type(_value)} for {_port_name}.\n Output ports of collection should be of type {RefPortEntry}")
+
+    def add_children(self, children: List[BehaviorModule]):
+        if isinstance(children, list):
+            for child in children:
+                self.add_children(child)
+        elif isinstance(children, BehaviorModule):
+            self.children.append(children)
+        else:
+            raise ValueError(f"Invalid type of children: {type(children)}")
 
     def get_port_map(self):
-        return {**self.input_ports,**self.output_ports}
+        return BehaviorModule.get_port_map(self)
 
     def iterate(self):
         for child in self.children:
             yield child
         for child in self.out_children:
             yield child
+
+    def add_child(self, child):
+        return self.add_children(child)
     
     def add_children(self, children:List[BehaviorModule]|BehaviorModule):
         if isinstance(children,list):

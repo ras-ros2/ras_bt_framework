@@ -62,11 +62,14 @@ namespace ras_bt_framework
         void initialize() override
         {
             // Initialize other members here, like the ROS node
-            node_ = rclcpp::Node::make_shared("move_to_pose_node");
+            // node_ = rclcpp::Node::make_shared("move_to_pose_node");
+            RCLCPP_INFO(node_->get_logger(), "MoveToPose initialized");
             move_to_pose = node_->create_client<ras_interfaces::srv::PoseReq>("/create_traj");
         }
 
-        ~MoveToPose() {}
+        void destroy() override
+        {
+        }
         
         static BT::PortsList providedPorts()
         {
@@ -74,7 +77,7 @@ namespace ras_bt_framework
         }
         
         virtual BT::NodeStatus tick() override {
-            std::cout << ("MoveToPose") << std::endl;
+            std::cout << (this->name()) << std::endl;
 
             auto msg = getInput<geometry_msgs::msg::Pose>("pose");
 
@@ -89,8 +92,8 @@ namespace ras_bt_framework
                     request, std::bind(&MoveToPose::move_to_pose_response, this,
                                         std::placeholders::_1));  
 
-            if (rclcpp::spin_until_future_complete(node_, result_future) ==
-                rclcpp::FutureReturnCode::SUCCESS)
+            if ((rclcpp::spin_until_future_complete(node_, result_future) ==
+                rclcpp::FutureReturnCode::SUCCESS)&&(result_future.get()->success))
             {
             return BT::NodeStatus::SUCCESS;
             }
@@ -101,8 +104,8 @@ namespace ras_bt_framework
             // Handle the response if needed
         }
 
+
     private:
-        rclcpp::Node::SharedPtr node_;  // Node shared pointer to create clients
         rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedPtr move_to_pose;
 
     END_PRIMITIVE_DECL

@@ -31,6 +31,9 @@ NEW_PRIMITIVE_DECL(ThinkSomethingToSay)
     public:
     void initialize() override
   {}
+  void destroy() override
+    {
+    }
 
   BT::NodeStatus tick() override
   {

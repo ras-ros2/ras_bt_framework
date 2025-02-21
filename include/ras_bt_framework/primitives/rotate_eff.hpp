@@ -35,11 +35,13 @@ namespace ras_bt_framework
     public:
     void initialize() override
         {
-            node_ = rclcpp::Node::make_shared("rotate_effector_node");
+            // node_ = rclcpp::Node::make_shared("rotate_effector_node");
             rotate_eff_client_ = node_->create_client<ras_interfaces::srv::RotateEffector>("/rotate_effector");
         }
 
-        ~RotateEffector() {}
+        void destroy() override
+    {
+    }
 
         static BT::PortsList providedPorts()
         {
@@ -94,7 +96,6 @@ namespace ras_bt_framework
         }
 
     private:
-        rclcpp::Node::SharedPtr node_;
         rclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedPtr rotate_eff_client_;
 END_PRIMITIVE_DECL
 
