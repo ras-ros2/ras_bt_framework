@@ -55,6 +55,25 @@ def validate_pose_values(pose_values):
                 f"Invalid value for {key}: {value}. Must be between {min_val} and {max_val} for {LabSetup.robot_name} robot"
             )
 
+def convert_pose_to_meters(pose_values):
+    """
+    Converts pose values from centimeters to meters.
+
+    Args:
+        pose_values (dict): A dictionary containing pose values in centimeters.
+
+    Returns:
+        dict: A dictionary with pose values converted to meters.
+    """
+    return {
+        'x': pose_values['x'] / 100,  # Convert cm to meters
+        'y': pose_values['y'] / 100,
+        'z': pose_values['z'] / 100,
+        'roll': pose_values['roll'],  # Assuming roll, pitch, yaw are in radians
+        'pitch': pose_values['pitch'],
+        'yaw': pose_values['yaw']
+    }
+
 def read_yaml_to_pose_dict(path):
     """
     Read and parse a YAML experiment file containing poses and target actions.
@@ -116,6 +135,10 @@ def read_yaml_to_pose_dict(path):
     
     pose_dict = {}
     for pose_name, pose_values in data['Poses'].items():
+        
+        # Convert pose values from centimeters to meters
+        pose_values = convert_pose_to_meters(pose_values)
+        
         validate_pose_values(pose_values)
         pose_dict[pose_name] = PortPoseCfg(pose=PoseConfig.from_dict(pose_values))
 
