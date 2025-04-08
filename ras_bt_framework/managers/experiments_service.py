@@ -1,23 +1,3 @@
-"""
-Copyright (C) 2024 Harsh Davda
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For inquiries or further information, you may contact:
-Harsh Davda
-Email: info@opensciencestack.org
-"""
 import os
 from ras_bt_framework.behavior_utility.yaml_parser import read_yaml_to_pose_dict
 from ras_bt_framework.behavior_utility.update_bt import update_xml, update_bt
@@ -35,7 +15,24 @@ from ras_common.globals import RAS_CONFIGS_PATH
 
 
 class ExperimentService(Node):
+    """
+    A ROS2 service node for managing and executing robot experiments.
+    
+    This service provides functionality to load experiments from YAML files,
+    execute behavior trees, and manage experiment-related services.
+    
+    Attributes:
+        my_callback_group (ReentrantCallbackGroup): Callback group for handling service requests
+        counter_reset_client (Client): Client for resetting the experiment counter
+        batman (BaTMan): Instance of BaTMan for managing experiment sequences
+    """
+    
     def __init__(self):
+        """
+        Initialize the ExperimentService node.
+        
+        This sets up the necessary services and clients for experiment management.
+        """
         super().__init__("experiment_service")
         self.my_callback_group = ReentrantCallbackGroup()
         self.create_service(SetBool, "/test_experiment", self.bt_execution_callback,callback_group=self.my_callback_group)
@@ -44,6 +41,16 @@ class ExperimentService(Node):
         self.batman = BaTMan()
 
     def load_exp(self, req, resp):
+        """
+        Load an experiment configuration and generate behavior modules.
+        
+        Args:
+            req: Service request containing the experiment ID
+            resp: Service response indicating success or failure
+            
+        Returns:
+            The updated service response with success status
+        """
         exp_id = req.exepriment_id
         path = os.path.join(RAS_CONFIGS_PATH,"experiments",f"{exp_id}.yaml")
         if not Path(path).exists():
@@ -51,13 +58,23 @@ class ExperimentService(Node):
             resp.success = False
             return resp
         # print(path)
-        pose_dict,targets,grid_dict = read_yaml_to_pose_dict(path)
-        self.batman.generate_module_from_keywords(targets,pose_dict,grid_dict)
+        pose_dict, target_pose = read_yaml_to_pose_dict(path)
+        self.batman.generate_module_from_keywords(target_pose, pose_dict)
         self.get_logger().info("Experiment Loaded...")
         resp.success = True
         return resp
     
     def bt_execution_callback(self, req, resp):
+        """
+        Execute the behavior tree for the loaded experiment.
+        
+        Args:
+            req: Service request to execute the behavior tree
+            resp: Service response indicating success or failure
+            
+        Returns:
+            The updated service response with success status
+        """
         self.get_logger().info("Batman Called ...")
         if isinstance(self.batman.main_module, type(None)):
             self.get_logger().error("Load Experiment First....")

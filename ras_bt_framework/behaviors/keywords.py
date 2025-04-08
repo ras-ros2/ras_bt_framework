@@ -1,41 +1,48 @@
-"""
-Copyright (C) 2024 Harsh Davda
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For inquiries or further information, you may contact:
-Harsh Davda
-Email: info@opensciencestack.org
-"""
-
 from ..behavior_template.module import BehaviorModuleSequence
 from ..behaviors.primitives import MoveToPose,RotateEffector,Trigger, MoveToJointState
 from ..behaviors.modules import PickSequence,PlaceSequence
 from typing import List,Dict
-from ..behavior_utility.grid_parser import GridConfig
 from ras_common.config.loaders.objects import ObjectTypes
 from .ports import PortPoseCfg
 from copy import deepcopy
 
 class TargetPoseMap(object):
+    """
+    A class to manage and execute robot poses and sequences.
+    
+    This class provides functionality to register poses and create behavior modules
+    for various robot actions including moving to poses, picking, and placing objects.
+    
+    Attributes:
+        pose_map (dict): Dictionary mapping pose names to their corresponding pose configurations
+    """
+    
     def __init__(self):
         self.pose_map = {}
     
     def register_pose(self,pose_name,pose):
+        """
+        Register a new pose with the pose map.
+        
+        Args:
+            pose_name (str): Name identifier for the pose
+            pose: Pose configuration to be registered
+        """
         self.pose_map[pose_name] = pose
     
     def move2pose_module(self,pose:str):
+        """
+        Create a MoveToPose module for moving to a specific pose.
+        
+        Args:
+            pose (str): Name of the registered pose to move to
+            
+        Returns:
+            MoveToPose: Behavior module for moving to the specified pose
+            
+        Raises:
+            ValueError: If pose name is invalid or pose input type is incorrect
+        """
         if (isinstance(pose,str)):
             if pose in self.pose_map:
                 return MoveToPose(i_pose=self.pose_map[pose])
@@ -45,93 +52,96 @@ class TargetPoseMap(object):
             raise ValueError(f"Invalid pose input type {type(pose)}")
         
     def move2pose_sequence_module(self,poses:List[str]):
+        """
+        Create a sequence of MoveToPose modules for multiple poses.
+        
+        Args:
+            poses (List[str]): List of pose names to move to in sequence
+            
+        Returns:
+            BehaviorModuleSequence: Sequence of move-to-pose behaviors
+        """
         move2pose_sequence = BehaviorModuleSequence()
         move2pose_sequence.add_children([self.move2pose_module(pose) for pose in poses])
         return move2pose_sequence
 
     def pick_module(self,pose:str,clearance:float=0.10,height:float=0.10):
+        """
+        Create a pick sequence module for grasping objects.
+        
+        Args:
+            pose (str): Name of the pose where the object is located
+            clearance (float, optional): Distance to move before/after picking. Defaults to 0.10.
+            height (float, optional): Height to lift the object. Defaults to 0.10.
+            
+        Returns:
+            PickSequence: Behavior module for picking sequence
+            
+        Raises:
+            ValueError: If pose name is invalid
+        """
         if pose in self.pose_map:
             return PickSequence(pose,clearance=clearance,height=height)
         else:
             raise ValueError(f"Invalid pose name {pose}")
     
     def place_module(self,pose:str,clearance:float=0.10,height:float=0.10):
+        """
+        Create a place sequence module for releasing objects.
+        
+        Args:
+            pose (str): Name of the pose where the object should be placed
+            clearance (float, optional): Distance to move before/after placing. Defaults to 0.10.
+            height (float, optional): Height to lower the object. Defaults to 0.10.
+            
+        Returns:
+            PlaceSequence: Behavior module for placing sequence
+            
+        Raises:
+            ValueError: If pose name is invalid
+        """
         if pose in self.pose_map:
             return PlaceSequence(pose,clearance=clearance,height=height)
         else:
             raise ValueError(f"Invalid pose name {pose}")
-        
-    
-
-class GridLocationMap(object):
-    def __init__(self):
-        self.grid_pose_map : Dict[str,TargetPoseMap] = {}
-        # self.stack_height = stack_height
-    
-    def register_grid(self,grid_name,grid:GridConfig):
-        pose_map = TargetPoseMap()
-        
-        for location_name,location in grid.locations.items():
-            pose_config = deepcopy(grid.pose)
-            pose_config.x += location.x
-            pose_config.y += location.y
-            pose = PortPoseCfg(pose=pose_config)
-            pose_map.register_pose(location_name,pose)
-        self.grid_pose_map[grid_name] = pose_map
-    
-    def move2location(self,grid:str,location:str):
-        if grid in self.grid_pose_map:
-            return self.grid_pose_map[grid].move2pose_module(location)
-        else:
-            raise ValueError(f"Invalid grid name {grid}")
-    def move2location_sequence(self,grid:str,locations:List[str]):
-        if grid in self.grid_pose_map:
-            return self.grid_pose_map[grid].move2pose_sequence_module(locations)
-        else:
-            raise ValueError(f"Invalid grid name {grid}")
-    
-    def pick_location(self,object:str,grid:str,location:str,level:int=0,clearance:float=0.07,height:float=0.07):
-        if grid in self.grid_pose_map:
-            pose_map = self.grid_pose_map[grid].pose_map
-            if location in pose_map:
-                ObjectTypes.init()
-                object_config = ObjectTypes.get_object(object)
-                pose : PortPoseCfg = deepcopy(pose_map[location])
-                height_delta = object_config.interaction_height + (level*object_config.max_height)
-                pose.pose.z += height_delta
-                return PickSequence(pose,clearance=clearance,height=height)
-            else:
-                raise ValueError(f"Invalid location name {location}")
-        else:
-            raise ValueError(f"Invalid grid name {grid}")
-    
-    def place_location(self,object:str,grid:str,location:str,level:int=0,clearance:float=0.07):
-        if grid in self.grid_pose_map:
-            pose_map = self.grid_pose_map[grid].pose_map
-            if location in pose_map:
-                ObjectTypes.init()
-                object_config = ObjectTypes.get_object(object)
-                pose : PortPoseCfg = deepcopy(pose_map[location])
-                height_delta = object_config.interaction_height + (level*object_config.max_height)
-                pose.pose.z += height_delta
-                return PlaceSequence(pose,clearance=clearance)
-            else:
-                raise ValueError(f"Invalid location name {location}")
-        else:
-            raise ValueError(f"Invalid grid name {grid}")
 
 def rotate(angle:float):
+    """
+    Create a rotation behavior module.
+    
+    Args:
+        angle (float): Angle to rotate by in radians
+        
+    Returns:
+        RotateEffector: Behavior module for rotating the end effector
+    """
     return RotateEffector(i_rotation_angle=angle)
 
 def gripper(open:bool):
+    """
+    Create a gripper control behavior module.
+    
+    Args:
+        open (bool): True to open gripper, False to close gripper
+        
+    Returns:
+        Trigger: Behavior module for controlling the gripper
+    """
     return Trigger(i_trigger=open)
 
-# def home_joint_state():
-#     from ras_common.config.loaders.lab_setup import LabSetup
-#     LabSetup.init()
-#     return MoveToJointState(i_joint_names=','.join(map(str,LabSetup.conf.robot.home_joint_state.keys())),i_joint_values=','.join(map(str,LabSetup.conf.robot.home_joint_state.values())))
-
 def joint_state(joints:list):
+    """
+    Create a behavior module to move to a specific joint configuration.
+    
+    Args:
+        joints (list): List of joint angles in radians
+        
+    Returns:
+        MoveToJointState: Behavior module for moving to the specified joint configuration
+        
+    Raises:
+        ValueError: If the number of joints doesn't match the robot's configuration
+    """
     from ras_common.config.loaders.lab_setup import LabSetup
     LabSetup.init()
     joint_names = list(LabSetup.conf.robot.home_joint_state.keys())
@@ -140,15 +150,9 @@ def joint_state(joints:list):
     joint_state = ",".join([f"{joint_names[i]}:{joints[i]}" for i in range(len(joints))])
     return MoveToJointState(i_joint_state=joint_state)
 
-# def pick_object(object_name:str,dst:str):
-#     src = TargetPoseMap().pose_map[object_name]
-#     return BehaviorModuleSequence(children=[MoveToPose(input_ports={"pose":src}),
-#                                             Trigger(input_ports={"trigger":"True"}),
-#                                             MoveToPose(input_ports={"pose":dst}),
-#                                             Trigger(input_ports={"trigger":"False"})])
-
+# Mapping of keyword functions to their implementations
 keyword_mapping = {
-            "rotate":rotate,
-            "gripper":gripper,
-            'joint_state': joint_state
-            }
+    "rotate": rotate,
+    "gripper": gripper,
+    'joint_state': joint_state
+}
