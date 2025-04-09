@@ -62,24 +62,54 @@ class BatMan:
         
     def create_behavior_sequence(self, target_pose: List[Dict]) -> BehaviorModuleSequence:
         """
-        Create a behavior sequence from a list of target actions.
+        Create a behavior sequence from a list of target actions (supports new and legacy formats).
         
         Args:
             target_pose (List[Dict]): List of target actions to execute
-            
+
         Returns:
             BehaviorModuleSequence: Sequence of behavior modules to execute
-            
+
         Raises:
             ValueError: If an unknown target action is encountered
         """
         sequence = BehaviorModuleSequence()
-        
+
         for action in target_pose:
-            if isinstance(action, dict):
+            if not isinstance(action, dict):
+                raise ValueError("Invalid format in target_pose. Each entry must be a dictionary.")
+
+            # New format: has an 'action' key
+            if "action" in action:
+                act = action["action"].lower()
+
+                if act == "move":
+                    sequence.add_child(self.pose_map.move2pose_module({"from": action["from"], "to": action["to"]}))
+                elif act == "gripper":
+                    sequence.add_child(gripper(action["state"]))
+                elif act == "rotate":
+                    sequence.add_child(rotate(action["angle"]))
+                elif act == "joint_state":
+                    sequence.add_child(joint_state(action["values"]))
+                elif act == "pick":
+                    above = action["above"]
+                    at = action["at"]
+                    sequence.add_child(self.pose_map.move2pose_module({"from": above, "to": at}))
+                    sequence.add_child(gripper("close"))
+                    sequence.add_child(self.pose_map.move2pose_module({"from": at, "to": above}))
+                elif act == "place":
+                    above = action["above"]
+                    at = action["at"]
+                    sequence.add_child(self.pose_map.move2pose_module({"from": above, "to": at}))
+                    sequence.add_child(gripper("open"))
+                    sequence.add_child(self.pose_map.move2pose_module({"from": at, "to": above}))
+                else:
+                    raise ValueError(f"Unknown action type in YAML: {act}")
+
+            else:
                 key = list(action.keys())[0]
                 value = action[key]
-                
+
                 if key == "move2pose":
                     sequence.add_child(self.pose_map.move2pose_module(value))
                 elif key == "gripper":
@@ -90,11 +120,9 @@ class BatMan:
                     sequence.add_child(joint_state(value))
                 else:
                     raise ValueError(f"Unknown target action: {key}")
-            else:
-                raise ValueError("Invalid format in target_pose. Each entry must be a dictionary.")
-                
+
         return sequence
-        
+
     def execute_experiment(self, experiment_name: str) -> BehaviorModuleSequence:
         """
         Load and create a behavior sequence for an experiment.

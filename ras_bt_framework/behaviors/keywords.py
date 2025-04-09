@@ -150,9 +150,184 @@ def joint_state(joints:list):
     joint_state = ",".join([f"{joint_names[i]}:{joints[i]}" for i in range(len(joints))])
     return MoveToJointState(i_joint_state=joint_state)
 
+# New methods for the updated YAML format
+def Move(pose=None, from_pose=None, to_pose=None, **kwargs):
+    """
+    Create a movement behavior module from one pose to another.
+    
+    Args:
+        pose (str, optional): Name of the pose to move to (legacy parameter)
+        from_pose (str, optional): Starting pose
+        to_pose (str, optional): Target pose
+        **kwargs: Backward compatibility parameters:
+            from (str): Same as from_pose
+            to (str): Same as to_pose
+        
+    Returns:
+        BehaviorModuleSequence: Sequence of behaviors for moving to a pose
+        
+    Raises:
+        ValueError: If neither 'pose' nor both 'from_pose'/'from' and 'to_pose'/'to' are specified
+    """
+    # Support legacy 'from' and 'to' parameter names
+    from_val = from_pose
+    to_val = to_pose
+    
+    # Check if we're using the legacy format with 'from' and 'to' in kwargs
+    if 'from' in kwargs:
+        from_val = kwargs['from']
+    if 'to' in kwargs:
+        to_val = kwargs['to']
+    
+    # Add debug information
+    print(f"Move action parameters: pose={pose}, from={from_val}, to={to_val}")
+    
+    # Check if we're using the format with from and to values
+    if from_val is not None and to_val is not None:
+        # Ensure the poses exist in the target_pose_map
+        if from_val not in target_pose_map.pose_map:
+            raise ValueError(f"Invalid 'from' pose: {from_val}. Pose not found in target_pose_map.")
+        if to_val not in target_pose_map.pose_map:
+            raise ValueError(f"Invalid 'to' pose: {to_val}. Pose not found in target_pose_map.")
+        
+        move_sequence = BehaviorModuleSequence()
+        # Move from the starting pose to the target pose
+        move_sequence.add_children([
+            target_pose_map.move2pose_module(from_val),
+            target_pose_map.move2pose_module(to_val)
+        ])
+        
+        return move_sequence
+    
+    # Legacy support for just 'pose'
+    elif pose is not None:
+        # Ensure the pose exists in the target_pose_map
+        if pose not in target_pose_map.pose_map:
+            raise ValueError(f"Invalid 'pose': {pose}. Pose not found in target_pose_map.")
+        
+        move_sequence = BehaviorModuleSequence()
+        # Move to the target pose
+        move_sequence.add_children([target_pose_map.move2pose_module(pose)])
+        
+        return move_sequence
+    
+    else:
+        raise ValueError("Either 'pose' or both 'from'/'from_pose' and 'to'/'to_pose' must be specified for Move action")
+
+def Pick(above=None, at=None, **kwargs):
+    """
+    Create a pick behavior module for picking an object.
+    
+    Args:
+        above (str): Name of the pose above the object
+        at (str): Name of the pose at the object
+        **kwargs: Additional backward compatibility parameters
+        
+    Returns:
+        BehaviorModuleSequence: Sequence of behaviors for picking an object
+        
+    Raises:
+        ValueError: If required parameters are missing or pose names are invalid
+    """
+    # Handle different parameter formats
+    above_val = above
+    at_val = at
+    
+    # Check for parameters in kwargs for backward compatibility
+    if above is None and 'above' in kwargs:
+        above_val = kwargs['above']
+    if at is None and 'at' in kwargs:
+        at_val = kwargs['at']
+    
+    # Add debug information
+    print(f"Pick action parameters: above={above_val}, at={at_val}")
+    
+    if above_val is None or at_val is None:
+        raise ValueError("Both 'above' and 'at' must be specified for Pick action")
+    
+    # Ensure the poses exist in the target_pose_map
+    if above_val not in target_pose_map.pose_map:
+        raise ValueError(f"Invalid 'above' pose: {above_val}. Pose not found in target_pose_map.")
+    if at_val not in target_pose_map.pose_map:
+        raise ValueError(f"Invalid 'at' pose: {at_val}. Pose not found in target_pose_map.")
+    
+    pick_sequence = BehaviorModuleSequence()
+    # Move to the pose above the object
+    pick_sequence.add_children([
+        target_pose_map.move2pose_module(above_val),
+        # Open the gripper
+        gripper(True),
+        # Move to the object
+        target_pose_map.move2pose_module(at_val),
+        # Close the gripper
+        gripper(False),
+        # Move back to the pose above the object
+        target_pose_map.move2pose_module(above_val)
+    ])
+    
+    return pick_sequence
+
+def Place(above=None, at=None, **kwargs):
+    """
+    Create a place behavior module for placing an object.
+    
+    Args:
+        above (str): Name of the pose above the target location
+        at (str): Name of the pose at the target location
+        **kwargs: Additional backward compatibility parameters
+        
+    Returns:
+        BehaviorModuleSequence: Sequence of behaviors for placing an object
+        
+    Raises:
+        ValueError: If required parameters are missing or pose names are invalid
+    """
+    # Handle different parameter formats
+    above_val = above
+    at_val = at
+    
+    # Check for parameters in kwargs for backward compatibility
+    if above is None and 'above' in kwargs:
+        above_val = kwargs['above']
+    if at is None and 'at' in kwargs:
+        at_val = kwargs['at']
+    
+    # Add debug information
+    print(f"Place action parameters: above={above_val}, at={at_val}")
+    
+    if above_val is None or at_val is None:
+        raise ValueError("Both 'above' and 'at' must be specified for Place action")
+    
+    # Ensure the poses exist in the target_pose_map
+    if above_val not in target_pose_map.pose_map:
+        raise ValueError(f"Invalid 'above' pose: {above_val}. Pose not found in target_pose_map.")
+    if at_val not in target_pose_map.pose_map:
+        raise ValueError(f"Invalid 'at' pose: {at_val}. Pose not found in target_pose_map.")
+    
+    place_sequence = BehaviorModuleSequence()
+    # Move to the pose above the target location
+    place_sequence.add_children([
+        target_pose_map.move2pose_module(above_val),
+        # Move to the target location
+        target_pose_map.move2pose_module(at_val),
+        # Open the gripper
+        gripper(True),
+        # Move back to the pose above the target location
+        target_pose_map.move2pose_module(above_val)
+    ])
+    
+    return place_sequence
+
+# Create a global instance of TargetPoseMap to be used by the action functions
+target_pose_map = TargetPoseMap()
+
 # Mapping of keyword functions to their implementations
 keyword_mapping = {
     "rotate": rotate,
     "gripper": gripper,
-    'joint_state': joint_state
+    'joint_state': joint_state,
+    'Move': Move,
+    'Pick': Pick,
+    'Place': Place,
+    'move2pose': target_pose_map.move2pose_module  # Keep for backward compatibility
 }

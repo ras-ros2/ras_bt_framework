@@ -53,56 +53,109 @@ class KeyWordParam(object):
     default: object
     param: inspect.Parameter
 
-def keyword2module(keyword: Callable,identifier:str = None, params: object|Dict[str,object]|List[object] = None):
+def keyword2module(keyword: Callable, identifier: str = None, params: object|Dict[str,object]|List[object] = None):
+    """
+    Create a behavior module from a keyword function.
+    
+    This function handles different parameter formats and converts them to the appropriate
+    format for the keyword function.
+    
+    Args:
+        keyword (Callable): The keyword function to call
+        identifier (str, optional): The name of the keyword. Defaults to the function name.
+        params (object|Dict[str,object]|List[object], optional): The parameters for the keyword.
+            Can be a single value, a list of values, or a dictionary of named parameters.
+            
+    Returns:
+        BehaviorModule: The behavior module created by the keyword function
+        
+    Raises:
+        ValueError: If the keyword or parameters are invalid
+    """
     if not callable(keyword):
         raise ValueError(f"Invalid keyword type: {identifier} {type(keyword)}")
-    if not isinstance(identifier,str):
+    if not isinstance(identifier, str):
         identifier = keyword.__name__
+    
+    # Special case for action format keywords (Move, Pick, Place)
+    special_actions = ['Move', 'Pick', 'Place']
+    if identifier in special_actions and isinstance(params, dict):
+        print(f"Processing {identifier} with parameters: {params}")
+        try:
+            # Pass parameters directly to the keyword function
+            behavior_module = keyword(**params)
+            if not isinstance(behavior_module, BehaviorModule):
+                raise ValueError(f"Invalid module returned from {identifier}: {type(behavior_module)}")
+            return behavior_module
+        except Exception as e:
+            print(f"Error creating {identifier} module: {e}")
+            raise
+    
+    # Continue with standard parameter processing for other keywords
     kw_sig = inspect.signature(keyword)
     params_decl : Dict[str,KeyWordParam] = OrderedDict()
+    
+    # Skip parameter checks for VAR_KEYWORD parameters (like **kwargs)
+    has_var_kwargs = False
     for param in kw_sig.parameters.values():
-        if str(param).startswith('*'):
+        if param.kind == inspect.Parameter.VAR_KEYWORD:
+            has_var_kwargs = True
+            continue
+        if str(param).startswith('*') and param.kind != inspect.Parameter.VAR_KEYWORD:
             raise ValueError(f"keyword {identifier} expects an invalid ambiguous parameter {param}")
-        params_decl[param.name] = KeyWordParam(name=param.name,type=param.annotation if param.annotation != param.empty else None,
-                                default=param.default if param.default != param.empty else None ,param=param)
+        params_decl[param.name] = KeyWordParam(
+            name=param.name,
+            type=param.annotation if param.annotation != param.empty else None,
+            default=param.default if param.default != param.empty else None,
+            param=param
+        )
+    
     param_def = dict()
     behavior_module = None
+    
     if isinstance(params, type(None)):
-        return keyword2module(keyword,identifier,dict())
-    elif (not isinstance(params,Iterable)) or (isinstance(params,str)):
+        return keyword2module(keyword, identifier, dict())
+    elif (not isinstance(params, Iterable)) or (isinstance(params, str)):
         _key = next(iter(params_decl))
-        return keyword2module(keyword,identifier,{_key:params})
-    elif isinstance(params,Iterable):
-        if len(params_decl.keys())==1:
+        return keyword2module(keyword, identifier, {_key: params})
+    elif isinstance(params, Iterable):
+        if len(params_decl.keys()) == 1:
             _key = next(iter(params_decl.keys()))
-            if not isinstance(params,dict):
+            if not isinstance(params, dict):
                 if len(params) > 1:
                     raise ValueError(f"Keyword {identifier} expected 1 param, but got {len(params)}")
-                return keyword2module(keyword,identifier,{_key:params})
+                return keyword2module(keyword, identifier, {_key: params})
 
-        if not isinstance(params,dict):
+        if not isinstance(params, dict):
             _max_len = len(params)
             if _max_len > len(params_decl):
                 raise ValueError(f"Keyword {identifier} expected {len(params_decl)} params, but got {len(params)}")
             _iter = iter(params_decl.items())
             for _i in range(_max_len):
-                _n,_p = next(_iter)
+                _n, _p = next(_iter)
                 param_def[_n] = params[_i]
-            return keyword2module(keyword,identifier,param_def)
+            return keyword2module(keyword, identifier, param_def)
         else:
-            undef_params = set()
-            for _n,_p in params_decl.items():
-                if _n in params.keys():
-                    param_def[_n] = params[_n]
-                elif isinstance(_p.default,type(None)):
-                    undef_params.add(_n)
-                else:
-                    param_def[_n] = _p.default
-            if len(undef_params)!=0:
-                raise ValueError(f"undefined params for keyword {identifier}: {params}")
-        behavior_module = keyword(**param_def)
+            # For keywords with **kwargs, we don't need to validate all parameters
+            if has_var_kwargs:
+                print(f"Using **kwargs mode for {identifier} with params: {params}")
+                behavior_module = keyword(**params)
+            else:
+                undef_params = set()
+                for _n, _p in params_decl.items():
+                    if _n in params.keys():
+                        param_def[_n] = params[_n]
+                    elif isinstance(_p.default, type(None)):
+                        undef_params.add(_n)
+                    else:
+                        param_def[_n] = _p.default
+                if len(undef_params) != 0:
+                    raise ValueError(f"undefined params for keyword {identifier}: {params}")
+                behavior_module = keyword(**param_def)
     else:
         raise ValueError(f"Invalid keyword parameters: {params}")
+    
     if not isinstance(behavior_module, BehaviorModule):
         raise ValueError(f"Invalid keyword type {identifier}, expected BehaviorModule but got: {type(behavior_module)}")
+    
     return behavior_module

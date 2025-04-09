@@ -38,6 +38,9 @@ class KeywordModuleGenerator(object):
         elif callable(keyword):
             kw_sig = inspect.signature(keyword)
             for param in kw_sig.parameters.values():
+                # Skip checking for **kwargs parameter
+                if param.kind == inspect.Parameter.VAR_KEYWORD:
+                    continue
                 if str(param).startswith('*'):
                     raise ValueError(f"keyword {keyword} expects an invalid ambiguous parameter {param}") 
             if not isinstance(name,str):
@@ -46,25 +49,46 @@ class KeywordModuleGenerator(object):
         else:
             raise ValueError(f"Invalid keyword type: {keyword} {type(keyword)}")
 
-    def generate(self,name,keyword_seq:List[Dict[str,dict]]):
-        behavior_module : BehaviorModuleSequence= type(name,(BehaviorModuleSequence,),{})()
+    def generate(self, name, keyword_seq: List[Dict[str, dict]]):
+        behavior_module: BehaviorModuleSequence = type(name, (BehaviorModuleSequence,), {})()
         for _kw in keyword_seq:
-            identifier = None
-            params = None
-            if isinstance(_kw,str):
-                identifier = _kw
-                params = None
-            elif isinstance(_kw,dict):
-                if len(_kw)!=1:
-                    raise ValueError(f"Invalid keyword input: {_kw}. Expected a single key-value pair")
-                identifier,params = list(_kw.items())[0]
+            # Handle the new step format with action field
+            if isinstance(_kw, dict) and 'action' in _kw:
+                action = _kw['action']
+                params = {k: v for k, v in _kw.items() if k != 'action'}
+                
+                if action not in self.registered_keywords:
+                    raise ValueError(f"Unknown action: {action}")
+                
+                keyword = self.registered_keywords[action]
+                kw_module = keyword2module(keyword, action, params)
+                
+                if not isinstance(kw_module, BehaviorModule):
+                    raise ValueError(f"Invalid keyword module: {kw_module}")
+                
+                behavior_module.add_children(kw_module)
             else:
-                raise ValueError(f"Invalid keyword input: {_kw}. Expected a single key-value pair")
-            if identifier not in self.registered_keywords:
-                raise ValueError(f"Unknown keyword: {identifier}")
-            keyword = self.registered_keywords[identifier]
-            kw_module = keyword2module(keyword,identifier,params)
-            if not isinstance(kw_module,BehaviorModule):
-                raise ValueError(f"Invalid keyword module: {kw_module}")
-            behavior_module.add_children(kw_module)
+                identifier = None
+                params = None
+                if isinstance(_kw, str):
+                    identifier = _kw
+                    params = None
+                elif isinstance(_kw, dict):
+                    if len(_kw) != 1:
+                        raise ValueError(f"Invalid keyword input: {_kw}. Expected a single key-value pair")
+                    identifier, params = list(_kw.items())[0]
+                else:
+                    raise ValueError(f"Invalid keyword input: {_kw}. Expected a single key-value pair")
+
+                if identifier not in self.registered_keywords:
+                        raise ValueError(f"Unknown keyword: {identifier}")
+                    
+                keyword = self.registered_keywords[identifier]
+                kw_module = keyword2module(keyword, identifier, params)
+                
+                if not isinstance(kw_module, BehaviorModule):
+                    raise ValueError(f"Invalid keyword module: {kw_module}")
+                
+                behavior_module.add_children(kw_module)
+        
         return behavior_module

@@ -58,12 +58,38 @@ class ExperimentService(Node):
             resp.success = False
             return resp
         # print(path)
-        pose_dict, target_pose = read_yaml_to_pose_dict(path)
-        self.batman.generate_module_from_keywords(target_pose, pose_dict)
-        self.get_logger().info("Experiment Loaded...")
-        resp.success = True
+        try:
+            pose_dict, steps = read_yaml_to_pose_dict(path)
+            
+            # Check if steps is None, which might happen with the old YAML format
+            if steps is None:
+                self.get_logger().error("Invalid experiment format. 'steps' section is missing.")
+                resp.success = False
+                return resp
+            self.batman.generate_module_from_keywords(steps, pose_dict)
+            self.get_logger().info("Experiment Loaded...")
+            resp.success = True
+        except Exception as e:
+            error_str = str(e)
+            if "expects an invalid ambiguous parameter" in error_str:
+                # Handle the specific error related to ambiguous parameters like **kwargs
+                self.get_logger().error(f"Error in keyword parameters: {error_str}")
+                self.get_logger().warn("This error typically occurs with Move, Pick, or Place actions that use 'from'/'to' or 'above'/'at' parameters.")
+                self.get_logger().warn("Make sure your YAML file uses the correct parameter names as defined in the keywords.py file.")
+                
+                # Suggest solution based on the error
+                if "Move" in error_str:
+                    self.get_logger().info("For Move actions, use 'from_pose' and 'to_pose' or just 'pose' parameters.")
+                elif "Pick" in error_str:
+                    self.get_logger().info("For Pick actions, use 'above' and 'at' parameters.")
+                elif "Place" in error_str:
+                    self.get_logger().info("For Place actions, use 'above' and 'at' parameters.")
+            else:
+                self.get_logger().error(f"Error loading experiment: {error_str}")
+            resp.success = False
+        
         return resp
-    
+        
     def bt_execution_callback(self, req, resp):
         """
         Execute the behavior tree for the loaded experiment.
@@ -79,28 +105,41 @@ class ExperimentService(Node):
         if isinstance(self.batman.main_module, type(None)):
             self.get_logger().error("Load Experiment First....")
             resp.success = False
-            return
+            return resp
+            
+        # Reset the counter
         counter_reset = SetBool.Request()
         counter_reset.data = True
         self.counter_reset_client.call_async(counter_reset)
+        
+        # Get the package path
         pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
         if pkg_path is None:
             self.get_logger().error("ras_bt_framework package Path Not Found")
             resp.success = False
             return resp
+            
+        # Run the simulation
         path = Path(pkg_path)/"xml"/"sim.xml"
-        # behavior = PickObject(self.sequence_list)
         status = self.batman.run_module(path)
-        if status in [BTNodeStatus.SUCCESS,BTNodeStatus.IDLE]:
+        
+        if status in [BTNodeStatus.SUCCESS, BTNodeStatus.IDLE]:
             self.get_logger().info("BT Execution Successful")
         else:
-            self.get_logger().info("BT Execution Failed")
+            self.get_logger().error(f"BT Execution Failed with status: {status}")
             # resp.success = False
             # return resp
-        self.get_logger().info("real_bt_generation_started")
+            
+        # Generate the real robot behavior tree
+        self.get_logger().info("Starting real robot behavior tree generation")
+        
+        # Update the behavior tree for real robot execution
         new_module = update_bt(self.batman.main_module)
+        
+        # Create a new behavior tree generator
         btg = BehaviorTreeGenerator(self.batman.alfred)
         btg.feed_root(new_module)
+
         pkg_path = get_cmake_python_pkg_source_dir("ras_bt_framework")
         if pkg_path is None:
             self.get_logger().error("Package Path Not Found")
@@ -114,9 +153,6 @@ class ExperimentService(Node):
                 self.get_logger().error(f"Error in BT Generation: {e}")
                 resp.success = False
                 return resp
-        # tree = ET.parse(path)
-        # root = tree.getroot()
-        # update_xml(root)
-        # tree.write(str(pkg_path)+"/xml/real.xml", encoding="utf-8", xml_declaration=True)
+
         resp.success = True
         return resp

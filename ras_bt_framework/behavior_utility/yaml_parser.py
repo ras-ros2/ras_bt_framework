@@ -76,93 +76,68 @@ def convert_pose_to_meters(pose_values):
 
 def read_yaml_to_pose_dict(path):
     """
-    Read and parse a YAML experiment file containing poses and target actions.
-    Validates all poses against the robot's constraints and processes target actions.
+    Read and parse a YAML experiment file in the updated format (with `steps`).
+    Validates poses and parses the sequence of actions.
 
     Args:
         path (str): Path to the YAML experiment file
 
     Returns:
         tuple: A tuple containing:
-            - pose_dict (dict): Dictionary mapping pose names to PortPoseCfg objects
-            - target_pose (list): List of processed target actions, where each action is a dictionary
-                                with one of the following formats:
-                                - {'move2pose': str} - Move to a named pose
-                                - {'gripper': bool} - Gripper action (True=open, False=close)
-                                - {'rotate': float} - Rotate by angle in radians
+            - pose_dict (dict): Mapping from pose names to PortPoseCfg objects
+            - steps (list): List of parsed step dictionaries, e.g.
+                {'action': 'Move', 'from': 'pose1', 'to': 'pose2'}
 
     Raises:
-        KeyError: If any of the following are missing from the YAML:
-            - 'Poses' section
-            - 'targets' section
-            - Referenced pose name in move2pose action
-        ValueError: If any of the following conditions are met:
-            - Invalid pose values (via validate_pose_values)
-            - Invalid target action format
-            - Unknown target action type
-
-    Example YAML Format:
-        Poses:
-            home:
-                x: 0.0
-                y: 0.0
-                z: 0.5
-                roll: 0.0
-                pitch: 0.0
-                yaw: 0.0
-            pick:
-                x: 0.3
-                y: 0.3
-                z: 0.2
-                roll: 3.14
-                pitch: 0.0
-                yaw: 1.57
-
-        targets:
-            - move2pose: "home"
-            - gripper: true
-            - move2pose: "pick"
-            - gripper: false
-            - rotate: 1.57
+        KeyError: Missing required sections or undefined pose references
+        ValueError: Invalid pose values or action formatting
     """
     print(f"Reading YAML file: {path}")
 
     with open(path, 'r') as file:
         data = yaml.safe_load(file)
-    
+
+    # Validate and load poses
     if 'Poses' not in data:
-        raise KeyError("The key 'poses' is missing from the YAML file.")
-    
+        raise KeyError("The key 'Poses' is missing from the YAML file.")
+
     pose_dict = {}
     for pose_name, pose_values in data['Poses'].items():
-        
-        # Convert pose values from centimeters to meters
         pose_values = convert_pose_to_meters(pose_values)
-        
         validate_pose_values(pose_values)
         pose_dict[pose_name] = PortPoseCfg(pose=PoseConfig.from_dict(pose_values))
 
-    if 'targets' not in data:
-        raise KeyError("The key 'targets' is missing from the YAML file.")
+    # Validate and load steps
+    if 'steps' not in data:
+        raise KeyError("The key 'steps' is missing from the YAML file.")
 
-    target_pose = []
-    for action in data["targets"]:
-        if isinstance(action, dict):
-            key = list(action.keys())[0]
-            value = action[key]
+    steps = []
+    for idx, step in enumerate(data['steps']):
+        if not isinstance(step, dict) or 'action' not in step:
+            raise ValueError(f"Step {idx} must contain an 'action' field.")
 
-            if key == "move2pose":
-                if value in pose_dict:
-                    target_pose.append({key: value}) 
-                else:
-                    raise KeyError(f"Undefined pose '{value}' in 'targets' section. Available poses: {list(pose_dict.keys())}")
-            elif key == "gripper":
-                target_pose.append({key: bool(value)}) 
-            elif key == "rotate":
-                target_pose.append({key: float(value)}) 
-            else:
-                raise KeyError(f"Unknown target action: {key}")
+        action = step['action']
+        parsed_step = {'action': action}
+
+        if action == 'Move':
+            if 'from' not in step or 'to' not in step:
+                raise ValueError(f"'Move' step must include 'from' and 'to'. Step: {step}")
+            if step['from'] not in pose_dict or step['to'] not in pose_dict:
+                raise KeyError(f"Undefined pose in Move step: {step}")
+            parsed_step['from'] = step['from']
+            parsed_step['to'] = step['to']
+
+        elif action == 'Pick' or action == 'Place':
+            if 'above' not in step or 'at' not in step:
+                raise ValueError(f"'{action}' step must include 'above' and 'at'. Step: {step}")
+            if step['above'] not in pose_dict or step['at'] not in pose_dict:
+                raise KeyError(f"Undefined pose in {action} step: {step}")
+            parsed_step['above'] = step['above']
+            parsed_step['at'] = step['at']
+
         else:
-            raise ValueError("Invalid format in 'targets'. Each entry must be a dictionary.")
+            raise ValueError(f"Unknown action type: {action}")
 
-    return pose_dict, target_pose
+        steps.append(parsed_step)
+
+    return pose_dict, steps

@@ -1,6 +1,6 @@
 from ..generators.behavior_tree_generator import BehaviorTreeGenerator
 from .primitive_action_manager import PrimitiveActionManager
-from ras_bt_framework.behaviors.keywords import TargetPoseMap, rotate, gripper
+from ras_bt_framework.behaviors.keywords import target_pose_map, rotate, gripper, Move, Pick, Place
 from ras_bt_framework.generators.keywords_module_generator import KeywordModuleGenerator
 from ras_bt_framework.behaviors.modules import BehaviorModuleSequence
 import rclpy
@@ -24,7 +24,6 @@ class BaTMan(Node):
         alfred (PrimitiveActionManager): Manager for handling primitive actions.
         manager (BehaviorTreeGenerator): Generator for behavior trees.
         _action_client (ActionClient): Client for executing behavior tree actions.
-        target_pose_map (TargetPoseMap): Map of registered poses and their configurations.
         keyword_module_gen (KeywordModuleGenerator): Generator for keyword-based modules.
         main_module (BehaviorModuleSequence): Main sequence of behavior modules.
         tick_cli (Client): Client for ticking the behavior tree.
@@ -44,14 +43,25 @@ class BaTMan(Node):
 
         self.manager = BehaviorTreeGenerator(self.alfred)
         self._action_client = ActionClient(self, BTInterface, "bt_executor")
-        self.target_pose_map = TargetPoseMap()
-        self.keyword_module_gen = KeywordModuleGenerator()
+        
+        # Initialize the keyword module generator with the standard keyword mapping
+        from ras_bt_framework.behaviors.keywords import keyword_mapping
+        self.keyword_module_gen = KeywordModuleGenerator(keyword_mapping)
+        
+        # For backwards compatibility, also register individual functions
         self.keyword_module_gen.register({
-            "move2pose": self.target_pose_map.move2pose_module,
+            "move2pose": target_pose_map.move2pose_module,
             "rotate": rotate,
             "gripper": gripper,
-            "move2pose_sequence": self.target_pose_map.move2pose_sequence_module,
+            "move2pose_sequence": target_pose_map.move2pose_sequence_module,
+            "Move": Move,
+            "Pick": Pick,
+            "Place": Place
         })
+        
+        # Log available keywords
+        self.get_logger().info(f"Registered keywords: {list(self.keyword_module_gen.registered_keywords.keys())}")
+        
         self.main_module = BehaviorModuleSequence()
         self.tick_cli = self.create_client(PrimitiveExec, '/bt_tick')
         self.loop_rate = self.create_rate(10)
@@ -65,10 +75,23 @@ class BaTMan(Node):
             keywords (list): List of keywords representing actions.
             pose_targets (dict): Dictionary mapping pose names to their configurations.
         """
+        self.get_logger().info(f"Registering {len(pose_targets)} poses")
+        
+        # Register all poses in the global target_pose_map
         for _k, _v in pose_targets.items():
-            self.target_pose_map.register_pose(_k, _v)
-        self.main_module = self.keyword_module_gen.generate("MainModule", keywords)
-    
+            target_pose_map.register_pose(_k, _v)
+        
+        # Log available actions for debugging
+        self.get_logger().debug(f"Available actions: {list(self.keyword_module_gen.registered_keywords.keys())}")
+        
+        # Generate the main module from the keywords
+        try:
+            self.main_module = self.keyword_module_gen.generate("MainModule", keywords)
+            self.get_logger().info(f"Successfully generated module from {len(keywords)} keywords")
+        except Exception as e:
+            self.get_logger().error(f"Error generating module: {e}")
+            raise
+
     def send_goal(self, path: str):
         """
         Send a goal to execute the behavior tree at the specified path.
