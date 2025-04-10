@@ -1,0 +1,41 @@
+[0.008s] Invoking command in '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ram/ras_docker/ros2_pkgs/ras_bt_framework -DCMAKE_INSTALL_PREFIX=/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework
+[0.019s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.123s] -- Found behaviortree_cpp: 4.6.2 (/opt/ros/humble/share/behaviortree_cpp/cmake)
+[0.129s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.175s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.181s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.190s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.204s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.221s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.271s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.274s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.367s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.396s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.439s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.449s] -- Looking for pthread.h
+[0.524s] -- Looking for pthread.h - found
+[0.524s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.594s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.595s] -- Found Threads: TRUE  
+[0.654s] [31mCMake Error at CMakeLists.txt:13 (find_package):
+[0.654s]   By not providing "Findmoveit_ros_planning_interface.cmake" in
+[0.654s]   CMAKE_MODULE_PATH this project has asked CMake to find a package
+[0.654s]   configuration file provided by "moveit_ros_planning_interface", but CMake
+[0.654s]   did not find one.
+[0.655s] 
+[0.655s]   Could not find a package configuration file provided by
+[0.655s]   "moveit_ros_planning_interface" with any of the following names:
+[0.655s] 
+[0.655s]     moveit_ros_planning_interfaceConfig.cmake
+[0.655s]     moveit_ros_planning_interface-config.cmake
+[0.655s] 
+[0.655s]   Add the installation prefix of "moveit_ros_planning_interface" to
+[0.655s]   CMAKE_PREFIX_PATH or set "moveit_ros_planning_interface_DIR" to a directory
+[0.655s]   containing one of the above files.  If "moveit_ros_planning_interface"
+[0.656s]   provides a separate development package or SDK, be sure it has been
+[0.656s]   installed.
+[0.656s] 
+[0.656s] [0m
+[0.656s] -- Configuring incomplete, errors occurred!
+[0.656s] See also "/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework/CMakeFiles/CMakeOutput.log".
+[0.662s] Invoked command in '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ram/ras_docker/ros2_pkgs/ras_bt_framework -DCMAKE_INSTALL_PREFIX=/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework

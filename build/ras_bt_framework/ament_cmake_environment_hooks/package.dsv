@@ -1,0 +1,4 @@
+source;share/ras_bt_framework/local_setup.bash
+source;share/ras_bt_framework/local_setup.dsv
+source;share/ras_bt_framework/local_setup.sh
+source;share/ras_bt_framework/local_setup.zsh

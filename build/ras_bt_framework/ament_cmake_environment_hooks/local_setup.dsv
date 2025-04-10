@@ -1,0 +1,3 @@
+source;share/ras_bt_framework/environment/ament_prefix_path.sh
+source;share/ras_bt_framework/environment/path.sh
+source;share/ras_bt_framework/environment/pythonpath.sh

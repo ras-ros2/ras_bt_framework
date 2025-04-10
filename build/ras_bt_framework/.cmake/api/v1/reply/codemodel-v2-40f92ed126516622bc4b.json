@@ -1,0 +1,106 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-RelWithDebInfo-5c4efde6907bdfcc715c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ras_bt_framework",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_ras_bt_framework_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_ras_bt_framework_egg-RelWithDebInfo-d76a279f8ad0752fe4cd.json",
+					"name" : "ament_cmake_python_build_ras_bt_framework_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_ras_bt_framework::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_ras_bt_framework-RelWithDebInfo-7d5453bf31d0e4562466.json",
+					"name" : "ament_cmake_python_copy_ras_bt_framework",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "examples::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-examples-RelWithDebInfo-28fc0b1d7332495e4b40.json",
+					"name" : "examples",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "executor::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-executor-RelWithDebInfo-6e1bafc8f1d44d6dc4dd.json",
+					"name" : "executor",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ras_bt_framework_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ras_bt_framework_uninstall-RelWithDebInfo-8cfaa210f05708027c41.json",
+					"name" : "ras_bt_framework_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-RelWithDebInfo-12976e2ea58c8d09f983.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework",
+		"source" : "/home/ram/ras_docker/ros2_pkgs/ras_bt_framework"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

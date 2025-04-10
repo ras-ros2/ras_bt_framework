@@ -1,0 +1,760 @@
+[0.000000] (-) TimerEvent: {}
+[0.000449] (ras_bt_framework) JobQueued: {'identifier': 'ras_bt_framework', 'dependencies': OrderedDict()}
+[0.000590] (ras_bt_framework) JobStarted: {'identifier': 'ras_bt_framework'}
+[0.007621] (ras_bt_framework) JobProgress: {'identifier': 'ras_bt_framework', 'progress': 'cmake'}
+[0.008139] (ras_bt_framework) JobProgress: {'identifier': 'ras_bt_framework', 'progress': 'build'}
+[0.008720] (ras_bt_framework) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework', '--', '-j12', '-l12'], 'cwd': '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'ram'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/tmp/.mount_CursorHOCElf/usr/share/cursor/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces/lib:/tmp/.mount_CursorHOCElf/usr/lib/:/tmp/.mount_CursorHOCElf/usr/lib32/:/tmp/.mount_CursorHOCElf/usr/lib64/:/tmp/.mount_CursorHOCElf/lib/:/tmp/.mount_CursorHOCElf/lib/i386-linux-gnu/:/tmp/.mount_CursorHOCElf/lib/x86_64-linux-gnu/:/tmp/.mount_CursorHOCElf/lib/aarch64-linux-gnu/:/tmp/.mount_CursorHOCElf/lib32/:/tmp/.mount_CursorHOCElf/lib64/:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/ram'), ('CHROME_DESKTOP', 'cursor.desktop'), ('APPDIR', '/tmp/.mount_CursorHOCElf'), ('OLDPWD', '/home/ram/ras_docker/ros2_pkgs'), ('TERM_PROGRAM_VERSION', '0.47.9'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('PERLLIB', '/tmp/.mount_CursorHOCElf/usr/share/perl5/:/tmp/.mount_CursorHOCElf/usr/lib/perl5/:'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/tmp/.mount_CursorHOCElf/usr/share/cursor/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/tmp/.mount_CursorHOCElf/usr/share/cursor/cursor'), ('MANAGERPID', '1635'), ('SYSTEMD_EXEC_PID', '2046'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3329'), ('COLCON_PREFIX_PATH', '/home/ram/ras_docker/ros2_pkgs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'ram'), ('OWD', '/home/ram/Downloads'), ('JOURNAL_STREAM', '8:13676'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('IGN_CONFIG_PATH', '/usr/share/ignition'), ('USERNAME', 'ram'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/ram/.local/bin:/home/ram/.local/bin:/tmp/.mount_CursorHOCElf/usr/bin/:/tmp/.mount_CursorHOCElf/usr/sbin/:/tmp/.mount_CursorHOCElf/usr/games/:/tmp/.mount_CursorHOCElf/bin/:/tmp/.mount_CursorHOCElf/sbin/:/opt/ros/humble/bin:/home/ram/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/jammy:@/tmp/.ICE-unix/1861,unix/jammy:/tmp/.ICE-unix/1861'), ('INVOCATION_ID', '399c4942cf734189b058d9e3fdc7365f'), ('APPIMAGE', '/home/ram/Downloads/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-790ba03b57.sock'), ('TERM_PROGRAM', 'vscode'), ('CURSOR_TRACE_ID', 'fb87282949dd42aca48b617e4d270847'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('GSETTINGS_SCHEMA_DIR', '/tmp/.mount_CursorHOCElf/usr/share/glib-2.0/schemas/:'), ('AMENT_PREFIX_PATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces:/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('ARGV0', './Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage'), ('TERMINATOR_UUID', 'urn:uuid:56dedf2b-1b9d-450b-8cf9-41168dec63f9'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/tmp/.mount_CursorHOCElf/usr/share/:/usr/local/share:/usr/share:/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('QT_PLUGIN_PATH', '/tmp/.mount_CursorHOCElf/usr/lib/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/i386-linux-gnu/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/x86_64-linux-gnu/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/aarch64-linux-gnu/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib32/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib64/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/i386-linux-gnu/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/x86_64-linux-gnu/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/aarch64-linux-gnu/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib32/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib64/qt5/plugins/:'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces:/opt/ros/humble')]), 'shell': False}
+[0.053569] (ras_bt_framework) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target examples\x1b[0m\n'}
+[0.054701] (ras_bt_framework) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target executor\x1b[0m\n'}
+[0.070198] (ras_bt_framework) StdoutLine: {'line': b'[ 40%] Built target examples\n'}
+[0.074976] (ras_bt_framework) StdoutLine: {'line': b'[ 40%] Built target ament_cmake_python_copy_ras_bt_framework\n'}
+[0.084597] (ras_bt_framework) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/executor.dir/src/executor.cpp.o\x1b[0m\n'}
+[0.099773] (-) TimerEvent: {}
+[0.200009] (-) TimerEvent: {}
+[0.285088] (ras_bt_framework) StdoutLine: {'line': b'running egg_info\n'}
+[0.285650] (ras_bt_framework) StdoutLine: {'line': b'writing ras_bt_framework.egg-info/PKG-INFO\n'}
+[0.285848] (ras_bt_framework) StdoutLine: {'line': b'writing dependency_links to ras_bt_framework.egg-info/dependency_links.txt\n'}
+[0.286011] (ras_bt_framework) StdoutLine: {'line': b'writing top-level names to ras_bt_framework.egg-info/top_level.txt\n'}
+[0.287833] (ras_bt_framework) StdoutLine: {'line': b"reading manifest file 'ras_bt_framework.egg-info/SOURCES.txt'\n"}
+[0.288432] (ras_bt_framework) StdoutLine: {'line': b"writing manifest file 'ras_bt_framework.egg-info/SOURCES.txt'\n"}
+[0.300129] (-) TimerEvent: {}
+[0.313345] (ras_bt_framework) StdoutLine: {'line': b'[ 60%] Built target ament_cmake_python_build_ras_bt_framework_egg\n'}
+[0.400222] (-) TimerEvent: {}
+[0.500501] (-) TimerEvent: {}
+[0.600790] (-) TimerEvent: {}
+[0.701076] (-) TimerEvent: {}
+[0.801378] (-) TimerEvent: {}
+[0.901640] (-) TimerEvent: {}
+[1.001898] (-) TimerEvent: {}
+[1.102178] (-) TimerEvent: {}
+[1.202426] (-) TimerEvent: {}
+[1.302680] (-) TimerEvent: {}
+[1.402930] (-) TimerEvent: {}
+[1.503177] (-) TimerEvent: {}
+[1.603439] (-) TimerEvent: {}
+[1.703722] (-) TimerEvent: {}
+[1.804008] (-) TimerEvent: {}
+[1.904289] (-) TimerEvent: {}
+[2.004555] (-) TimerEvent: {}
+[2.104810] (-) TimerEvent: {}
+[2.205062] (-) TimerEvent: {}
+[2.305331] (-) TimerEvent: {}
+[2.405618] (-) TimerEvent: {}
+[2.505870] (-) TimerEvent: {}
+[2.606133] (-) TimerEvent: {}
+[2.706393] (-) TimerEvent: {}
+[2.806667] (-) TimerEvent: {}
+[2.906945] (-) TimerEvent: {}
+[3.007212] (-) TimerEvent: {}
+[3.107533] (-) TimerEvent: {}
+[3.170710] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:31\x1b[m\x1b[K,\n'}
+[3.170908] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[3.170983] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_pose.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ras_bt_framework::MoveToPose::move_to_pose_response(rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.171056] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_pose.hpp:103:95:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfuture\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.171121] (ras_bt_framework) StderrLine: {'line': b'  103 |         void move_to_pose_response(\x1b[01;35m\x1b[Krclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture future\x1b[m\x1b[K) {\n'}
+[3.171183] (ras_bt_framework) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.207640] (-) TimerEvent: {}
+[3.234862] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:32\x1b[m\x1b[K,\n'}
+[3.235043] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[3.235125] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/trigger.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ras_bt_framework::Trigger::trigger_response(rclcpp::Client<std_srvs::srv::SetBool>::SharedFuture)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.235207] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/trigger.hpp:71:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfuture\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.235276] (ras_bt_framework) StderrLine: {'line': b'   71 |     void trigger_response(\x1b[01;35m\x1b[Krclcpp::Client<std_srvs::srv::SetBool>::SharedFuture future\x1b[m\x1b[K) {\n'}
+[3.235337] (ras_bt_framework) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.307724] (-) TimerEvent: {}
+[3.388303] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:33\x1b[m\x1b[K,\n'}
+[3.388530] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[3.388625] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ras_bt_framework::ExecuteTrajectory::play_traj_response(rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedFuture)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.388696] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:89:89:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfuture\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.388774] (ras_bt_framework) StderrLine: {'line': b'   89 |     void play_traj_response(\x1b[01;35m\x1b[Krclcpp::Client<ras_interfaces::srv::PlayPath>::SharedFuture future\x1b[m\x1b[K) {\n'}
+[3.388838] (ras_bt_framework) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.388898] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ras_bt_framework::ExecuteTrajectory::log_response(rclcpp::Client<ras_interfaces::srv::TrajLog>::SharedFuture)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.388966] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:92:82:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfuture\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.389028] (ras_bt_framework) StderrLine: {'line': b'   92 |     void log_response(\x1b[01;35m\x1b[Krclcpp::Client<ras_interfaces::srv::TrajLog>::SharedFuture future\x1b[m\x1b[K) {\n'}
+[3.389090] (ras_bt_framework) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.407820] (-) TimerEvent: {}
+[3.459653] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:34\x1b[m\x1b[K,\n'}
+[3.459835] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[3.459909] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/rotate_eff.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ras_bt_framework::RotateEffector::rotate_eff_response(rclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedFuture)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.459967] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/rotate_eff.hpp:93:100:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfuture\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.460022] (ras_bt_framework) StderrLine: {'line': b'   93 |         void rotate_eff_response(\x1b[01;35m\x1b[Krclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedFuture future\x1b[m\x1b[K)\n'}
+[3.460071] (ras_bt_framework) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.507916] (-) TimerEvent: {}
+[3.608179] (-) TimerEvent: {}
+[3.663274] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:36\x1b[m\x1b[K,\n'}
+[3.663443] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[3.663536] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/logger_client_trigger.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ras_bt_framework::LoggerClientTrigger::trigger_response(rclcpp::Client<std_srvs::srv::SetBool>::SharedFuture)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.663606] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/logger_client_trigger.hpp:64:80:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfuture\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.663668] (ras_bt_framework) StderrLine: {'line': b'   64 |     void trigger_response(\x1b[01;35m\x1b[Krclcpp::Client<std_srvs::srv::SetBool>::SharedFuture future\x1b[m\x1b[K) {\n'}
+[3.663735] (ras_bt_framework) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.708274] (-) TimerEvent: {}
+[3.744548] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:37\x1b[m\x1b[K,\n'}
+[3.744735] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[3.744822] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_joint_state.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ras_bt_framework::MoveToJointState::move_to_joint_state_response(rclcpp::Client<ras_interfaces::srv::JointReq>::SharedFuture)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.744894] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_joint_state.hpp:108:103:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kfuture\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.745036] (ras_bt_framework) StderrLine: {'line': b'  108 |         void move_to_joint_state_response(\x1b[01;35m\x1b[Krclcpp::Client<ras_interfaces::srv::JointReq>::SharedFuture future\x1b[m\x1b[K) {\n'}
+[3.745121] (ras_bt_framework) StderrLine: {'line': b'      |                                           \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.808372] (-) TimerEvent: {}
+[3.908650] (-) TimerEvent: {}
+[4.008911] (-) TimerEvent: {}
+[4.109172] (-) TimerEvent: {}
+[4.209437] (-) TimerEvent: {}
+[4.309703] (-) TimerEvent: {}
+[4.354273] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.354452] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.354540] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.354624] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.354687] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.354769] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.354832] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.354889] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.354946] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.354993] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.355044] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.355089] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.355133] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::SaySomething]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.355180] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::SaySomething; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.355229] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/say_something.hpp:30:1:\x1b[m\x1b[K   required from here\n'}
+[4.355276] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.355330] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.355377] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.355422] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.355467] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.355524] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.355574] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.355619] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.355664] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.355713] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.355763] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.355809] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.355853] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.355900] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.355945] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.356348] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.356480] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.356545] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.356596] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.356644] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.356691] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.356742] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.356789] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.356839] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.356884] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.356928] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.356993] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.357046] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::ThinkSomethingToSay]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.357093] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::ThinkSomethingToSay; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.357142] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/think_something_to_say.hpp:30:1:\x1b[m\x1b[K   required from here\n'}
+[4.357189] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.357260] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.357334] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.357403] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.357469] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.357553] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.357629] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.357699] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.357779] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.357852] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.357912] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.357961] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.358005] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.358051] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.358101] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.358976] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.359059] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.359107] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.359176] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.359223] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.359268] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.359315] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.359367] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.359413] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.359459] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.359513] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.359587] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.359634] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::MoveToPose]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.359681] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::MoveToPose; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.359736] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_pose.hpp:60:5:\x1b[m\x1b[K   required from here\n'}
+[4.359784] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.359834] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.359880] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.359953] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.360000] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.360045] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.360090] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.360134] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.360178] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.360223] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.360267] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.360311] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.360354] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.360405] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.360456] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.379637] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.379911] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.379974] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.380028] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.380080] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.380134] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.380183] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.380230] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.380278] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.380327] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.380378] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.380425] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.380477] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Trigger]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.380544] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Trigger; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.380600] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/trigger.hpp:30:1:\x1b[m\x1b[K   required from here\n'}
+[4.380650] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.380706] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.380769] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.380836] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.380900] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.380950] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.380997] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.381041] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.381087] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.381133] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.381190] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.381244] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.381291] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.381347] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.381395] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.399012] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.399192] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.399262] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.399327] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.399398] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.399458] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.399533] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.399598] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.399657] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.399716] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.399773] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.399836] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.399892] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::ExecuteTrajectory]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.399952] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::ExecuteTrajectory; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.400017] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:35:1:\x1b[m\x1b[K   required from here\n'}
+[4.400068] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.400116] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.400164] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.400210] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.400256] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.400302] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.400348] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.400393] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.400439] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.400485] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.400545] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.400595] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.400653] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.400703] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.400775] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.409777] (-) TimerEvent: {}
+[4.434450] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.434644] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.434731] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.434796] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.434856] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.434915] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.434974] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.435033] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.435089] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.435140] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.435186] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.435238] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.435287] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::RotateEffector]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.435341] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::RotateEffector; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.435391] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/rotate_eff.hpp:34:9:\x1b[m\x1b[K   required from here\n'}
+[4.435438] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.435496] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.435551] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.435596] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.435641] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.435686] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.435729] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.435773] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.435817] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.435861] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.435909] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.435953] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.435997] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.436044] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.436104] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.456763] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.457000] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.457086] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.457150] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.457210] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.457280] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.457338] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.457394] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.457451] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.457523] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.457592] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.457681] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.457743] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::PrimitiveActionClient]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.457813] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::PrimitiveActionClient; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.457897] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveActionClient.hpp:33:5:\x1b[m\x1b[K   required from here\n'}
+[4.457958] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.458018] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.458076] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.458133] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.458186] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.458232] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.458278] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.458329] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.458374] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.458422] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.458466] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.458523] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.458572] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.458643] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.458694] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.495030] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.495245] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.495336] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.495398] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.495450] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.495510] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.495578] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.495630] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.495678] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.495727] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.495773] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.495824] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.495880] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::LoggerClientTrigger]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.495935] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::LoggerClientTrigger; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.495997] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/logger_client_trigger.hpp:30:1:\x1b[m\x1b[K   required from here\n'}
+[4.496045] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.496093] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.496141] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.496188] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.496241] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.496292] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.496338] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.496385] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.496436] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.496482] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.496541] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.496589] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.496634] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.496687] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.496736] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.499404] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[4.499621] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[4.499709] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[4.499783] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[4.499854] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[4.499923] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.499992] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.500061] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[4.500128] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.500199] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.500268] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[4.500336] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[4.500403] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::MoveToJointState]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.500473] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::MoveToJointState; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.500562] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_joint_state.hpp:68:5:\x1b[m\x1b[K   required from here\n'}
+[4.500636] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.500715] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[4.500794] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[4.500861] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[4.500928] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[4.500996] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[4.501068] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[4.501134] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[4.501201] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[4.501268] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[4.501335] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[4.501403] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[4.501475] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.501566] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[4.501639] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.509871] (-) TimerEvent: {}
+[4.610125] (-) TimerEvent: {}
+[4.710411] (-) TimerEvent: {}
+[4.810705] (-) TimerEvent: {}
+[4.911007] (-) TimerEvent: {}
+[5.011318] (-) TimerEvent: {}
+[5.038645] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[5.038835] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[5.038917] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[5.038989] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.039059] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[5.039128] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.039198] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.039265] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[5.039348] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[5.039419] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.039487] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[5.039570] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[5.039787] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Move]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.039863] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Move; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.039936] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Move.hpp:10:5:\x1b[m\x1b[K   required from here\n'}
+[5.040004] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.040076] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[5.040144] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[5.040212] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[5.040279] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[5.040351] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[5.040418] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[5.040482] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[5.040563] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[5.040632] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[5.040703] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[5.040907] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[5.040983] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.041056] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[5.041123] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[5.041189] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[5.041253] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[5.041317] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[5.041384] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.041449] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[5.041526] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.041600] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.041666] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[5.041731] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[5.041850] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.041984] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[5.042052] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[5.042119] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Move2pose]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.042187] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Move2pose; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.042262] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/move2pose.hpp:10:5:\x1b[m\x1b[K   required from here\n'}
+[5.042329] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.042397] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[5.042462] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[5.042541] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[5.042610] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[5.042682] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[5.042752] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[5.042816] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[5.042886] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[5.042952] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[5.043022] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[5.043086] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[5.043150] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.043216] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[5.043278] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[5.043342] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[5.043405] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[5.043468] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[5.043550] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.043618] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[5.043683] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.043747] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.043811] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[5.043875] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[5.043940] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.044005] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[5.044068] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[5.044132] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Pick]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.044198] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Pick; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.044274] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:11:5:\x1b[m\x1b[K   required from here\n'}
+[5.044338] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.044406] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[5.044474] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[5.044552] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[5.044628] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[5.044698] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[5.044767] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[5.044831] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[5.044895] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[5.044965] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[5.045028] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[5.045091] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[5.045159] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.045226] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[5.045291] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[5.045354] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[5.045419] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[5.045471] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[5.045532] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[5.045581] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[5.045628] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[5.045672] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[5.045716] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37\x1b[m\x1b[K,\n'}
+[5.045760] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[5.045803] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.045848] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[5.045892] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23\x1b[m\x1b[K:\n'}
+[5.045936] (ras_bt_framework) StderrLine: {'line': b'/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Place]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.045990] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:49:49:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Place; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.046038] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Place.hpp:11:5:\x1b[m\x1b[K   required from here\n'}
+[5.046086] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%d\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 6 has type \xe2\x80\x98\x1b[01m\x1b[KBT::NodeStatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.046139] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), \x1b[01;35m\x1b[K"%s executed with status %d"\x1b[m\x1b[K,this->name().c_str(),\x1b[32m\x1b[Kstatus\x1b[m\x1b[K);\n'}
+[5.046185] (ras_bt_framework) StderrLine: {'line': b'      |                                              \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                      \x1b[32m\x1b[K~~~~~~\x1b[m\x1b[K\n'}
+[5.046237] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[5.046282] (ras_bt_framework) StderrLine: {'line': b'      |                                                                                                \x1b[32m\x1b[KBT::NodeStatus\x1b[m\x1b[K\n'}
+[5.046327] (ras_bt_framework) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26\x1b[m\x1b[K,\n'}
+[5.046374] (ras_bt_framework) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24\x1b[m\x1b[K:\n'}
+[5.046421] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:53:72:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kformat string is defined here\n'}
+[5.046470] (ras_bt_framework) StderrLine: {'line': b'   53 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status \x1b[01;36m\x1b[K%d\x1b[m\x1b[K",this->name().c_str(),status);\n'}
+[5.046528] (ras_bt_framework) StderrLine: {'line': b'      |                                                                       \x1b[01;36m\x1b[K~^\x1b[m\x1b[K\n'}
+[5.046577] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[K|\x1b[m\x1b[K\n'}
+[5.046622] (ras_bt_framework) StderrLine: {'line': b'      |                                                                        \x1b[01;36m\x1b[Kint\x1b[m\x1b[K\n'}
+[5.046666] (ras_bt_framework) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knode\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[5.046718] (ras_bt_framework) StderrLine: {'line': b'   52 |         BT::NodeStatus postTick(\x1b[01;35m\x1b[KBT::TreeNode &node\x1b[m\x1b[K, BT::NodeStatus status){\n'}
+[5.046765] (ras_bt_framework) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[5.111431] (-) TimerEvent: {}
+[5.211848] (-) TimerEvent: {}
+[5.312187] (-) TimerEvent: {}
+[5.412559] (-) TimerEvent: {}
+[5.512890] (-) TimerEvent: {}
+[5.613216] (-) TimerEvent: {}
+[5.713538] (-) TimerEvent: {}
+[5.817006] (-) TimerEvent: {}
+[5.917319] (-) TimerEvent: {}
+[6.017561] (-) TimerEvent: {}
+[6.117830] (-) TimerEvent: {}
+[6.218091] (-) TimerEvent: {}
+[6.318373] (-) TimerEvent: {}
+[6.418672] (-) TimerEvent: {}
+[6.518934] (-) TimerEvent: {}
+[6.619195] (-) TimerEvent: {}
+[6.719460] (-) TimerEvent: {}
+[6.819729] (-) TimerEvent: {}
+[6.920003] (-) TimerEvent: {}
+[7.020267] (-) TimerEvent: {}
+[7.120535] (-) TimerEvent: {}
+[7.220784] (-) TimerEvent: {}
+[7.321055] (-) TimerEvent: {}
+[7.421315] (-) TimerEvent: {}
+[7.521542] (-) TimerEvent: {}
+[7.621805] (-) TimerEvent: {}
+[7.722070] (-) TimerEvent: {}
+[7.822333] (-) TimerEvent: {}
+[7.922588] (-) TimerEvent: {}
+[8.022845] (-) TimerEvent: {}
+[8.123120] (-) TimerEvent: {}
+[8.223389] (-) TimerEvent: {}
+[8.323663] (-) TimerEvent: {}
+[8.423953] (-) TimerEvent: {}
+[8.524216] (-) TimerEvent: {}
+[8.624480] (-) TimerEvent: {}
+[8.724776] (-) TimerEvent: {}
+[8.825064] (-) TimerEvent: {}
+[8.925365] (-) TimerEvent: {}
+[9.025648] (-) TimerEvent: {}
+[9.125925] (-) TimerEvent: {}
+[9.226188] (-) TimerEvent: {}
+[9.326458] (-) TimerEvent: {}
+[9.426723] (-) TimerEvent: {}
+[9.526986] (-) TimerEvent: {}
+[9.627269] (-) TimerEvent: {}
+[9.727608] (-) TimerEvent: {}
+[9.828002] (-) TimerEvent: {}
+[9.928288] (-) TimerEvent: {}
+[10.028683] (-) TimerEvent: {}
+[10.128940] (-) TimerEvent: {}
+[10.229206] (-) TimerEvent: {}
+[10.329513] (-) TimerEvent: {}
+[10.429806] (-) TimerEvent: {}
+[10.530151] (-) TimerEvent: {}
+[10.630430] (-) TimerEvent: {}
+[10.730701] (-) TimerEvent: {}
+[10.830947] (-) TimerEvent: {}
+[10.931191] (-) TimerEvent: {}
+[11.031439] (-) TimerEvent: {}
+[11.131709] (-) TimerEvent: {}
+[11.231985] (-) TimerEvent: {}
+[11.332244] (-) TimerEvent: {}
+[11.432534] (-) TimerEvent: {}
+[11.532833] (-) TimerEvent: {}
+[11.633097] (-) TimerEvent: {}
+[11.733368] (-) TimerEvent: {}
+[11.833649] (-) TimerEvent: {}
+[11.933923] (-) TimerEvent: {}
+[12.034184] (-) TimerEvent: {}
+[12.134448] (-) TimerEvent: {}
+[12.234711] (-) TimerEvent: {}
+[12.334971] (-) TimerEvent: {}
+[12.435225] (-) TimerEvent: {}
+[12.535482] (-) TimerEvent: {}
+[12.635749] (-) TimerEvent: {}
+[12.736027] (-) TimerEvent: {}
+[12.836316] (-) TimerEvent: {}
+[12.936587] (-) TimerEvent: {}
+[13.036862] (-) TimerEvent: {}
+[13.137121] (-) TimerEvent: {}
+[13.237382] (-) TimerEvent: {}
+[13.337652] (-) TimerEvent: {}
+[13.437938] (-) TimerEvent: {}
+[13.538205] (-) TimerEvent: {}
+[13.638467] (-) TimerEvent: {}
+[13.738789] (-) TimerEvent: {}
+[13.839061] (-) TimerEvent: {}
+[13.939336] (-) TimerEvent: {}
+[14.039649] (-) TimerEvent: {}
+[14.139921] (-) TimerEvent: {}
+[14.240171] (-) TimerEvent: {}
+[14.340423] (-) TimerEvent: {}
+[14.440710] (-) TimerEvent: {}
+[14.540956] (-) TimerEvent: {}
+[14.641200] (-) TimerEvent: {}
+[14.741447] (-) TimerEvent: {}
+[14.841729] (-) TimerEvent: {}
+[14.941989] (-) TimerEvent: {}
+[15.042249] (-) TimerEvent: {}
+[15.142509] (-) TimerEvent: {}
+[15.242791] (-) TimerEvent: {}
+[15.343096] (-) TimerEvent: {}
+[15.443431] (-) TimerEvent: {}
+[15.543773] (-) TimerEvent: {}
+[15.644090] (-) TimerEvent: {}
+[15.744389] (-) TimerEvent: {}
+[15.844774] (-) TimerEvent: {}
+[15.945066] (-) TimerEvent: {}
+[16.045351] (-) TimerEvent: {}
+[16.145679] (-) TimerEvent: {}
+[16.246009] (-) TimerEvent: {}
+[16.346314] (-) TimerEvent: {}
+[16.446646] (-) TimerEvent: {}
+[16.546951] (-) TimerEvent: {}
+[16.647267] (-) TimerEvent: {}
+[16.747562] (-) TimerEvent: {}
+[16.847857] (-) TimerEvent: {}
+[16.948125] (-) TimerEvent: {}
+[17.048402] (-) TimerEvent: {}
+[17.148690] (-) TimerEvent: {}
+[17.248977] (-) TimerEvent: {}
+[17.349244] (-) TimerEvent: {}
+[17.449536] (-) TimerEvent: {}
+[17.549806] (-) TimerEvent: {}
+[17.650072] (-) TimerEvent: {}
+[17.750339] (-) TimerEvent: {}
+[17.850615] (-) TimerEvent: {}
+[17.950883] (-) TimerEvent: {}
+[18.051153] (-) TimerEvent: {}
+[18.151426] (-) TimerEvent: {}
+[18.251750] (-) TimerEvent: {}
+[18.352052] (-) TimerEvent: {}
+[18.452342] (-) TimerEvent: {}
+[18.552623] (-) TimerEvent: {}
+[18.594049] (ras_bt_framework) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX executable executor\x1b[0m\n'}
+[18.652719] (-) TimerEvent: {}
+[18.752996] (-) TimerEvent: {}
+[18.853263] (-) TimerEvent: {}
+[18.953548] (-) TimerEvent: {}
+[18.958460] (ras_bt_framework) StdoutLine: {'line': b'[100%] Built target executor\n'}
+[18.969633] (ras_bt_framework) CommandEnded: {'returncode': 0}
+[18.970243] (ras_bt_framework) JobProgress: {'identifier': 'ras_bt_framework', 'progress': 'install'}
+[18.979438] (ras_bt_framework) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework'], 'cwd': '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'ram'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/tmp/.mount_CursorHOCElf/usr/share/cursor/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces/lib:/tmp/.mount_CursorHOCElf/usr/lib/:/tmp/.mount_CursorHOCElf/usr/lib32/:/tmp/.mount_CursorHOCElf/usr/lib64/:/tmp/.mount_CursorHOCElf/lib/:/tmp/.mount_CursorHOCElf/lib/i386-linux-gnu/:/tmp/.mount_CursorHOCElf/lib/x86_64-linux-gnu/:/tmp/.mount_CursorHOCElf/lib/aarch64-linux-gnu/:/tmp/.mount_CursorHOCElf/lib32/:/tmp/.mount_CursorHOCElf/lib64/:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/ram'), ('CHROME_DESKTOP', 'cursor.desktop'), ('APPDIR', '/tmp/.mount_CursorHOCElf'), ('OLDPWD', '/home/ram/ras_docker/ros2_pkgs'), ('TERM_PROGRAM_VERSION', '0.47.9'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('PERLLIB', '/tmp/.mount_CursorHOCElf/usr/share/perl5/:/tmp/.mount_CursorHOCElf/usr/lib/perl5/:'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/tmp/.mount_CursorHOCElf/usr/share/cursor/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/tmp/.mount_CursorHOCElf/usr/share/cursor/cursor'), ('MANAGERPID', '1635'), ('SYSTEMD_EXEC_PID', '2046'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3329'), ('COLCON_PREFIX_PATH', '/home/ram/ras_docker/ros2_pkgs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'ram'), ('OWD', '/home/ram/Downloads'), ('JOURNAL_STREAM', '8:13676'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('IGN_CONFIG_PATH', '/usr/share/ignition'), ('USERNAME', 'ram'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/home/ram/.local/bin:/home/ram/.local/bin:/tmp/.mount_CursorHOCElf/usr/bin/:/tmp/.mount_CursorHOCElf/usr/sbin/:/tmp/.mount_CursorHOCElf/usr/games/:/tmp/.mount_CursorHOCElf/bin/:/tmp/.mount_CursorHOCElf/sbin/:/opt/ros/humble/bin:/home/ram/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/jammy:@/tmp/.ICE-unix/1861,unix/jammy:/tmp/.ICE-unix/1861'), ('INVOCATION_ID', '399c4942cf734189b058d9e3fdc7365f'), ('APPIMAGE', '/home/ram/Downloads/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-790ba03b57.sock'), ('TERM_PROGRAM', 'vscode'), ('CURSOR_TRACE_ID', 'fb87282949dd42aca48b617e4d270847'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('GSETTINGS_SCHEMA_DIR', '/tmp/.mount_CursorHOCElf/usr/share/glib-2.0/schemas/:'), ('AMENT_PREFIX_PATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces:/opt/ros/humble'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('ARGV0', './Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage'), ('TERMINATOR_UUID', 'urn:uuid:56dedf2b-1b9d-450b-8cf9-41168dec63f9'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/build/ras_bt_framework'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/tmp/.mount_CursorHOCElf/usr/share/:/usr/local/share:/usr/share:/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('QT_PLUGIN_PATH', '/tmp/.mount_CursorHOCElf/usr/lib/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/i386-linux-gnu/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/x86_64-linux-gnu/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/aarch64-linux-gnu/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib32/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib64/qt4/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/i386-linux-gnu/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/x86_64-linux-gnu/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib/aarch64-linux-gnu/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib32/qt5/plugins/:/tmp/.mount_CursorHOCElf/usr/lib64/qt5/plugins/:'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/ram/ras_docker/ros2_pkgs/install/ras_interfaces:/opt/ros/humble')]), 'shell': False}
+[18.987563] (ras_bt_framework) StdoutLine: {'line': b'-- Install configuration: "RelWithDebInfo"\n'}
+[18.987759] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/config\n'}
+[18.987862] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/config/primitive_declaration.yaml\n'}
+[18.987966] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src\n'}
+[18.988060] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src/executor.cpp\n'}
+[18.988130] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src/BTExecutor.cpp\n'}
+[18.988219] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src/examples.cpp\n'}
+[18.988340] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates\n'}
+[18.988414] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates/include_primitives.hpp.em\n'}
+[18.988509] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates/primitive_instructions.py.em\n'}
+[18.988612] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates/primitive_template.hpp.em\n'}
+[18.988760] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/examples\n'}
+[18.991580] (ras_bt_framework) StdoutLine: {'line': b'-- Set runtime path of "/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/examples" to ""\n'}
+[18.991719] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/executor\n'}
+[19.010773] (ras_bt_framework) StdoutLine: {'line': b'-- Set runtime path of "/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/executor" to ""\n'}
+[19.011009] (ras_bt_framework) StdoutLine: {'line': b'-- Up-to-date: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/\n'}
+[19.011169] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//trajzipper.py\n'}
+[19.011306] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//FakeGripperServer.py\n'}
+[19.011625] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//test.py\n'}
+[19.011753] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//TrajectoryRecordsService.py\n'}
+[19.011865] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//generate_primitive.py\n'}
+[19.011928] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//logging_manager.py\n'}
+[19.012015] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//dummy_logging_server.py\n'}
+[19.012077] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//experiment_service.py\n'}
+[19.012149] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/pythonpath.sh\n'}
+[19.012199] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/pythonpath.dsv\n'}
+[19.012254] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info\n'}
+[19.012334] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[19.012404] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[19.012514] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[19.012629] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[19.012768] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework\n'}
+[19.012844] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility\n'}
+[19.012918] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/update_bt.py\n'}
+[19.013039] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/grid_parser.py\n'}
+[19.013155] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/yaml_parser.py\n'}
+[19.013271] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors\n'}
+[19.013348] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/gen_primitives.py\n'}
+[19.013457] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/keywords.py\n'}
+[19.013595] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/batMan.py\n'}
+[19.013714] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/functions.py\n'}
+[19.013828] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/experiments_service.py\n'}
+[19.013944] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/__init__.py\n'}
+[19.014044] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/primitives.py\n'}
+[19.014153] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/ports.py\n'}
+[19.014263] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/modules.py\n'}
+[19.014375] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/__init__.py\n'}
+[19.014468] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template\n'}
+[19.014556] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/keyword.py\n'}
+[19.014671] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/port.py\n'}
+[19.014781] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/module.py\n'}
+[19.014896] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/instruction.py\n'}
+[19.015012] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/__init__.py\n'}
+[19.015112] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators\n'}
+[19.015187] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/behavior_tree_generator.py\n'}
+[19.015304] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator\n'}
+[19.015387] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/__init__.py\n'}
+[19.015502] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/generator.py\n'}
+[19.015625] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/utils.py\n'}
+[19.015764] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/keywords_module_generator.py\n'}
+[19.015874] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers\n'}
+[19.015955] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/experiments_service.py\n'}
+[19.016074] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/primitive_action_manager.py\n'}
+[19.016188] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/PortMan.py\n'}
+[19.016296] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/BaTMan.py\n'}
+[19.053639] (-) TimerEvent: {}
+[19.055887] (ras_bt_framework) StdoutLine: {'line': b"Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework'...\n"}
+[19.056159] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/__init__.py'...\n"}
+[19.056264] (ras_bt_framework) StdoutLine: {'line': b"Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template'...\n"}
+[19.056351] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/__init__.py'...\n"}
+[19.056433] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/instruction.py'...\n"}
+[19.056535] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/keyword.py'...\n"}
+[19.056622] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/module.py'...\n"}
+[19.056699] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/port.py'...\n"}
+[19.056773] (ras_bt_framework) StdoutLine: {'line': b"Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility'...\n"}
+[19.056850] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/grid_parser.py'...\n"}
+[19.056928] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/update_bt.py'...\n"}
+[19.057009] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/yaml_parser.py'...\n"}
+[19.057082] (ras_bt_framework) StdoutLine: {'line': b"Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors'...\n"}
+[19.057161] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/__init__.py'...\n"}
+[19.057238] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/batMan.py'...\n"}
+[19.057312] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/experiments_service.py'...\n"}
+[19.057390] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/functions.py'...\n"}
+[19.057468] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/gen_primitives.py'...\n"}
+[19.057552] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/keywords.py'...\n"}
+[19.057638] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/modules.py'...\n"}
+[19.057716] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/ports.py'...\n"}
+[19.057801] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/primitives.py'...\n"}
+[19.057881] (ras_bt_framework) StdoutLine: {'line': b"Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators'...\n"}
+[19.057961] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/behavior_tree_generator.py'...\n"}
+[19.058043] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/keywords_module_generator.py'...\n"}
+[19.058121] (ras_bt_framework) StdoutLine: {'line': b"Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator'...\n"}
+[19.058199] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/__init__.py'...\n"}
+[19.058280] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/generator.py'...\n"}
+[19.058364] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/utils.py'...\n"}
+[19.058448] (ras_bt_framework) StdoutLine: {'line': b"Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers'...\n"}
+[19.058543] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/BaTMan.py'...\n"}
+[19.058605] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/PortMan.py'...\n"}
+[19.058655] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/experiments_service.py'...\n"}
+[19.058705] (ras_bt_framework) StdoutLine: {'line': b"Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/primitive_action_manager.py'...\n"}
+[19.061941] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ament_index/resource_index/package_run_dependencies/ras_bt_framework\n'}
+[19.062252] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ament_index/resource_index/parent_prefix_path/ras_bt_framework\n'}
+[19.062522] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/ament_prefix_path.sh\n'}
+[19.062788] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/ament_prefix_path.dsv\n'}
+[19.063034] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/path.sh\n'}
+[19.063229] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/path.dsv\n'}
+[19.063419] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.bash\n'}
+[19.063615] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.sh\n'}
+[19.063801] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.zsh\n'}
+[19.063986] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.dsv\n'}
+[19.064164] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/package.dsv\n'}
+[19.064427] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ament_index/resource_index/packages/ras_bt_framework\n'}
+[19.064662] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/cmake/ras_bt_frameworkConfig.cmake\n'}
+[19.064821] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/cmake/ras_bt_frameworkConfig-version.cmake\n'}
+[19.065001] (ras_bt_framework) StdoutLine: {'line': b'-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/package.xml\n'}
+[19.067270] (ras_bt_framework) CommandEnded: {'returncode': 0}
+[19.080704] (ras_bt_framework) JobEnded: {'identifier': 'ras_bt_framework', 'rc': 0}
+[19.082104] (-) EventReactorShutdown: {}

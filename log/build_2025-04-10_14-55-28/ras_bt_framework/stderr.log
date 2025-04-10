@@ -1,0 +1,581 @@
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:31[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_pose.hpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::MoveToPose::move_to_pose_response(rclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_pose.hpp:103:95:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kfuture[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  103 |         void move_to_pose_response([01;35m[Krclcpp::Client<ras_interfaces::srv::PoseReq>::SharedFuture future[m[K) {
+      |                                    [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtExecutor.hpp:25[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:23[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:[m[K In member function ‘[01m[Krclcpp_action::GoalResponse ras_bt_framework::BTExecutor::handle_goal(const GoalUUID&, std::shared_ptr<const ras_interfaces::action::BTInterface_Goal_<std::allocator<void> > >)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:42:41:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 5 has type ‘[01m[Kconst _bt_path_type[m[K’ {aka ‘[01m[Kconst std::__cxx11::basic_string<char>[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   42 |         RCLCPP_INFO(this->get_logger(), [01;35m[K"Received goal request with id %d"[m[K, goal->bt_path);
+      |                                         [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:42:73:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   42 |         RCLCPP_INFO(this->get_logger(), "Received goal request with id [01;36m[K%d[m[K", goal->bt_path);
+      |                                                                        [01;36m[K~^[m[K
+      |                                                                         [01;36m[K|[m[K
+      |                                                                         [01;36m[Kint[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtExecutor.hpp:25[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:23[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::BTExecutor::bt_tick_handler(ras_interfaces::srv::PrimitiveExec_Request_<std::allocator<void> >::SharedPtr, ras_interfaces::srv::PrimitiveExec_Response_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:167:41:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 5 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+  167 |         RCLCPP_INFO(this->get_logger(), [01;35m[K"preStatus: %d"[m[K, [32m[Kstatus[m[K);
+      |                                         [01;35m[K^~~~~~~~~~~~~~~[m[K  [32m[K~~~~~~[m[K
+      |                                                          [32m[K|[m[K
+      |                                                          [32m[KBT::NodeStatus[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/BTExecutor.cpp:167:54:[m[K [01;36m[Knote: [m[Kformat string is defined here
+  167 |         RCLCPP_INFO(this->get_logger(), "preStatus: [01;36m[K%d[m[K", status);
+      |                                                     [01;36m[K~^[m[K
+      |                                                      [01;36m[K|[m[K
+      |                                                      [01;36m[Kint[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:32[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/trigger.hpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::Trigger::trigger_response(rclcpp::Client<std_srvs::srv::SetBool>::SharedFuture)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/trigger.hpp:71:80:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kfuture[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   71 |     void trigger_response([01;35m[Krclcpp::Client<std_srvs::srv::SetBool>::SharedFuture future[m[K) {
+      |                           [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:33[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::ExecuteTrajectory::play_traj_response(rclcpp::Client<ras_interfaces::srv::PlayPath>::SharedFuture)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:89:89:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kfuture[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   89 |     void play_traj_response([01;35m[Krclcpp::Client<ras_interfaces::srv::PlayPath>::SharedFuture future[m[K) {
+      |                             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::ExecuteTrajectory::log_response(rclcpp::Client<ras_interfaces::srv::TrajLog>::SharedFuture)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:92:82:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kfuture[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   92 |     void log_response([01;35m[Krclcpp::Client<ras_interfaces::srv::TrajLog>::SharedFuture future[m[K) {
+      |                       [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:34[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/rotate_eff.hpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::RotateEffector::rotate_eff_response(rclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedFuture)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/rotate_eff.hpp:93:100:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kfuture[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   93 |         void rotate_eff_response([01;35m[Krclcpp::Client<ras_interfaces::srv::RotateEffector>::SharedFuture future[m[K)
+      |                                  [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:36[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/logger_client_trigger.hpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::LoggerClientTrigger::trigger_response(rclcpp::Client<std_srvs::srv::SetBool>::SharedFuture)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/logger_client_trigger.hpp:64:80:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kfuture[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   64 |     void trigger_response([01;35m[Krclcpp::Client<std_srvs::srv::SetBool>::SharedFuture future[m[K) {
+      |                           [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:37[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_joint_state.hpp:[m[K In member function ‘[01m[Kvoid ras_bt_framework::MoveToJointState::move_to_joint_state_response(rclcpp::Client<ras_interfaces::srv::JointReq>::SharedFuture)[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_joint_state.hpp:108:103:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kfuture[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  108 |         void move_to_joint_state_response([01;35m[Krclcpp::Client<ras_interfaces::srv::JointReq>::SharedFuture future[m[K) {
+      |                                           [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:38[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Move.hpp:[m[K At global scope:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Move.hpp:16:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kras_bt_framework::Move::~Move()[m[K’ cannot be overloaded with ‘[01m[Kras_bt_framework::Move::~Move()[m[K’
+   16 |     [01;31m[K~[m[KMove() {}
+      |     [01;31m[K^[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:33:9:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kras_bt_framework::Move::~Move()[m[K’
+   33 |         [01;36m[K~[m[Kname(){\
+      |         [01;36m[K^[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Move.hpp:10:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   10 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Move)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Move.hpp:[m[K In destructor ‘[01m[Kvirtual ras_bt_framework::Move::~Move()[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:34:26:[m[K [01;35m[Kwarning: [m[Kpure virtual ‘[01m[Kvoid ras_bt_framework::PrimitiveBehavior<T>::destroy() [with T = ras_bt_framework::Move][m[K’ called from destructor
+   34 |             [01;35m[Kthis->destroy()[m[K;\
+      |             [01;35m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Move.hpp:10:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   10 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Move)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:6[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:39[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/move2pose.hpp:[m[K At global scope:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/move2pose.hpp:16:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kras_bt_framework::Move2pose::~Move2pose()[m[K’ cannot be overloaded with ‘[01m[Kras_bt_framework::Move2pose::~Move2pose()[m[K’
+   16 |     [01;31m[K~[m[KMove2pose() {}
+      |     [01;31m[K^[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:33:9:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kras_bt_framework::Move2pose::~Move2pose()[m[K’
+   33 |         [01;36m[K~[m[Kname(){\
+      |         [01;36m[K^[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/move2pose.hpp:10:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   10 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Move2pose)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/move2pose.hpp:[m[K In destructor ‘[01m[Kvirtual ras_bt_framework::Move2pose::~Move2pose()[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:34:26:[m[K [01;35m[Kwarning: [m[Kpure virtual ‘[01m[Kvoid ras_bt_framework::PrimitiveBehavior<T>::destroy() [with T = ras_bt_framework::Move2pose][m[K’ called from destructor
+   34 |             [01;35m[Kthis->destroy()[m[K;\
+      |             [01;35m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/move2pose.hpp:10:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   10 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Move2pose)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:39[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:[m[K At global scope:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:17:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kras_bt_framework::Pick::~Pick()[m[K’ cannot be overloaded with ‘[01m[Kras_bt_framework::Pick::~Pick()[m[K’
+   17 |     [01;31m[K~[m[KPick() {}
+      |     [01;31m[K^[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:33:9:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kras_bt_framework::Pick::~Pick()[m[K’
+   33 |         [01;36m[K~[m[Kname(){\
+      |         [01;36m[K^[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:11:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   11 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Pick)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:[m[K In destructor ‘[01m[Kvirtual ras_bt_framework::Pick::~Pick()[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:34:26:[m[K [01;35m[Kwarning: [m[Kpure virtual ‘[01m[Kvoid ras_bt_framework::PrimitiveBehavior<T>::destroy() [with T = ras_bt_framework::Pick][m[K’ called from destructor
+   34 |             [01;35m[Kthis->destroy()[m[K;\
+      |             [01;35m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:11:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   11 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Pick)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:40[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Place.hpp:[m[K At global scope:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Place.hpp:17:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kras_bt_framework::Place::~Place()[m[K’ cannot be overloaded with ‘[01m[Kras_bt_framework::Place::~Place()[m[K’
+   17 |     [01;31m[K~[m[KPlace() {}
+      |     [01;31m[K^[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:33:9:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kras_bt_framework::Place::~Place()[m[K’
+   33 |         [01;36m[K~[m[Kname(){\
+      |         [01;36m[K^[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Place.hpp:11:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   11 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Place)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Place.hpp:[m[K In destructor ‘[01m[Kvirtual ras_bt_framework::Place::~Place()[m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:34:26:[m[K [01;35m[Kwarning: [m[Kpure virtual ‘[01m[Kvoid ras_bt_framework::PrimitiveBehavior<T>::destroy() [with T = ras_bt_framework::Place][m[K’ called from destructor
+   34 |             [01;35m[Kthis->destroy()[m[K;\
+      |             [01;35m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Place.hpp:11:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KNEW_PRIMITIVE_DECL[m[K’
+   11 |     [01;36m[KNEW_PRIMITIVE_DECL[m[K(Place)
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:25[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+/opt/ros/humble/include/behaviortree_cpp/bt_factory.h: In instantiation of ‘[01m[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, ExtraArgs ...) [with T = ras_bt_framework::Move; ExtraArgs = {std::shared_ptr<rclcpp::Node>}; std::string = std::__cxx11::basic_string<char>][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:57:9:[m[K   required from here
+[01m[K/opt/ros/humble/include/behaviortree_cpp/bt_factory.h:363:21:[m[K [01;31m[Kerror: [m[Kstatic assertion failed: The Node type can't be abstract. Did you forget to implement an abstract method in the derived class?
+  363 |       static_assert([01;31m[K!std::is_abstract_v<T>[m[K, "The Node type can't be abstract. "
+      |                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/behaviortree_cpp/bt_factory.h:363:21:[m[K [01;36m[Knote: [m[K‘[01m[K!(bool)std::is_abstract_v<ras_bt_framework::Move>[m[K’ evaluates to false
+/opt/ros/humble/include/behaviortree_cpp/bt_factory.h: In instantiation of ‘[01m[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, ExtraArgs ...) [with T = ras_bt_framework::Pick; ExtraArgs = {std::shared_ptr<rclcpp::Node>}; std::string = std::__cxx11::basic_string<char>][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:58:9:[m[K   required from here
+[01m[K/opt/ros/humble/include/behaviortree_cpp/bt_factory.h:363:21:[m[K [01;31m[Kerror: [m[Kstatic assertion failed: The Node type can't be abstract. Did you forget to implement an abstract method in the derived class?
+[01m[K/opt/ros/humble/include/behaviortree_cpp/bt_factory.h:363:21:[m[K [01;36m[Knote: [m[K‘[01m[K!(bool)std::is_abstract_v<ras_bt_framework::Pick>[m[K’ evaluates to false
+/opt/ros/humble/include/behaviortree_cpp/bt_factory.h: In instantiation of ‘[01m[Kvoid BT::BehaviorTreeFactory::registerNodeType(const string&, ExtraArgs ...) [with T = ras_bt_framework::Place; ExtraArgs = {std::shared_ptr<rclcpp::Node>}; std::string = std::__cxx11::basic_string<char>][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:59:9:[m[K   required from here
+[01m[K/opt/ros/humble/include/behaviortree_cpp/bt_factory.h:363:21:[m[K [01;31m[Kerror: [m[Kstatic assertion failed: The Node type can't be abstract. Did you forget to implement an abstract method in the derived class?
+[01m[K/opt/ros/humble/include/behaviortree_cpp/bt_factory.h:363:21:[m[K [01;36m[Knote: [m[K‘[01m[K!(bool)std::is_abstract_v<ras_bt_framework::Place>[m[K’ evaluates to false
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::SaySomething][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::SaySomething; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/say_something.hpp:30:1:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::ThinkSomethingToSay][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::ThinkSomethingToSay; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/think_something_to_say.hpp:30:1:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::MoveToPose][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::MoveToPose; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_pose.hpp:60:5:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Trigger][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Trigger; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/trigger.hpp:30:1:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::ExecuteTrajectory][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::ExecuteTrajectory; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/execute_traj.hpp:35:1:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::RotateEffector][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::RotateEffector; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/rotate_eff.hpp:34:9:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::PrimitiveActionClient][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::PrimitiveActionClient; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveActionClient.hpp:33:5:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::LoggerClientTrigger][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::LoggerClientTrigger; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/logger_client_trigger.hpp:30:1:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::MoveToJointState][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::MoveToJointState; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/primitives/move_to_joint_state.hpp:68:5:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Move][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Move; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Move.hpp:10:5:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Move2pose][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Move2pose; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/move2pose.hpp:10:5:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Pick][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Pick; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Pick.hpp:11:5:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:23[m[K:
+/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp: In instantiation of ‘[01m[KBT::NodeStatus ras_bt_framework::PrimitiveBehavior<T>::postTick(BT::TreeNode&, BT::NodeStatus) [with T = ras_bt_framework::Place][m[K’:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:52:49:[m[K   required from ‘[01m[Kras_bt_framework::PrimitiveBehavior<T>::PrimitiveBehavior(const string&, const BT::NodeConfig&, rclcpp::Node::SharedPtr) [with T = ras_bt_framework::Place; std::string = std::__cxx11::basic_string<char>; rclcpp::Node::SharedPtr = std::shared_ptr<rclcpp::Node>][m[K’
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/gen_primitives/Place.hpp:11:5:[m[K   required from here
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:46:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 6 has type ‘[01m[KBT::NodeStatus[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   56 |             RCLCPP_INFO(node_->get_logger(), [01;35m[K"%s executed with status %d"[m[K,this->name().c_str(),[32m[Kstatus[m[K);
+      |                                              [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      [32m[K~~~~~~[m[K
+      |                                                                                                [32m[K|[m[K
+      |                                                                                                [32m[KBT::NodeStatus[m[K
+In file included from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/BtFactory.hpp:26[m[K,
+                 from [01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/src/executor.cpp:24[m[K:
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:56:72:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   56 |             RCLCPP_INFO(node_->get_logger(), "%s executed with status [01;36m[K%d[m[K",this->name().c_str(),status);
+      |                                                                       [01;36m[K~^[m[K
+      |                                                                        [01;36m[K|[m[K
+      |                                                                        [01;36m[Kint[m[K
+[01m[K/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/include/ras_bt_framework/PrimitiveBehavior.hpp:55:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   55 |         BT::NodeStatus postTick([01;35m[KBT::TreeNode &node[m[K, BT::NodeStatus status){
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+gmake[2]: *** [CMakeFiles/executor.dir/build.make:76: CMakeFiles/executor.dir/src/executor.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:168: CMakeFiles/executor.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

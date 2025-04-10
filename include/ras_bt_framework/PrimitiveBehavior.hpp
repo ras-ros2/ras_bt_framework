@@ -30,9 +30,6 @@
          PrimitiveBehavior(name,config,node){\
             this->initialize();\
          }\
-        ~name(){\
-            this->destroy();\
-        }\
       private:
 #define END_PRIMITIVE_DECL };
 

@@ -1,0 +1,128 @@
+[35m[1mConsolidate compiler generated dependencies of target examples[0m
+[35m[1mConsolidate compiler generated dependencies of target executor[0m
+[ 40%] Built target examples
+[ 40%] Built target ament_cmake_python_copy_ras_bt_framework
+[ 60%] [32mBuilding CXX object CMakeFiles/executor.dir/src/executor.cpp.o[0m
+running egg_info
+writing ras_bt_framework.egg-info/PKG-INFO
+writing dependency_links to ras_bt_framework.egg-info/dependency_links.txt
+writing top-level names to ras_bt_framework.egg-info/top_level.txt
+reading manifest file 'ras_bt_framework.egg-info/SOURCES.txt'
+writing manifest file 'ras_bt_framework.egg-info/SOURCES.txt'
+[ 60%] Built target ament_cmake_python_build_ras_bt_framework_egg
+[ 80%] [32m[1mLinking CXX executable executor[0m
+[100%] Built target executor
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/config
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/config/primitive_declaration.yaml
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src/executor.cpp
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src/BTExecutor.cpp
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/src/examples.cpp
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates/include_primitives.hpp.em
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates/primitive_instructions.py.em
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/templates/primitive_template.hpp.em
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/examples
+-- Set runtime path of "/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/examples" to ""
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/executor
+-- Set runtime path of "/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/executor" to ""
+-- Up-to-date: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework/
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//trajzipper.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//FakeGripperServer.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//test.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//TrajectoryRecordsService.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//generate_primitive.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//logging_manager.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//dummy_logging_server.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/lib/ras_bt_framework//experiment_service.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/pythonpath.sh
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/pythonpath.dsv
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/PKG-INFO
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework-0.0.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/update_bt.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/grid_parser.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/yaml_parser.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/gen_primitives.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/keywords.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/batMan.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/functions.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/experiments_service.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/__init__.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/primitives.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/ports.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/modules.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/__init__.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/keyword.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/port.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/module.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/instruction.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/__init__.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/behavior_tree_generator.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/__init__.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/generator.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/utils.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/keywords_module_generator.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/experiments_service.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/primitive_action_manager.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/PortMan.py
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/BaTMan.py
+Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/__init__.py'...
+Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/__init__.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/instruction.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/keyword.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/module.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_template/port.py'...
+Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/grid_parser.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/update_bt.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behavior_utility/yaml_parser.py'...
+Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/__init__.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/batMan.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/experiments_service.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/functions.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/gen_primitives.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/keywords.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/modules.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/ports.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/behaviors/primitives.py'...
+Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/behavior_tree_generator.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/keywords_module_generator.py'...
+Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/__init__.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/generator.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/generators/primitive_generator/utils.py'...
+Listing '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/BaTMan.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/PortMan.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/experiments_service.py'...
+Compiling '/home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/local/lib/python3.10/dist-packages/ras_bt_framework/managers/primitive_action_manager.py'...
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ament_index/resource_index/package_run_dependencies/ras_bt_framework
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ament_index/resource_index/parent_prefix_path/ras_bt_framework
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/ament_prefix_path.sh
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/ament_prefix_path.dsv
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/path.sh
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/environment/path.dsv
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.bash
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.sh
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.zsh
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/local_setup.dsv
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/package.dsv
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ament_index/resource_index/packages/ras_bt_framework
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/cmake/ras_bt_frameworkConfig.cmake
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/cmake/ras_bt_frameworkConfig-version.cmake
+-- Installing: /home/ram/ras_docker/ros2_pkgs/ras_bt_framework/install/ras_bt_framework/share/ras_bt_framework/package.xml
